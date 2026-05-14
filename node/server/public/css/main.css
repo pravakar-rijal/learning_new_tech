@@ -1,0 +1,58 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+    font-weight: bolder;
+}
+
+nav ul{
+    padding: 16px;
+    list-style-type: none;
+    display: flex;
+    flex-direction: row;    
+    background-color: yellow;
+}
+
+nav ul li{
+    margin-inline: 10px;
+}
+
+main{
+    width: 100%;
+    text-align: center;
+    margin: 1rem;
+}
+
+main h1{
+    padding: 1rem;
+}
+
+main ul{
+    padding: 1rem;
+}
+
+main ul li{
+    list-style-position: inside;
+    list-style-type: lower-roman;
+}
+
+label{
+    display: block;
+    padding: 1rem;
+}
+
+input{
+    display: block;
+    font: inherit;
+    margin: auto;
+}
+
+button{
+    text-align: left;
+    font: inherit;
+    margin: 1rem;
+}

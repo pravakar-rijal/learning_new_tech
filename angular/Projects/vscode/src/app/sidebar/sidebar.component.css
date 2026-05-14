@@ -1,0 +1,27 @@
+
+.bi{
+    padding: 10px;
+    font-size: 30px;
+    cursor: pointer;
+    color: rgb(144, 139, 139);
+    background-color: black;
+}
+
+.icons{
+    max-width: 60px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.icon-upper
+{
+    display: flex;
+    flex-direction: column;
+}
+
+#icon-lower{
+    display: flex;
+    flex-direction: column;
+}

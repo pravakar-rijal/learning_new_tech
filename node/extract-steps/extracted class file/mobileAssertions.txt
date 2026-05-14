@@ -1,0 +1,188 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
+package com.vaf.appiumSteps;
+
+import com.vaf.GlobalData.GlobalSharedData;
+import com.vaf.appium.AppiumAssertions;
+import com.vaf.appium.AppiumManager;
+import com.vaf.enumerations.LocatorType;
+import com.vaf.exceptions.AbortScenario;
+import com.vaf.exceptions.CommonException;
+import com.vaf.exceptions.VAFLicenseException;
+import com.vaf.utils.JsonUtil;
+import cucumber.api.java.en.Then;
+import io.cucumber.java.en.When;
+import java.io.IOException;
+import java.util.Map;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.Test;
+
+public class AppiumAssertionSteps {
+    ThreadLocal<AppiumManager> appiumManager;
+    public static ThreadLocal<GlobalSharedData> sharedData;
+    AppiumAssertions assertions;
+
+    public AppiumAssertionSteps() throws VAFLicenseException {
+        this.appiumManager = AppiumSteps.appiumManager;
+        this.assertions = new AppiumAssertions();
+        sharedData = GlobalSharedData.getInstance();
+    }
+
+    @Test
+    @Then("User verifies the element {string} is visible in mobile")
+    public void Verify_that_user_will_see(String elementKey) throws CommonException, AbortScenario, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((AppiumManager)this.appiumManager.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                WebElement webElement = ((AppiumManager)this.appiumManager.get()).elementBy(elementType, elementValue);
+                this.assertions.assertTrue(webElement.isDisplayed(), "", (AppiumManager)this.appiumManager.get());
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @Then("User verifies the element {string} is selected in mobile")
+    public void Verify_that_is_selected_already(String elementKey) throws CommonException, AbortScenario, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((AppiumManager)this.appiumManager.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                WebElement webElement = ((AppiumManager)this.appiumManager.get()).elementBy(elementType, elementValue);
+                this.assertions.assertTrue(webElement.isSelected(), "", (AppiumManager)this.appiumManager.get());
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @Then("User verifies the element {string} should be enabled in mobile")
+    public void Verify_that_the_button_should_be_enabled(String buttonKey) throws CommonException, AbortScenario, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((AppiumManager)this.appiumManager.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(buttonKey);
+                String buttonValue = (String)locatorMap.get("value");
+                LocatorType buttonType = (LocatorType)locatorMap.get("type");
+                WebElement buttonElement = ((AppiumManager)this.appiumManager.get()).elementBy(buttonType, buttonValue);
+                this.assertions.assertTrue(buttonElement.isEnabled(), "", (AppiumManager)this.appiumManager.get());
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @Then("User verifies the URL of page should be {string} for WebView in mobile")
+    public void Verify_that_the_URL_of_page_should_be(String expectedURL) throws InterruptedException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            Thread.sleep(3000L);
+            String actual_URL = ((AppiumManager)this.appiumManager.get()).getURL();
+            this.assertions.assertEquals(actual_URL, expectedURL, "", (AppiumManager)this.appiumManager.get());
+        }
+    }
+
+    @Test
+    @When("User verifies the URL of page should be baseURI {string} with endpoint {string} in mobile")
+    public void User_validate_Url(String server, String endpoint) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            String baseUrl = ((AppiumManager)this.appiumManager.get()).getConfigUtil().baseUri(server);
+            String expectedURL = baseUrl + endpoint;
+            String actual_URL = ((AppiumManager)this.appiumManager.get()).getURL();
+            this.assertions.assertEquals(actual_URL, expectedURL, "", (AppiumManager)this.appiumManager.get());
+        }
+    }
+
+    @Test
+    @Then("User verifies the element {string} should be disabled in mobile")
+    public void Verify_that_should_be_disabled(String elementKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((AppiumManager)this.appiumManager.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                WebElement element = ((AppiumManager)this.appiumManager.get()).elementBy(elementType, elementValue);
+                this.assertions.assertFalse(element.isEnabled(), "", (AppiumManager)this.appiumManager.get());
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @Then("User verifies the element {string} text should be {string} in mobile")
+    public void Verify_that_text_should_be(String elementKey, String expectedText) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((AppiumManager)this.appiumManager.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                WebElement element = ((AppiumManager)this.appiumManager.get()).elementBy(elementType, elementValue);
+
+                try {
+                    AppiumSteps.checkElementVisibility(elementValue, elementType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    String actualText = element.getText();
+                    this.assertions.assertEquals(actualText, expectedText, "", (AppiumManager)this.appiumManager.get());
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @Then("User verifies the option {string} is selected successfully from dropdown {string} in mobile")
+    public void Verify_that_should_contain(String expectedText, String elementLocatorKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((AppiumManager)this.appiumManager.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementLocatorKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                WebElement dropDownOption = ((AppiumManager)this.appiumManager.get()).elementBy(elementType, elementValue);
+
+                try {
+                    AppiumSteps.checkElementVisibility(elementValue, elementType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    Select select = new Select(dropDownOption);
+                    String selectedOptionText = select.getFirstSelectedOption().getText();
+                    this.assertions.assertEquals(selectedOptionText, expectedText, "", (AppiumManager)this.appiumManager.get());
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+}

@@ -1,0 +1,17 @@
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace NZWalks.API.Models.DTOs
+{
+    public class CreateRegionRequestDto
+    {
+        [Required]
+        [MaxLength(3, ErrorMessage = "Code should be maximum of 3 characters")]
+        [MinLength(3, ErrorMessage = "Code should be minimum of 3 characters")]
+        public string Code { get; set; } = string.Empty;
+
+        [Required]
+        [MaxLength(100, ErrorMessage = "Name should be maximum of 100 characters")]
+        public string Name { get; set; } = string.Empty;
+        public string? RegionImageUrl { get; set; }
+    }
+}

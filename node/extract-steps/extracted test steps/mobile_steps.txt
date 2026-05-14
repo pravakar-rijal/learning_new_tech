@@ -1,0 +1,57 @@
+User sets desired capabilities with key {string} in mobile
+User navigates to URL {string} in mobile
+User waits until element {string} is visible in mobile
+User taps on element {string} in mobile
+User clicks on element {string} in mobile
+User enters text {string} in input field {string} in mobile
+User scrolls to element {string} in native view in mobile
+User scrolls to element {string} in WebView in mobile
+User navigates back in mobile
+User long presses on element {string} in mobile
+User short presses on element {string} in mobile
+User moves to native view with text {string} in mobile
+User moves to WebView with text {string} in mobile
+User waits for <{int}> milliseconds in mobile
+User refreshes the current page with x-axis <{double}> and start y-axis <{double}> and end y-axis <{double}> in mobile
+User closes the session in mobile
+User scrolls downward from element {string} by <{int}> pixels in mobile
+User scrolls upward from element {string} by <{int}> pixels in mobile
+User scrolls upward by <{int}> pixels in mobile
+User scrolls downward by <{int}> pixels in mobile
+User scrolls downward with maximum <{int}> iterations from the center of the page to find element {string} in mobile
+User scrolls upward with maximum <{int}> iterations from the center of the page to find element {string} in mobile
+User zooms out on the element {string} by <{int}> pixels in mobile
+User zooms in on the element {string} by <{int}> pixels in mobile
+User zooms in on x-axis <{double}> and y-axis <{double}> by pixels <{int}> in mobile
+User zooms out on x-axis <{double}> and y-axis <{double}> by pixels <{int}> in mobile
+User checks after every <{int}> seconds until element {string} is visible in mobile
+User clears the text from input field {string} in mobile
+User selects option by text {string} from dropdown {string} in mobile
+User selects option by index <{int}> from dropdown {string} in mobile
+User selects option by value {string} from dropdown {string} in mobile
+User moves into frame {string} in mobile
+User moves back to default frame in mobile
+User switches into parent frame in mobile
+User moves into frame with index <{int}> in mobile
+User drags element {string} to element {string} in mobile
+User switches to another app with app package {string} and app activity {string} in mobile
+User scrolls upward with maximum <{int}> iterations from x-axis <{double}> and y-axis <{double}> to find element {string} in mobile
+User scrolls downward with maximum <{int}> iterations from x-axis <{double}> and y-axis <{double}> to find element {string} in mobile
+User swipes horizontally with start x-axis <{double}> end x-axis <{double}> and y-axis <{double}> in mobile
+User swipes with two fingers keeping with first finger x-axis <{double}> second finger x-axis <{double}> start y-axis <{double}> and end y-axis <{double}> in mobile
+User double taps at x-axis <{double}> and y-axis <{double}> in mobile
+User triple taps at x-axis <{double}> and y-axis <{double}> in mobile
+User wants to start recording in mobile
+User wants to stop recording with name {string} in mobile
+User waits until element {string} is clickable in mobile
+User wants to install application placed at path {string}
+User wants to activate application with bundleId {string}
+User wants to terminate application with bundleId {string}
+User wants to uninstall application with bundleId {string}
+User wants to save text of element {string} with key {string} in mobile
+User saves numeric value of element {string} with key {string} in mobile
+User enter text {string} in input field {string} in mobile
+If element {string} is displayed in mobile
+User highlights element {string} in mobile
+User presses space on element {string} in mobile
+User presses space on element {string} for webView in mobile

@@ -1,0 +1,101 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "F:\\Learning\\dotnet\\Projects\\POC\\ExportCsvExcel\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BC0822D0-0F61-4256-8201-44997461E0DB}|ExportCsvExcel.csproj|f:\\learning\\dotnet\\projects\\poc\\exportcsvexcel\\controllers\\exportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC0822D0-0F61-4256-8201-44997461E0DB}|ExportCsvExcel.csproj|solutionrelative:controllers\\exportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC0822D0-0F61-4256-8201-44997461E0DB}|ExportCsvExcel.csproj|f:\\learning\\dotnet\\projects\\poc\\exportcsvexcel\\services\\iexporter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC0822D0-0F61-4256-8201-44997461E0DB}|ExportCsvExcel.csproj|solutionrelative:services\\iexporter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC0822D0-0F61-4256-8201-44997461E0DB}|ExportCsvExcel.csproj|f:\\learning\\dotnet\\projects\\poc\\exportcsvexcel\\services\\excelexporter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC0822D0-0F61-4256-8201-44997461E0DB}|ExportCsvExcel.csproj|solutionrelative:services\\excelexporter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC0822D0-0F61-4256-8201-44997461E0DB}|ExportCsvExcel.csproj|f:\\learning\\dotnet\\projects\\poc\\exportcsvexcel\\services\\csvexporter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC0822D0-0F61-4256-8201-44997461E0DB}|ExportCsvExcel.csproj|solutionrelative:services\\csvexporter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC0822D0-0F61-4256-8201-44997461E0DB}|ExportCsvExcel.csproj|f:\\learning\\dotnet\\projects\\poc\\exportcsvexcel\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC0822D0-0F61-4256-8201-44997461E0DB}|ExportCsvExcel.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "F:\\Learning\\dotnet\\Projects\\POC\\ExportCsvExcel\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "F:\\Learning\\dotnet\\Projects\\POC\\ExportCsvExcel\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-14T15:53:01.03Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CsvExporter.cs",
+              "DocumentMoniker": "F:\\Learning\\dotnet\\Projects\\POC\\ExportCsvExcel\\Services\\CsvExporter.cs",
+              "RelativeDocumentMoniker": "Services\\CsvExporter.cs",
+              "ToolTip": "F:\\Learning\\dotnet\\Projects\\POC\\ExportCsvExcel\\Services\\CsvExporter.cs",
+              "RelativeToolTip": "Services\\CsvExporter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-14T15:52:47.185Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ExcelExporter.cs",
+              "DocumentMoniker": "F:\\Learning\\dotnet\\Projects\\POC\\ExportCsvExcel\\Services\\ExcelExporter.cs",
+              "RelativeDocumentMoniker": "Services\\ExcelExporter.cs",
+              "ToolTip": "F:\\Learning\\dotnet\\Projects\\POC\\ExportCsvExcel\\Services\\ExcelExporter.cs",
+              "RelativeToolTip": "Services\\ExcelExporter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-14T15:52:32.279Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IExporter.cs",
+              "DocumentMoniker": "F:\\Learning\\dotnet\\Projects\\POC\\ExportCsvExcel\\Services\\IExporter.cs",
+              "RelativeDocumentMoniker": "Services\\IExporter.cs",
+              "ToolTip": "F:\\Learning\\dotnet\\Projects\\POC\\ExportCsvExcel\\Services\\IExporter.cs",
+              "RelativeToolTip": "Services\\IExporter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-14T15:52:22.433Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ExportController.cs",
+              "DocumentMoniker": "F:\\Learning\\dotnet\\Projects\\POC\\ExportCsvExcel\\Controllers\\ExportController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ExportController.cs",
+              "ToolTip": "F:\\Learning\\dotnet\\Projects\\POC\\ExportCsvExcel\\Controllers\\ExportController.cs",
+              "RelativeToolTip": "Controllers\\ExportController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-14T15:51:45.886Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

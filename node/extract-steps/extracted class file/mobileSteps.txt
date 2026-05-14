@@ -1,0 +1,1130 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
+package com.vaf.appiumSteps;
+
+import com.vaf.GlobalData.GlobalSharedData;
+import com.vaf.appium.AppiumManager;
+import com.vaf.enumerations.LocatorType;
+import com.vaf.exceptions.AbortScenario;
+import com.vaf.exceptions.CommonException;
+import com.vaf.exceptions.VAFLicenseException;
+import com.vaf.utils.JsonUtil;
+import cucumber.api.java.en.And;
+import cucumber.api.java.en.When;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Map;
+import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import org.json.JSONObject;
+import org.openqa.selenium.Dimension;
+import org.openqa.selenium.WebElement;
+import org.testng.annotations.Test;
+
+public class AppiumSteps {
+    public static ThreadLocal<AppiumManager> appiumManager;
+
+    @Test
+    @When("User sets desired capabilities with key {string} in mobile")
+    public void sauceLabs_excelData(String excelKey) throws VAFLicenseException, IOException, CommonException, AbortScenario {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                System.out.print(Thread.currentThread().getId());
+                appiumManager = AppiumManager.getInstance(excelKey);
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @When("User navigates to URL {string} in mobile")
+    public void user_navigates_to(String url) {
+        ((AppiumManager)appiumManager.get()).driver.get(url);
+    }
+
+    @Test
+    @When("User waits until element {string} is visible in mobile")
+    public void Verify_that_element_is_not_visible(String elementKey) throws CommonException, AbortScenario, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((AppiumManager)appiumManager.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                ((AppiumManager)appiumManager.get()).waitUntilElementIsVisible(elementType, elementValue);
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User taps on element {string} in mobile")
+    public void User_tap_on(String elementKey) throws CommonException, AbortScenario, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((AppiumManager)appiumManager.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+
+                try {
+                    checkElementClickAbility(elementValue, elementType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((AppiumManager)appiumManager.get()).Tap(elementValue, elementType);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User clicks on element {string} in mobile")
+    public void User_Click_on(String elementKey) throws CommonException, AbortScenario, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((AppiumManager)appiumManager.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+
+                try {
+                    checkElementClickAbility(elementValue, elementType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((AppiumManager)appiumManager.get()).click(elementValue, elementType);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User enters text {string} in input field {string} in mobile")
+    public void User_Enter_text_in_Field(String textToEnter, String fieldLocatorKey) throws InterruptedException, CommonException, AbortScenario, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((AppiumManager)appiumManager.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(fieldLocatorKey);
+                String fieldLocatorValue = (String)locatorMap.get("value");
+                LocatorType fieldType = (LocatorType)locatorMap.get("type");
+
+                try {
+                    checkElementClickAbility(fieldLocatorValue, fieldType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((AppiumManager)appiumManager.get()).fillTextField(fieldLocatorValue, textToEnter, fieldType);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @And("User scrolls to element {string} in native view in mobile")
+    public void Scroll_to(String text) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((AppiumManager)appiumManager.get()).scroll(text);
+        }
+    }
+
+    @Test
+    @And("User scrolls to element {string} in WebView in mobile")
+    public void Scroll(String elementKey) throws CommonException, AbortScenario, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((AppiumManager)appiumManager.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                ((AppiumManager)appiumManager.get()).scroll(elementValue, elementType, false);
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @And("User navigates back in mobile")
+    public void User_Navigate_Back() throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((AppiumManager)appiumManager.get()).navigateBack();
+        }
+    }
+
+    @And("User long presses on element {string} in mobile")
+    public void Long_Press(String elementKey) throws CommonException, AbortScenario, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((AppiumManager)appiumManager.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+
+                try {
+                    checkElementClickAbility(elementValue, elementType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((AppiumManager)appiumManager.get()).longPress(elementValue, elementType);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User short presses on element {string} in mobile")
+    public void Short_Press(String elementKey) throws CommonException, AbortScenario, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((AppiumManager)appiumManager.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+
+                try {
+                    checkElementClickAbility(elementValue, elementType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((AppiumManager)appiumManager.get()).shortPress(elementValue, elementType);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @And("User moves to native view with text {string} in mobile")
+    public void moveToNativeView(String text) throws InterruptedException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((AppiumManager)appiumManager.get()).switchToNativeContext(text);
+        }
+    }
+
+    @And("User moves to WebView with text {string} in mobile")
+    public void moveToWebView(String text) throws InterruptedException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((AppiumManager)appiumManager.get()).switchToWebViewContext(text);
+        }
+    }
+
+    @Test
+    @And("User waits for <{int}> milliseconds in mobile")
+    public void User_wait_for_milliseconds(Integer milliseconds) throws InterruptedException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            Thread.sleep((long)milliseconds);
+        }
+    }
+
+    @Test
+    @And("User refreshes the current page with x-axis <{double}> and start y-axis <{double}> and end y-axis <{double}> in mobile")
+    public void Refresh_the_current_page(double x, double sy, double ey) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((AppiumManager)appiumManager.get()).swipeDownToRefresh(x, sy, ey);
+        }
+    }
+
+    @Test
+    @When("User closes the session in mobile")
+    public void Close_the_Session_for_Appium() throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((AppiumManager)appiumManager.get()).closeBrowser();
+        }
+    }
+
+    @Test
+    @And("User scrolls downward from element {string} by <{int}> pixels in mobile")
+    public void User_scrollUpwardInPixels(String elementKey, Integer pixels) throws CommonException, AbortScenario, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((AppiumManager)appiumManager.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+
+                try {
+                    checkElementVisibility(elementValue, elementType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((AppiumManager)appiumManager.get()).oneFingerScrollByPixels(elementValue, elementType, pixels);
+                }
+
+            }
+        } catch (AbortScenario | CommonException e) {
+            ((Exception)e).printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User scrolls upward from element {string} by <{int}> pixels in mobile")
+    public void User_scrollDownwardInPixels(String elementKey, Integer pixels) throws CommonException, AbortScenario, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((AppiumManager)appiumManager.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+
+                try {
+                    checkElementVisibility(elementValue, elementType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((AppiumManager)appiumManager.get()).oneFingerScrollByPixelsDownwards(elementValue, elementType, pixels);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User scrolls upward by <{int}> pixels in mobile")
+    public void User_scrollDownward(Integer pixels) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((AppiumManager)appiumManager.get()).oneFingerScrollByPixelsDownwards(pixels);
+        }
+    }
+
+    @Test
+    @And("User scrolls downward by <{int}> pixels in mobile")
+    public void User_scrollUpward(Integer pixels) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((AppiumManager)appiumManager.get()).oneFingerScrollByPixelsUpward(pixels);
+        }
+    }
+
+    @Test
+    @And("User scrolls downward with maximum <{int}> iterations from the center of the page to find element {string} in mobile")
+    public void userScrollUpwardsToFindElement(Integer maxIterations, String targetElementKey) throws Exception, IOException {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            Map<String, Object> locatorMap = null;
+            ((AppiumManager)appiumManager.get()).getJsonUtil();
+            locatorMap = JsonUtil.getLocatorForJson(targetElementKey);
+            String targetElementValue = (String)locatorMap.get("value");
+            LocatorType targetElementType = (LocatorType)locatorMap.get("type");
+            ((AppiumManager)appiumManager.get()).oneFingerScrollToElementUpward(targetElementValue, targetElementType, 200, maxIterations);
+        }
+    }
+
+    @Test
+    @And("User scrolls upward with maximum <{int}> iterations from the center of the page to find element {string} in mobile")
+    public void userScrollDownwardToFindElement(Integer maxIterations, String targetElementKey) throws Exception {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            Map<String, Object> locatorMap = null;
+            ((AppiumManager)appiumManager.get()).getJsonUtil();
+            locatorMap = JsonUtil.getLocatorForJson(targetElementKey);
+            String targetElementValue = (String)locatorMap.get("value");
+            LocatorType targetElementType = (LocatorType)locatorMap.get("type");
+            ((AppiumManager)appiumManager.get()).oneFingerScrollToElementDownward(targetElementValue, targetElementType, 200, maxIterations);
+        }
+    }
+
+    @Test
+    @And("User zooms out on the element {string} by <{int}> pixels in mobile")
+    public void User_zoom_in(String elementKey, Integer pixels) throws CommonException, AbortScenario, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((AppiumManager)appiumManager.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+
+                try {
+                    checkElementVisibility(elementValue, elementType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((AppiumManager)appiumManager.get()).pinch(elementValue, elementType, pixels);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User zooms in on the element {string} by <{int}> pixels in mobile")
+    public void User_zoom_out(String elementKey, Integer pixels) throws CommonException, AbortScenario, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((AppiumManager)appiumManager.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+
+                try {
+                    checkElementVisibility(elementValue, elementType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((AppiumManager)appiumManager.get()).zoom(elementValue, elementType, pixels);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User zooms in on x-axis <{double}> and y-axis <{double}> by pixels <{int}> in mobile")
+    public void User_zoom_out(double xAxis, double yAxis, Integer pixels) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((AppiumManager)appiumManager.get()).zoomOut(xAxis, yAxis, pixels);
+        }
+    }
+
+    @Test
+    @And("User zooms out on x-axis <{double}> and y-axis <{double}> by pixels <{int}> in mobile")
+    public void User_zoom_in(double xAxis, double yAxis, Integer pixels) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((AppiumManager)appiumManager.get()).pinchIN(xAxis, yAxis, pixels);
+        }
+    }
+
+    @Test
+    @And("User checks after every <{int}> seconds until element {string} is visible in mobile")
+    public void fluentWait(Integer pollingTime, String elementKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((AppiumManager)appiumManager.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                ((AppiumManager)appiumManager.get()).waitUntilFluentElementIsVisible(elementType, elementValue, pollingTime);
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User clears the text from input field {string} in mobile")
+    public void User_Clear_the_text_from(String elementKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((AppiumManager)appiumManager.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+
+                try {
+                    checkElementClickAbility(elementValue, elementType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((AppiumManager)appiumManager.get()).clearText(elementValue, elementType);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User selects option by text {string} from dropdown {string} in mobile")
+    public void User_Select_by_text(String text, String dropdownKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> dropdownLocatorMap = null;
+                ((AppiumManager)appiumManager.get()).getJsonUtil();
+                dropdownLocatorMap = JsonUtil.getLocatorForJson(dropdownKey);
+                String dropdownValue = (String)dropdownLocatorMap.get("value");
+                LocatorType dropdownType = (LocatorType)dropdownLocatorMap.get("type");
+
+                try {
+                    checkElementVisibility(dropdownValue, dropdownType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((AppiumManager)appiumManager.get()).selectDropdownOptionByText(dropdownValue, dropdownType, text);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User selects option by index <{int}> from dropdown {string} in mobile")
+    public void User_Select_by_index(int index, String dropdownKey) throws AbortScenario, InterruptedException, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> dropdownLocatorMap = null;
+                ((AppiumManager)appiumManager.get()).getJsonUtil();
+                dropdownLocatorMap = JsonUtil.getLocatorForJson(dropdownKey);
+                String dropdownValue = (String)dropdownLocatorMap.get("value");
+                LocatorType dropdownType = (LocatorType)dropdownLocatorMap.get("type");
+
+                try {
+                    checkElementVisibility(dropdownValue, dropdownType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((AppiumManager)appiumManager.get()).selectDropdownOptionByIndex(dropdownValue, dropdownType, index);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User selects option by value {string} from dropdown {string} in mobile")
+    public void User_Select_by_value(String value, String dropdownKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> dropdownLocatorMap = null;
+                ((AppiumManager)appiumManager.get()).getJsonUtil();
+                dropdownLocatorMap = JsonUtil.getLocatorForJson(dropdownKey);
+                String dropdownValue = (String)dropdownLocatorMap.get("value");
+                LocatorType dropdownType = (LocatorType)dropdownLocatorMap.get("type");
+
+                try {
+                    checkElementVisibility(dropdownValue, dropdownType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((AppiumManager)appiumManager.get()).selectDropdownOptionByValue(dropdownValue, dropdownType, value);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User moves into frame {string} in mobile")
+    public void User_move_into_Frame(String frameKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((AppiumManager)appiumManager.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(frameKey);
+                String frameValue = (String)locatorMap.get("value");
+                LocatorType frameType = (LocatorType)locatorMap.get("type");
+
+                try {
+                    checkElementVisibility(frameValue, frameType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((AppiumManager)appiumManager.get()).switchToFrame(frameValue, frameType);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User moves back to default frame in mobile")
+    public void User_move_back_to_Default_Frame() throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((AppiumManager)appiumManager.get()).switchToOutOfFrame();
+        }
+    }
+
+    @Test
+    @And("User switches into parent frame in mobile")
+    public void User_move_into_ParentFrame() throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((AppiumManager)appiumManager.get()).switchToParentFrame();
+        }
+    }
+
+    @Test
+    @And("User moves into frame with index <{int}> in mobile")
+    public void User_move_into_Frame(Integer index) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((AppiumManager)appiumManager.get()).switchToFrameWithIndex(index);
+        }
+    }
+
+    @Test
+    @And("User drags element {string} to element {string} in mobile")
+    public void drag_drop(String ElementKey1, String ElementKey2) throws CommonException, AbortScenario, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> dragLocatorMap = null;
+                Map<String, Object> dropLocatorMap = null;
+                ((AppiumManager)appiumManager.get()).getJsonUtil();
+                dragLocatorMap = JsonUtil.getLocatorForJson(ElementKey1);
+                ((AppiumManager)appiumManager.get()).getJsonUtil();
+                dropLocatorMap = JsonUtil.getLocatorForJson(ElementKey2);
+                String dragElementValue = (String)dragLocatorMap.get("value");
+                LocatorType dragElementType = (LocatorType)dragLocatorMap.get("type");
+                String dropElementValue = (String)dropLocatorMap.get("value");
+                LocatorType dropElementType = (LocatorType)dropLocatorMap.get("type");
+
+                try {
+                    checkElementVisibility(dragElementValue, dragElementType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((AppiumManager)appiumManager.get()).dragAndDrop(dragElementValue, dragElementType, dropElementValue, dropElementType);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @When("User switches to another app with app package {string} and app activity {string} in mobile")
+    public void App_switch(String appPackage, String appActivity) throws InterruptedException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((AppiumManager)appiumManager.get()).switchApp(appPackage, appActivity);
+        }
+    }
+
+    @Test
+    @And("User scrolls upward with maximum <{int}> iterations from x-axis <{double}> and y-axis <{double}> to find element {string} in mobile")
+    public void userScrollUpwardsToFindElement(Integer maxIterations, double xPercentage, double yPercentage, String targetElementKey) throws CommonException, AbortScenario, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((AppiumManager)appiumManager.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(targetElementKey);
+                String targetElementValue = (String)locatorMap.get("value");
+                LocatorType targetElementType = (LocatorType)locatorMap.get("type");
+                Dimension screenSize = ((AppiumManager)appiumManager.get()).driver.manage().window().getSize();
+                int screenWidth = screenSize.getWidth();
+                int screenHeight = screenSize.getHeight();
+                int startX = (int)(xPercentage * (double)screenWidth);
+                int startY = (int)(yPercentage * (double)screenHeight);
+                ((AppiumManager)appiumManager.get()).oneFingerScrollToElementUpward1(startX, startY, targetElementValue, targetElementType, 200, maxIterations);
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User scrolls downward with maximum <{int}> iterations from x-axis <{double}> and y-axis <{double}> to find element {string} in mobile")
+    public void userScrollDownwardToFindElement(Integer maxIterations, double xPercentage, double yPercentage, String targetElementKey) throws CommonException, AbortScenario, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((AppiumManager)appiumManager.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(targetElementKey);
+                String targetElementValue = (String)locatorMap.get("value");
+                LocatorType targetElementType = (LocatorType)locatorMap.get("type");
+                Dimension screenSize = ((AppiumManager)appiumManager.get()).driver.manage().window().getSize();
+                int screenWidth = screenSize.getWidth();
+                int screenHeight = screenSize.getHeight();
+                int startX = (int)(xPercentage * (double)screenWidth);
+                int startY = (int)(yPercentage * (double)screenHeight);
+                ((AppiumManager)appiumManager.get()).oneFingerScrollToElementDownward1(startX, startY, targetElementValue, targetElementType, 200, maxIterations);
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @When("User swipes horizontally with start x-axis <{double}> end x-axis <{double}> and y-axis <{double}> in mobile")
+    public void oneFingerSwipeLeft(double startX, double endX, double y) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((AppiumManager)appiumManager.get()).performOneFingerSwipe(startX, endX, y, false);
+        }
+    }
+
+    @When("User swipes with two fingers keeping with first finger x-axis <{double}> second finger x-axis <{double}> start y-axis <{double}> and end y-axis <{double}> in mobile")
+    public void twoFingerSwipeUp(double x1, double x2, double startY, double endY) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((AppiumManager)appiumManager.get()).performTwoFingerSwipe(x1, x2, startY, endY, false);
+        }
+    }
+
+    @When("User double taps at x-axis <{double}> and y-axis <{double}> in mobile")
+    public void the_user_double_taps_at_relative_coordinates(double relativeX, double relativeY) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((AppiumManager)appiumManager.get()).doubleTapAtRelativePosition(relativeX, relativeY);
+        }
+    }
+
+    @When("User triple taps at x-axis <{double}> and y-axis <{double}> in mobile")
+    public void the_user_triple_taps_at_relative_coordinates(double relativeX, double relativeY) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((AppiumManager)appiumManager.get()).tripleTapAtRelativePosition(relativeX, relativeY);
+        }
+    }
+
+    @Test
+    @When("User wants to start recording in mobile")
+    public void startRecording() throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((AppiumManager)appiumManager.get()).startScreenRecording();
+        }
+    }
+
+    @Test
+    @When("User wants to stop recording with name {string} in mobile")
+    public void stopRecording(String videoName) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((AppiumManager)appiumManager.get()).stopScreenRecording(videoName);
+        }
+    }
+
+    @Test
+    @When("User waits until element {string} is clickable in mobile")
+    public void clickable(String elementKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((AppiumManager)appiumManager.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                ((AppiumManager)appiumManager.get()).waitUntilclickable(elementType, elementValue);
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @When("User wants to install application placed at path {string}")
+    public void installApplication(String path) throws Exception {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((AppiumManager)appiumManager.get()).installApplication(path);
+        }
+    }
+
+    @Test
+    @When("User wants to activate application with bundleId {string}")
+    public void activateApp(String appPackage) throws Exception {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((AppiumManager)appiumManager.get()).activateApp(appPackage);
+        }
+    }
+
+    @Test
+    @When("User wants to terminate application with bundleId {string}")
+    public void terminateApp(String appPackage) throws Exception {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((AppiumManager)appiumManager.get()).terminateApp(appPackage);
+        }
+    }
+
+    @Test
+    @When("User wants to uninstall application with bundleId {string}")
+    public void uninstall(String appPackage) throws Exception {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((AppiumManager)appiumManager.get()).uninstallApp(appPackage);
+        }
+    }
+
+    @Test
+    @When("User wants to save text of element {string} with key {string} in mobile")
+    public void save_Text(String elementKey, String Text) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((AppiumManager)appiumManager.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                WebElement element = ((AppiumManager)appiumManager.get()).elementBy(elementType, elementValue);
+
+                try {
+                    checkElementVisibility(elementValue, elementType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    String actualText = element.getText();
+                    JSONObject globalResponseJson = new JSONObject(((GlobalSharedData)GlobalSharedData.getInstance().get()).getGlobalStoredResponse());
+                    globalResponseJson.put(Text, actualText);
+                    ((GlobalSharedData)GlobalSharedData.getInstance().get()).setGlobalStoredResponse(globalResponseJson.toString());
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @When("User saves numeric value of element {string} with key {string} in mobile")
+    public void save_NumericValue(String elementKey, String Text) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((AppiumManager)appiumManager.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                WebElement element = ((AppiumManager)appiumManager.get()).elementBy(elementType, elementValue);
+                String actualText = element.getText();
+                boolean var22 = false;
+
+                label99: {
+                    try {
+                        var22 = true;
+                        checkElementVisibility(elementValue, elementType);
+                        var22 = false;
+                        break label99;
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        var22 = false;
+                    } finally {
+                        if (var22) {
+                            String numericValueString = extractNumericValue(actualText);
+                            System.out.println("numericValueString" + numericValueString);
+                            String numericValue = numericValueString;
+                            JSONObject globalResponseJson = new JSONObject(((GlobalSharedData)GlobalSharedData.getInstance().get()).getGlobalStoredResponse());
+                            if (globalResponseJson.has(Text)) {
+                                double existingValue = globalResponseJson.getDouble(Text);
+                                numericValue = numericValueString + existingValue;
+                            }
+
+                            globalResponseJson.put(Text, numericValue);
+                            System.out.println("numericValue" + numericValue);
+                            ((GlobalSharedData)GlobalSharedData.getInstance().get()).setGlobalStoredResponse(globalResponseJson.toString());
+                        }
+                    }
+
+                    String numericValueString = extractNumericValue(actualText);
+                    System.out.println("numericValueString" + numericValueString);
+                    String numericValue = numericValueString;
+                    JSONObject globalResponseJson = new JSONObject(((GlobalSharedData)GlobalSharedData.getInstance().get()).getGlobalStoredResponse());
+                    if (globalResponseJson.has(Text)) {
+                        double existingValue = globalResponseJson.getDouble(Text);
+                        numericValue = numericValueString + existingValue;
+                    }
+
+                    globalResponseJson.put(Text, numericValue);
+                    System.out.println("numericValue" + numericValue);
+                    ((GlobalSharedData)GlobalSharedData.getInstance().get()).setGlobalStoredResponse(globalResponseJson.toString());
+                    return;
+                }
+
+                String numericValueString = extractNumericValue(actualText);
+                System.out.println("numericValueString" + numericValueString);
+                String numericValue = numericValueString;
+                JSONObject globalResponseJson = new JSONObject(((GlobalSharedData)GlobalSharedData.getInstance().get()).getGlobalStoredResponse());
+                if (globalResponseJson.has(Text)) {
+                    double existingValue = globalResponseJson.getDouble(Text);
+                    numericValue = numericValueString + existingValue;
+                }
+
+                globalResponseJson.put(Text, numericValue);
+                System.out.println("numericValue" + numericValue);
+                ((GlobalSharedData)GlobalSharedData.getInstance().get()).setGlobalStoredResponse(globalResponseJson.toString());
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    public static String extractNumericValue(String text) {
+        Pattern pattern = Pattern.compile("\\d+");
+        Matcher matcher = pattern.matcher(text);
+        return matcher.find() ? matcher.group() : "";
+    }
+
+    @And("User enter text {string} in input field {string} in mobile")
+    public void user_enter_text_in_field_embed_random_number(String textToEnter, String fieldLocatorKey) throws InterruptedException, AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((AppiumManager)appiumManager.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(fieldLocatorKey);
+                String fieldLocatorValue = (String)locatorMap.get("value");
+                LocatorType fieldType = (LocatorType)locatorMap.get("type");
+                String formattedText = this.processPlaceholders(textToEnter);
+
+                try {
+                    checkElementClickAbility(fieldLocatorValue, fieldType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((AppiumManager)appiumManager.get()).fillTextField(fieldLocatorValue, formattedText, fieldType);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    private String processPlaceholders(String text) {
+        String result = text;
+        if (text.contains("#{DATE")) {
+            result = this.processDatePlaceholder(text);
+        }
+
+        if (result.contains("#{RD-")) {
+            result = this.processRandomNumberPlaceholder(result);
+        }
+
+        if (result.contains("#{DB-")) {
+            result = this.processDatabasePlaceholder(result);
+        }
+
+        if (result.contains("#{ST-")) {
+            result = this.processStoredTextPlaceholder(result);
+        }
+
+        return result;
+    }
+
+    private String processDatePlaceholder(String text) {
+        String result = text;
+
+        int endIndex;
+        for(int startIndex = text.indexOf("#{DATE"); startIndex != -1; startIndex = result.indexOf("#{DATE", endIndex)) {
+            endIndex = result.indexOf("}", startIndex);
+            String placeholder = result.substring(startIndex, endIndex + 1);
+            String offsetStr = placeholder.substring(7, placeholder.length() - 1);
+            int offset = Integer.parseInt(offsetStr);
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Date currentDate = new Date();
+            long newDateMillis = currentDate.getTime() + (long)(offset * 24 * 60 * 60 * 1000);
+            Date newDate = new Date(newDateMillis);
+            String formattedDate = sdf.format(newDate);
+            result = result.replace(placeholder, formattedDate);
+        }
+
+        return result;
+    }
+
+    private String processRandomNumberPlaceholder(String text) {
+        String result = text;
+
+        int endIndex;
+        for(int startIndex = text.indexOf("#{RD-"); startIndex != -1; startIndex = result.indexOf("#{RD-", endIndex)) {
+            endIndex = result.indexOf("}", startIndex);
+            String placeholder = result.substring(startIndex, endIndex + 1);
+            String digitsStr = placeholder.substring(5, placeholder.length() - 1);
+            int digits = Integer.parseInt(digitsStr);
+            int randomNumber;
+            if (digits <= 0) {
+                randomNumber = 0;
+            } else {
+                int lowerBound = (int)Math.pow((double)10.0F, (double)(digits - 1));
+                int upperBound = (int)Math.pow((double)10.0F, (double)digits) - 1;
+                Random random = new Random();
+                randomNumber = random.nextInt(upperBound - lowerBound + 1) + lowerBound;
+            }
+
+            String randomNumberStr = String.valueOf(randomNumber);
+            result = result.replace(placeholder, randomNumberStr);
+        }
+
+        return result;
+    }
+
+    private String processDatabasePlaceholder(String text) {
+        String result = text;
+
+        int endIndex;
+        for(int startIndex = text.indexOf("#{DB-"); startIndex != -1; startIndex = result.indexOf("#{DB-", endIndex)) {
+            endIndex = result.indexOf("}", startIndex);
+            String placeholder = result.substring(startIndex, endIndex + 1);
+            String key = placeholder.substring(5, placeholder.length() - 1);
+            String value = this.getValueFromGlobalStoredResponse(key);
+            result = result.replace(placeholder, value);
+        }
+
+        return result;
+    }
+
+    private String processStoredTextPlaceholder(String text) {
+        String result = text;
+
+        int endIndex;
+        for(int startIndex = text.indexOf("#{ST-"); startIndex != -1; startIndex = result.indexOf("#{ST-", endIndex)) {
+            endIndex = result.indexOf("}", startIndex);
+            String placeholder = result.substring(startIndex, endIndex + 1);
+            String key = placeholder.substring(5, placeholder.length() - 1);
+            String value = this.getValueFromGlobalStoredResponse(key);
+            result = result.replace(placeholder, value);
+        }
+
+        return result;
+    }
+
+    private String getValueFromGlobalStoredResponse(String key) {
+        String globalStoredResponse = ((GlobalSharedData)GlobalSharedData.getInstance().get()).getGlobalStoredResponse();
+        if (globalStoredResponse != null && !globalStoredResponse.isEmpty()) {
+            JSONObject globalResponseJson = new JSONObject(globalStoredResponse);
+            if (globalResponseJson.has(key)) {
+                return globalResponseJson.getString(key);
+            }
+        }
+
+        return "";
+    }
+
+    @Test
+    @And("If element {string} is displayed in mobile")
+    public void If_displayed(String elementKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((AppiumManager)appiumManager.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                ((AppiumManager)appiumManager.get()).IfDisplayed(elementValue, elementType);
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User highlights element {string} in mobile")
+    public void User_highlight_on(String elementKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((AppiumManager)appiumManager.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+
+                try {
+                    checkElementClickAbility(elementValue, elementType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((AppiumManager)appiumManager.get()).highlight(elementValue, elementType);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User presses space on element {string} in mobile")
+    public void User_press_space(String elementKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((AppiumManager)appiumManager.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+
+                try {
+                    checkElementVisibility(elementValue, elementType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((AppiumManager)appiumManager.get()).pressSpace(elementValue, elementType);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User presses space on element {string} for webView in mobile")
+    public void User_press_space_webView(String elementKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((AppiumManager)appiumManager.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+
+                try {
+                    checkElementVisibility(elementValue, elementType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((AppiumManager)appiumManager.get()).pressSpaceWebView(elementValue, elementType);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    public static void checkElementClickAbility(String elementValue, LocatorType elementType) {
+        ((AppiumManager)appiumManager.get()).waitUntilclickable(elementType, elementValue);
+    }
+
+    public static void checkElementVisibility(String elementValue, LocatorType elementType) {
+        ((AppiumManager)appiumManager.get()).waitUntilElementIsVisible(elementType, elementValue);
+    }
+}

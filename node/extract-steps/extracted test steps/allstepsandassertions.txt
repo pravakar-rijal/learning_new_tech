@@ -1,0 +1,296 @@
+User navigates to URL {string}
+User maximizes the browser window
+User minimizes the browser window
+User navigates to server {string} with endpoint {string}
+User waits until element {string} is visible
+User waits until element {string} is clickable
+User waits until presence of element {string}
+User closes the browser window
+User hovers over on element {string}
+User clicks on element {string}
+User clears the text from input field {string}
+User scrolls to element {string}
+User navigates back
+User refreshes the current page
+User navigates forward
+User closes the tab
+User moves into frame {string}
+User moves into frame with index <{int}>
+User switches into parent frame
+User moves back to default frame
+User enters text {string} in input field {string}
+User saves numeric value of element {string} with key {string}
+User wants to save text of element {string} with key {string}
+User enters number <{int}> in input field {string}
+User waits for <{int}> milliseconds
+User double clicks on element {string}
+User presses enter on focused element {string}
+User presses tab on element {string}
+User presses space on element {string}
+User clicks on upload button {string} and selects file from file path {string}
+User clicks on upload button {string} and selects file from file path {string} with robot class
+User opens a new tab with URL {string}
+User switches to window with matching URL {string}
+User switches to tab with matching URL {string}
+User opens a new window with URL {string}
+User opens browser in <{int}> x <{int}> dimension
+User opens new tab by clicking on element {string} and switches to it
+User accepts alert
+User dismisses alert
+User switches to alert and sends text {string} in alert
+User scrolls by <{int}> pixels
+User opens new tab by clicking on element {string}
+User waits until element {string} disappears
+User drags element {string} to element {string}
+User right clicks on element {string}
+User switches to another tab with index <{int}>
+User switches to another tab with matching page title {string}
+User captures screenshot and it will save in directory {string} with name {string}
+User captures screenshot of element {string} and it will save in directory {string} with name {string}
+User waits max <{int}> seconds to load page
+User deletes all browser cookies
+User deletes browser cookie with name {string}
+User gets a browser cookie with name {string}
+User logs all the browser cookies to the console
+User selects option by text {string} from dropdown {string}
+User selects option by index <{int}> from dropdown {string}
+User selects option by value {string} from dropdown {string}
+User selects option by partially displayed text {string} from dropdown {string}
+User focuses on element {string}
+User highlights element {string}
+User highlights element {string} for <{int}> seconds
+User reloads a page forcefully
+User waits until partial text {string} is visible
+User waits until text {string} is visible
+User waits until URL {string} appears
+User waits until element {string} is enabled
+User waits until <{int}> numbers of {string} appears
+User highlights multiple elements
+User switches to full screen
+User wants to page down
+User scrolls horizontally by pixels <{int}>
+User scrolls by viewportHeights <{int}>
+User checks after every <{int}> seconds until element {string} is visible
+User wants to save html file in specified folder {string} with name {string}
+If element {string} is displayed
+If element {string} is enabled
+If element {string} is selected
+If URL is {string}
+If page title is {string}
+User implicitly waits for <{int}> seconds
+User clicks on element {string} forcefully
+User clicks on element {string} with cursor
+User saves attribute {string} of {string} with key {string}
+User drags element horizontally from {string} with pixels <{int}>
+User drags element vertically from {string} with pixels <{int}>
+User drags element {string} to target time {string} with total video length {string}
+User performs key action {string}
+User saves Url of current page with key {string}
+User compares the image placed at {string} with the image placed at {string} and show the difference in the image saved at {string}
+User compares the image placed at {string} with the image placed at {string} and shows the difference in the image saved at {string} with color code {string}
+User navigates to URL {string} for accessibility testing
+User navigates to server {string} with endpoint {string} for accessibility testing
+User updates allure json files {string} to extract pdf reports
+User wants to run feature file {string}
+User wants to run feature file {string} with tags {string}
+User updates allure json files {string} with type {string} to extract pdf reports
+User verifies the database connection should be established successfully
+User wants to get data from database with query {string} for column {string}
+User wants to get data from database with query {string}
+User wants to get data from MongoDB collection {string} with query {string} for column {string}
+User skips to the next scenario
+User aborts the launch
+else
+User ends the condition block
+User sets performance testing response time to <{int}>
+User sends {string} request for key {string} at endpoint {string} with <{int}> {string} during <{int}> seconds for <{int}> time in {string} body with name {string}
+User sends {string} request for key {string} at endpoint {string} with <{int}> {string} during <{int}> seconds for <{int}> time in {string} body with name {string} on server {string}
+User executes the requests with launch name {string}
+User executes the request
+If key {string} is {string} {string}
+If status code is <{int}>
+User sends {string} request for key {string} for endpoint {string} in json body
+User sends {string} request for key {string} for endpoint {string} in json body with mock response {string}
+User sends {string} request for key {string} for endpoint {string} in json body with server {string}
+User sends {string} request for key {string} for endpoint {string} in json body with server {string} with mock response {string}
+User sends {string} request for key {string} for endpoint {string} in form body with server {string}
+User sends {string} request for key {string} for endpoint {string} in form body with server {string} with mock response {string}
+User sends {string} request for key {string} for endpoint {string} in form body
+User sends {string} request for key {string} for endpoint {string} in form body with mock response {string}
+User sends {string} request for key {string} for endpoint {string} in url encoded body
+User sends {string} request for key {string} for endpoint {string} in url encoded body with mock response {string}
+User sends {string} request for key {string} for endpoint {string} in url encoded body with server {string}
+User sends {string} request for key {string} for endpoint {string} in url encoded body with server {string} with mock response {string}
+User wants to set special headers with key {string} in next request
+User wants to set API cookie with key {string} in next request
+User wants to reset special headers
+User wants to reset API request cookies
+User stores key {string} from response body
+User stores key {string} from response headers
+User stores key {string} from response cookies
+User sends multiple {string} requests for keys {string} from data file {string} for endpoint {string} in json body
+User sends multiple {string} requests for keys {string} from data file {string} for endpoint {string} in json body with mock response {string}
+User sends multiple {string} requests for keys {string} from data file {string} for endpoint {string} in json body with server {string}
+User sends multiple {string} requests for keys {string} from data file {string} for endpoint {string} in json body with server {string} with mock response {string}
+User sends multiple {string} requests for keys {string} from data file {string} for endpoint {string} in form body with mock response {string}
+User sends multiple {string} requests for keys {string} from data file {string} for endpoint {string} in form body
+User sends multiple {string} requests for keys {string} from data file {string} for endpoint {string} in form body with server {string}
+User sends multiple {string} requests for keys {string} from data file {string} for endpoint {string} in form body with server {string} with mock response {string}
+User sends multiple {string} requests for keys {string} from data file {string} for endpoint {string} in url encoded body
+User sends multiple {string} requests for keys {string} from data file {string} for endpoint {string} in url encoded body with mock response {string}
+User sends multiple {string} requests for keys {string} from data file {string} for endpoint {string} in url encoded body with server {string} with mock response {string}
+User sends {string} request for key {string} for endpoint {string} in xml body
+User sends {string} request for key {string} for endpoint {string} in xml body with server {string}
+User sends multiple {string} requests for keys {string} from data file {string} for endpoint {string} in url encoded body with server {string}
+User sends multiple {string} requests for keys {string} from data file {string} for endpoint {string} in xml body
+User sends multiple {string} requests for keys {string} from data file {string} for endpoint {string} in xml body with server {string}
+User creates GraphQL variable with key {string} and value {string}
+User sends {string} GraphQL request in file {string} with name {string} for endpoint {string} with mock response {string}
+User sends {string} GraphQL request in file {string} with name {string} for endpoint {string}
+User sends GraphQL request {string} for endpoint {string} with mock response {string}
+User sends GraphQL request {string} for endpoint {string}
+User sends root {string} GraphQL request in file {string} for endpoint {string}
+User sends root {string} GraphQL request in file {string} for endpoint {string} with mock response {string}
+User verifies the element {string} is selected
+User verifies the element {string} is visible
+User verifies the element {string} should be enabled
+User verifies the URL of page should be {string}
+User applies all the assertions
+User verifies the URL of page should be baseURI {string} with endpoint {string}
+User verifies the title of page should be {string}
+User verifies the element {string} have numeric text equal to value of {string}
+User verifies the element {string} should be disabled
+User verifies the element {string} text should be {string}
+User verifies the element {string} has attribute {string} with value {string}
+User verifies the option {string} is selected successfully from dropdown {string}
+User verifies the element {string} should not contain text {string}
+User verifies the element {string} should have attribute {string}
+User verifies the element {string} should not have attribute {string}
+User verifies the element {string} should have css class {string}
+User verifies the element {string} should not have css class {string}
+User verifies the status code should be <{int}>
+User verifies the response had key {string} with value {string} for all above
+User verifies the xml response had key {string} with value {string} for all above
+User verifies the status code should be <{int}> for all above
+User verifies the response time should be less than <{int}>
+User verifies the Content-Type of response should be {string}
+User verifies the response had key {string}
+User verifies the response had key {string} for all above
+User verifies the xml response had key {string} for all above
+User verifies the response had key {string} with null value
+User verifies the xml response had key {string} with null value
+User verifies the response had key {string} with value of data type {string}
+User verifies the xml response had key {string} with value of data type {string}
+User verifies the response had key {string} with value of data type {string} for all above
+User verifies the xml response had key {string} with value of data type {string} for all above
+User verifies the response had key {string} with value {string}
+User verifies the xml response had key {string} with value {string}
+User verifies the xml response data type on child level will be same as stored in {string}
+User verifies the response data type on parent level will be same as stored in file {string}
+User verifies the response data type on child level will be same as stored in {string}
+User verifies the response will be same as stored in file {string}
+User verifies the xml response will be same as stored in {string}
+User verifies the xml response had key {string}
+User verifies the response header had key {string} with value {string}
+User verifies the response header had key {string}
+User verifies the response had key {string} with value <{int}>
+User verifies the response had key {string} with value <{double}>
+User verifies the xml response had key {string} with value <{int}>
+User verifies the xml response had key {string} with value <{double}>
+User verifies the element {string} has same css key {string} and css value {string}
+User verifies the alert has text {string}
+User verifies the radio button {string} is checked
+User verifies the radio button {string} is not checked
+User verifies the checkbox {string} is checked
+User verifies the checkbox {string} is not checked
+User verifies the input field {string} has text {string}
+User verifies the field {string} is required
+User verifies the input field {string} is validated with pattern {string}
+User verifies the element {string} is not present
+User verifies the position of element {string} is x-axis {string} and y-axis {string}
+User verifies all links are working fine
+User verifies the file {string} is downloaded
+User verifies the value in the specified column
+User checks for accessibility issues of {string} by excluding following rules {string}
+User checks for accessibility issues of {string} by excluding following rules {string} with iframe disabled
+User checks for any accessibility issue of {string}
+User checks for any accessibility issue of {string} with iframe disabled
+User checks for accessibility issues of {string} by excluding following elements {string}
+User checks for accessibility issues of {string} by excluding following elements {string} with iframe disabled
+User checks for accessibility issues of {string} by excluding this element {string}
+User checks for accessibility issues of {string} by excluding this element {string} with iframe disabled
+User checks for accessibility issues of {string} with only element {string}
+User checks for accessibility issues of {string} with only element {string} with iframe disabled
+User checks for accessibility issues of {string} with only rules {string}
+User checks for accessibility issues of {string} with only rules {string} with iframe disabled
+User verifies the numeric value of key {string} is less than numeric value of key {string}
+User verifies the numeric value of key {string} is greater than numeric value of key {string}
+User verifies the time value of key {string} is less than time value of key {string}
+User verifies the time value of key {string} is greater than time value of key {string}
+User verifies the value of key {string} is not same as value of key {string}
+User verifies the value of key {string} is same as value of key {string}
+User sets desired capabilities with key {string} in mobile
+User navigates to URL {string} in mobile
+User waits until element {string} is visible in mobile
+User taps on element {string} in mobile
+User clicks on element {string} in mobile
+User enters text {string} in input field {string} in mobile
+User scrolls to element {string} in native view in mobile
+User scrolls to element {string} in WebView in mobile
+User navigates back in mobile
+User long presses on element {string} in mobile
+User short presses on element {string} in mobile
+User moves to native view with text {string} in mobile
+User moves to WebView with text {string} in mobile
+User waits for <{int}> milliseconds in mobile
+User refreshes the current page with x-axis <{double}> and start y-axis <{double}> and end y-axis <{double}> in mobile
+User closes the session in mobile
+User scrolls downward from element {string} by <{int}> pixels in mobile
+User scrolls upward from element {string} by <{int}> pixels in mobile
+User scrolls upward by <{int}> pixels in mobile
+User scrolls downward by <{int}> pixels in mobile
+User scrolls downward with maximum <{int}> iterations from the center of the page to find element {string} in mobile
+User scrolls upward with maximum <{int}> iterations from the center of the page to find element {string} in mobile
+User zooms out on the element {string} by <{int}> pixels in mobile
+User zooms in on the element {string} by <{int}> pixels in mobile
+User zooms in on x-axis <{double}> and y-axis <{double}> by pixels <{int}> in mobile
+User zooms out on x-axis <{double}> and y-axis <{double}> by pixels <{int}> in mobile
+User checks after every <{int}> seconds until element {string} is visible in mobile
+User clears the text from input field {string} in mobile
+User selects option by text {string} from dropdown {string} in mobile
+User selects option by index <{int}> from dropdown {string} in mobile
+User selects option by value {string} from dropdown {string} in mobile
+User moves into frame {string} in mobile
+User moves back to default frame in mobile
+User switches into parent frame in mobile
+User moves into frame with index <{int}> in mobile
+User drags element {string} to element {string} in mobile
+User switches to another app with app package {string} and app activity {string} in mobile
+User scrolls upward with maximum <{int}> iterations from x-axis <{double}> and y-axis <{double}> to find element {string} in mobile
+User scrolls downward with maximum <{int}> iterations from x-axis <{double}> and y-axis <{double}> to find element {string} in mobile
+User swipes horizontally with start x-axis <{double}> end x-axis <{double}> and y-axis <{double}> in mobile
+User swipes with two fingers keeping with first finger x-axis <{double}> second finger x-axis <{double}> start y-axis <{double}> and end y-axis <{double}> in mobile
+User double taps at x-axis <{double}> and y-axis <{double}> in mobile
+User triple taps at x-axis <{double}> and y-axis <{double}> in mobile
+User wants to start recording in mobile
+User wants to stop recording with name {string} in mobile
+User waits until element {string} is clickable in mobile
+User wants to install application placed at path {string}
+User wants to activate application with bundleId {string}
+User wants to terminate application with bundleId {string}
+User wants to uninstall application with bundleId {string}
+User wants to save text of element {string} with key {string} in mobile
+User saves numeric value of element {string} with key {string} in mobile
+User enter text {string} in input field {string} in mobile
+If element {string} is displayed in mobile
+User highlights element {string} in mobile
+User presses space on element {string} in mobile
+User presses space on element {string} for webView in mobile
+User verifies the element {string} is visible in mobile
+User verifies the element {string} is selected in mobile
+User verifies the element {string} should be enabled in mobile
+User verifies the URL of page should be {string} for WebView in mobile
+User verifies the URL of page should be baseURI {string} with endpoint {string} in mobile
+User verifies the element {string} should be disabled in mobile
+User verifies the element {string} text should be {string} in mobile
+User verifies the option {string} is selected successfully from dropdown {string} in mobile

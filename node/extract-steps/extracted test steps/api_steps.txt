@@ -1,0 +1,44 @@
+If key {string} is {string} {string}
+If status code is <{int}>
+User sends {string} request for key {string} for endpoint {string} in json body
+User sends {string} request for key {string} for endpoint {string} in json body with mock response {string}
+User sends {string} request for key {string} for endpoint {string} in json body with server {string}
+User sends {string} request for key {string} for endpoint {string} in json body with server {string} with mock response {string}
+User sends {string} request for key {string} for endpoint {string} in form body with server {string}
+User sends {string} request for key {string} for endpoint {string} in form body with server {string} with mock response {string}
+User sends {string} request for key {string} for endpoint {string} in form body
+User sends {string} request for key {string} for endpoint {string} in form body with mock response {string}
+User sends {string} request for key {string} for endpoint {string} in url encoded body
+User sends {string} request for key {string} for endpoint {string} in url encoded body with mock response {string}
+User sends {string} request for key {string} for endpoint {string} in url encoded body with server {string}
+User sends {string} request for key {string} for endpoint {string} in url encoded body with server {string} with mock response {string}
+User wants to set special headers with key {string} in next request
+User wants to set API cookie with key {string} in next request
+User wants to reset special headers
+User wants to reset API request cookies
+User stores key {string} from response body
+User stores key {string} from response headers
+User stores key {string} from response cookies
+User sends multiple {string} requests for keys {string} from data file {string} for endpoint {string} in json body
+User sends multiple {string} requests for keys {string} from data file {string} for endpoint {string} in json body with mock response {string}
+User sends multiple {string} requests for keys {string} from data file {string} for endpoint {string} in json body with server {string}
+User sends multiple {string} requests for keys {string} from data file {string} for endpoint {string} in json body with server {string} with mock response {string}
+User sends multiple {string} requests for keys {string} from data file {string} for endpoint {string} in form body with mock response {string}
+User sends multiple {string} requests for keys {string} from data file {string} for endpoint {string} in form body
+User sends multiple {string} requests for keys {string} from data file {string} for endpoint {string} in form body with server {string}
+User sends multiple {string} requests for keys {string} from data file {string} for endpoint {string} in form body with server {string} with mock response {string}
+User sends multiple {string} requests for keys {string} from data file {string} for endpoint {string} in url encoded body
+User sends multiple {string} requests for keys {string} from data file {string} for endpoint {string} in url encoded body with mock response {string}
+User sends multiple {string} requests for keys {string} from data file {string} for endpoint {string} in url encoded body with server {string} with mock response {string}
+User sends {string} request for key {string} for endpoint {string} in xml body
+User sends {string} request for key {string} for endpoint {string} in xml body with server {string}
+User sends multiple {string} requests for keys {string} from data file {string} for endpoint {string} in url encoded body with server {string}
+User sends multiple {string} requests for keys {string} from data file {string} for endpoint {string} in xml body
+User sends multiple {string} requests for keys {string} from data file {string} for endpoint {string} in xml body with server {string}
+User creates GraphQL variable with key {string} and value {string}
+User sends {string} GraphQL request in file {string} with name {string} for endpoint {string} with mock response {string}
+User sends {string} GraphQL request in file {string} with name {string} for endpoint {string}
+User sends GraphQL request {string} for endpoint {string} with mock response {string}
+User sends GraphQL request {string} for endpoint {string}
+User sends root {string} GraphQL request in file {string} for endpoint {string}
+User sends root {string} GraphQL request in file {string} for endpoint {string} with mock response {string}

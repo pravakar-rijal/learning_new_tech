@@ -1,0 +1,92 @@
+User navigates to URL {string}
+User maximizes the browser window
+User minimizes the browser window
+User navigates to server {string} with endpoint {string}
+User waits until element {string} is visible
+User waits until element {string} is clickable
+User waits until presence of element {string}
+User closes the browser window
+User hovers over on element {string}
+User clicks on element {string}
+User clears the text from input field {string}
+User scrolls to element {string}
+User navigates back
+User refreshes the current page
+User navigates forward
+User closes the tab
+User moves into frame {string}
+User moves into frame with index <{int}>
+User switches into parent frame
+User moves back to default frame
+User enters text {string} in input field {string}
+User saves numeric value of element {string} with key {string}
+User wants to save text of element {string} with key {string}
+User enters number <{int}> in input field {string}
+User waits for <{int}> milliseconds
+User double clicks on element {string}
+User presses enter on focused element {string}
+User presses tab on element {string}
+User presses space on element {string}
+User clicks on upload button {string} and selects file from file path {string}
+User clicks on upload button {string} and selects file from file path {string} with robot class
+User opens a new tab with URL {string}
+User switches to window with matching URL {string}
+User switches to tab with matching URL {string}
+User opens a new window with URL {string}
+User opens browser in <{int}> x <{int}> dimension
+User opens new tab by clicking on element {string} and switches to it
+User accepts alert
+User dismisses alert
+User switches to alert and sends text {string} in alert
+User scrolls by <{int}> pixels
+User opens new tab by clicking on element {string}
+User waits until element {string} disappears
+User drags element {string} to element {string}
+User right clicks on element {string}
+User switches to another tab with index <{int}>
+User switches to another tab with matching page title {string}
+User captures screenshot and it will save in directory {string} with name {string}
+User captures screenshot of element {string} and it will save in directory {string} with name {string}
+User waits max <{int}> seconds to load page
+User deletes all browser cookies
+User deletes browser cookie with name {string}
+User gets a browser cookie with name {string}
+User logs all the browser cookies to the console
+User selects option by text {string} from dropdown {string}
+User selects option by index <{int}> from dropdown {string}
+User selects option by value {string} from dropdown {string}
+User selects option by partially displayed text {string} from dropdown {string}
+User focuses on element {string}
+User highlights element {string}
+User highlights element {string} for <{int}> seconds
+User reloads a page forcefully
+User waits until partial text {string} is visible
+User waits until text {string} is visible
+User waits until URL {string} appears
+User waits until element {string} is enabled
+User waits until <{int}> numbers of {string} appears
+User highlights multiple elements
+User switches to full screen
+User wants to page down
+User scrolls horizontally by pixels <{int}>
+User scrolls by viewportHeights <{int}>
+User checks after every <{int}> seconds until element {string} is visible
+User wants to save html file in specified folder {string} with name {string}
+If element {string} is displayed
+If element {string} is enabled
+If element {string} is selected
+If URL is {string}
+If page title is {string}
+User implicitly waits for <{int}> seconds
+User clicks on element {string} forcefully
+User clicks on element {string} with cursor
+User saves attribute {string} of {string} with key {string}
+User drags element horizontally from {string} with pixels <{int}>
+User drags element vertically from {string} with pixels <{int}>
+User drags element {string} to target time {string} with total video length {string}
+User performs key action {string}
+User saves Url of current page with key {string}
+User compares the image placed at {string} with the image placed at {string} and show the difference in the image saved at {string}
+User compares the image placed at {string} with the image placed at {string} and shows the difference in the image saved at {string} with color code {string}
+User navigates to URL {string} for accessibility testing
+User navigates to server {string} with endpoint {string} for accessibility testing

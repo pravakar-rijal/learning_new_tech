@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Browser Terminal Demo</title>
+
+    <!-- Xterm CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/xterm/css/xterm.css"
+    />
+
+    <style>
+      body {
+        margin: 0;
+        background: #1e1e1e;
+      }
+      #terminal {
+        height: 100vh;
+        width: 100vw;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="terminal"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/xterm/lib/xterm.js"></script>
+
+    <script>
+      const term = new Terminal({
+        cursorBlink: true,
+        fontSize: 14,
+        theme: {
+          background: "#1e1e1e",
+        },
+      });
+
+      term.open(document.getElementById("terminal"));
+
+      const socket = new WebSocket("ws://localhost:3000");
+
+      socket.onopen = () => {
+        term.write("Connected to server\r\n");
+      };
+
+      // Terminal keystrokes -> server
+      term.onData((data) => {
+        socket.send(data);
+      });
+
+      // Server output -> terminal
+      socket.onmessage = (e) => {
+        term.write(e.data);
+      };
+    </script>
+  </body>
+</html>

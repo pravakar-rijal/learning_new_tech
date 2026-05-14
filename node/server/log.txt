@@ -1,0 +1,7 @@
+
+Date       Request From     Requested URL
+2/7/2025   localhost:8000   /
+2/7/2025   localhost:8000   /about
+2/7/2025   localhost:8000   /product
+2/7/2025   localhost:8000   /cart
+2/7/2025   localhost:8000   /item

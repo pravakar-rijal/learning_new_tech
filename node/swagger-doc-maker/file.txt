@@ -1,0 +1,24 @@
+put:
+  summary: Reset user password using activation token
+  tags:
+    - Users
+  parameters:
+    - name: token
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Activation token
+  headers:
+    password:
+      description: New password (must meet complexity requirements)
+      required: true
+      schema:
+        type: string
+  responses:
+    '200':
+      description: Password updated successfully
+    '400':
+      description: Invalid or missing token/password
+    '500':
+      description: Server error

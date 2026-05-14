@@ -1,0 +1,1775 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
+package com.vaf.steps;
+
+import com.vaf.GlobalData.GlobalSharedData;
+import com.vaf.enumerations.LocatorType;
+import com.vaf.enumerations.LogLevel;
+import com.vaf.exceptions.AbortScenario;
+import com.vaf.exceptions.CommonException;
+import com.vaf.exceptions.VAFLicenseException;
+import com.vaf.utils.ImageComparison;
+import com.vaf.utils.JsonUtil;
+import com.vaf.utils.LogUtil;
+import com.vaf.web.UIManager;
+import cucumber.api.java.en.And;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import org.bytedeco.opencv.opencv_core.Scalar;
+import org.json.JSONObject;
+import org.openqa.selenium.Cookie;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.Test;
+
+public class UISteps {
+    public static ThreadLocal<UIManager> mgr = new ThreadLocal();
+
+    public UISteps() throws VAFLicenseException {
+    }
+
+    @After("@Ignore")
+    public void afterIgnore() {
+        ((GlobalSharedData)GlobalSharedData.getInstance().get()).setScenarioSkip(Boolean.FALSE);
+    }
+
+    @After("@ignore")
+    public void afterIgnore1() {
+        ((GlobalSharedData)GlobalSharedData.getInstance().get()).setScenarioSkip(Boolean.FALSE);
+    }
+
+    @Before("@Ignore")
+    public void beforeIgnore() {
+        ((GlobalSharedData)GlobalSharedData.getInstance().get()).setScenarioSkip(Boolean.TRUE);
+    }
+
+    @Before("@ignore")
+    public void beforeIgnore1() {
+        ((GlobalSharedData)GlobalSharedData.getInstance().get()).setScenarioSkip(Boolean.TRUE);
+    }
+
+    @Test
+    @When("User navigates to URL {string}")
+    public void user_navigates_to(String url) throws VAFLicenseException, AbortScenario, CommonException {
+        try {
+            LogUtil.log("Step Started", LogLevel.INFO);
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                System.out.print(Thread.currentThread().getId());
+                mgr = UIManager.getInstance();
+                ((UIManager)mgr.get()).startSession(url, true);
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @When("User maximizes the browser window")
+    public void maximize_the_window() throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((UIManager)mgr.get()).maximizeBrowser();
+        }
+    }
+
+    @And("User minimizes the browser window")
+    public void minimize_the_window() throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((UIManager)mgr.get()).minimizeBrowser();
+        }
+    }
+
+    @Test
+    @When("User navigates to server {string} with endpoint {string}")
+    public void User_navigates_to_for_server(String server, String endpoint) throws VAFLicenseException, AbortScenario, CommonException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                mgr = UIManager.getInstance();
+                String baseUrl = ((UIManager)mgr.get()).getConfigUtil().baseUri(server);
+                String ep = ((UIManager)mgr.get()).getConfigUtil().getEndpoint(endpoint);
+                ((UIManager)mgr.get()).startSession(baseUrl + ep, true);
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @When("User waits until element {string} is visible")
+    public void Verify_that_element_is_not_visible(String elementKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                ((UIManager)mgr.get()).waitUntilElementIsVisible(elementType, elementValue);
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    public static void checkElementClickAbility(String elementValue, LocatorType elementType) {
+        ((UIManager)mgr.get()).waitUntilclickable(elementType, elementValue);
+    }
+
+    public static void checkElementVisibility(String elementValue, LocatorType elementType) {
+        ((UIManager)mgr.get()).waitUntilElementIsVisible(elementType, elementValue);
+    }
+
+    @Test
+    @When("User waits until element {string} is clickable")
+    public void clickable(String elementKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                ((UIManager)mgr.get()).waitUntilclickable(elementType, elementValue);
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @When("User waits until presence of element {string}")
+    public void Verify_that_element_presence(String elementKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                ((UIManager)mgr.get()).waitUntilpresence(elementType, elementValue);
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @Then("User closes the browser window")
+    public void Close_the_Browser() throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((UIManager)mgr.get()).endSession();
+        }
+    }
+
+    @Test
+    @And("User hovers over on element {string}")
+    public void User_Hover_over_on(String elementKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+
+                try {
+                    checkElementVisibility(elementValue, elementType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((UIManager)mgr.get()).hover(elementValue, elementType);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User clicks on element {string}")
+    public void User_Click_on(String elementKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+
+                try {
+                    checkElementClickAbility(elementValue, elementType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((UIManager)mgr.get()).click(elementValue, elementType);
+                }
+
+            }
+        } catch (IOException | CommonException e) {
+            ((Exception)e).printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User clears the text from input field {string}")
+    public void User_Clear_the_text_from(String elementKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+
+                try {
+                    checkElementVisibility(elementValue, elementType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((UIManager)mgr.get()).clearText(elementValue, elementType);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User scrolls to element {string}")
+    public void Scroll_to(String elementKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                ((UIManager)mgr.get()).scroll(elementValue, elementType, false);
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User navigates back")
+    public void User_Navigate_Back() throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((UIManager)mgr.get()).navigateBack();
+        }
+    }
+
+    @Test
+    @And("User refreshes the current page")
+    public void Refresh_the_current_page() throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((UIManager)mgr.get()).pageRefresh();
+        }
+    }
+
+    @Test
+    @And("User navigates forward")
+    public void User_Navigate_Forward() throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((UIManager)mgr.get()).navigateForward();
+        }
+    }
+
+    @Test
+    @And("User closes the tab")
+    public void close_new_Tab() throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((UIManager)mgr.get()).closeTab();
+        }
+    }
+
+    @Test
+    @And("User moves into frame {string}")
+    public void User_move_into_Frame(String frameKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(frameKey);
+                String frameValue = (String)locatorMap.get("value");
+                LocatorType frameType = (LocatorType)locatorMap.get("type");
+
+                try {
+                    checkElementVisibility(frameValue, frameType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((UIManager)mgr.get()).switchToFrame(frameValue, frameType);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User moves into frame with index <{int}>")
+    public void User_move_into_Frame(Integer index) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((UIManager)mgr.get()).switchToFrameWithIndex(index);
+        }
+    }
+
+    @Test
+    @And("User switches into parent frame")
+    public void User_move_into_ParentFrame() throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((UIManager)mgr.get()).switchToParentFrame();
+        }
+    }
+
+    @Test
+    @And("User moves back to default frame")
+    public void User_move_back_to_Default_Frame() throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((UIManager)mgr.get()).switchToOutOfFrame();
+        }
+    }
+
+    @And("User enters text {string} in input field {string}")
+    public void user_enter_text_in_field_embed_random_number(String textToEnter, String fieldLocatorKey) throws InterruptedException, AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(fieldLocatorKey);
+                String fieldLocatorValue = (String)locatorMap.get("value");
+                LocatorType fieldType = (LocatorType)locatorMap.get("type");
+
+                try {
+                    checkElementVisibility(fieldLocatorValue, fieldType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    String formattedText = this.processPlaceholders(textToEnter);
+                    ((UIManager)mgr.get()).fillTextField(fieldLocatorValue, formattedText, fieldType);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private String processPlaceholders(String text) {
+        String result = text;
+        if (text.contains("#{DATE")) {
+            result = this.processDatePlaceholder(text);
+        }
+
+        if (result.contains("#{RD-")) {
+            result = this.processRandomNumberPlaceholder(result);
+        }
+
+        if (result.contains("#{DB-")) {
+            result = this.processDatabasePlaceholder(result);
+        }
+
+        if (result.contains("#{ST-")) {
+            result = this.processStoredTextPlaceholder(result);
+        }
+
+        return result;
+    }
+
+    private String processDatePlaceholder(String text) {
+        String result = text;
+
+        int endIndex;
+        for(int startIndex = text.indexOf("#{DATE"); startIndex != -1; startIndex = result.indexOf("#{DATE", endIndex)) {
+            endIndex = result.indexOf("}", startIndex);
+            String placeholder = result.substring(startIndex, endIndex + 1);
+            String offsetStr = placeholder.substring(7, placeholder.length() - 1);
+            int offset = Integer.parseInt(offsetStr);
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+            Date currentDate = new Date();
+            long newDateMillis = currentDate.getTime() + (long)(offset * 24 * 60 * 60 * 1000);
+            Date newDate = new Date(newDateMillis);
+            String formattedDate = sdf.format(newDate);
+            result = result.replace(placeholder, formattedDate);
+        }
+
+        return result;
+    }
+
+    private String processRandomNumberPlaceholder(String text) {
+        String result = text;
+
+        int endIndex;
+        for(int startIndex = text.indexOf("#{RD-"); startIndex != -1; startIndex = result.indexOf("#{RD-", endIndex)) {
+            endIndex = result.indexOf("}", startIndex);
+            String placeholder = result.substring(startIndex, endIndex + 1);
+            String digitsStr = placeholder.substring(5, placeholder.length() - 1);
+            int digits = Integer.parseInt(digitsStr);
+            int randomNumber;
+            if (digits <= 0) {
+                randomNumber = 0;
+            } else {
+                int lowerBound = (int)Math.pow((double)10.0F, (double)(digits - 1));
+                int upperBound = (int)Math.pow((double)10.0F, (double)digits) - 1;
+                Random random = new Random();
+                randomNumber = random.nextInt(upperBound - lowerBound + 1) + lowerBound;
+            }
+
+            String randomNumberStr = String.valueOf(randomNumber);
+            result = result.replace(placeholder, randomNumberStr);
+        }
+
+        return result;
+    }
+
+    private String processDatabasePlaceholder(String text) {
+        String result = text;
+
+        int endIndex;
+        for(int startIndex = text.indexOf("#{DB-"); startIndex != -1; startIndex = result.indexOf("#{DB-", endIndex)) {
+            endIndex = result.indexOf("}", startIndex);
+            String placeholder = result.substring(startIndex, endIndex + 1);
+            String key = placeholder.substring(5, placeholder.length() - 1);
+            String value = this.getValueFromGlobalStoredResponse(key);
+            result = result.replace(placeholder, value);
+        }
+
+        return result;
+    }
+
+    private String processStoredTextPlaceholder(String text) {
+        String result = text;
+
+        int endIndex;
+        for(int startIndex = text.indexOf("#{ST-"); startIndex != -1; startIndex = result.indexOf("#{ST-", endIndex)) {
+            endIndex = result.indexOf("}", startIndex);
+            String placeholder = result.substring(startIndex, endIndex + 1);
+            String key = placeholder.substring(5, placeholder.length() - 1);
+            String value = this.getValueFromGlobalStoredResponse(key);
+            result = result.replace(placeholder, value);
+        }
+
+        return result;
+    }
+
+    private String getValueFromGlobalStoredResponse(String key) {
+        String globalStoredResponse = ((GlobalSharedData)GlobalSharedData.getInstance().get()).getGlobalStoredResponse();
+        if (globalStoredResponse != null && !globalStoredResponse.isEmpty()) {
+            JSONObject globalResponseJson = new JSONObject(globalStoredResponse);
+            if (globalResponseJson.has(key)) {
+                return globalResponseJson.getString(key);
+            }
+        }
+
+        return "";
+    }
+
+    @Test
+    @When("User saves numeric value of element {string} with key {string}")
+    public void save_NumericValue(String elementKey, String Text) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                boolean var26 = false;
+
+                label125: {
+                    try {
+                        var26 = true;
+                        checkElementVisibility(elementValue, elementType);
+                        var26 = false;
+                        break label125;
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                        var26 = false;
+                    } finally {
+                        if (var26) {
+                            WebElement element = ((UIManager)mgr.get()).elementBy(elementType, elementValue);
+                            String actualText = element.getText();
+                            String numericValueString = this.extractNumericValue(actualText);
+                            double numericValue = (double)0.0F;
+                            if (!numericValueString.isEmpty()) {
+                                numericValue = Double.parseDouble(numericValueString);
+                            }
+
+                            JSONObject globalResponseJson = new JSONObject(((GlobalSharedData)GlobalSharedData.getInstance().get()).getGlobalStoredResponse());
+                            if (globalResponseJson.has(Text)) {
+                                double existingValue = globalResponseJson.getDouble(Text);
+                                numericValue += existingValue;
+                            }
+
+                            globalResponseJson.put(Text, numericValue);
+                            System.out.println("numericValue" + numericValue);
+                            ((GlobalSharedData)GlobalSharedData.getInstance().get()).setGlobalStoredResponse(globalResponseJson.toString());
+                        }
+                    }
+
+                    WebElement element = ((UIManager)mgr.get()).elementBy(elementType, elementValue);
+                    String actualText = element.getText();
+                    String numericValueString = this.extractNumericValue(actualText);
+                    double numericValue = (double)0.0F;
+                    if (!numericValueString.isEmpty()) {
+                        numericValue = Double.parseDouble(numericValueString);
+                    }
+
+                    JSONObject globalResponseJson = new JSONObject(((GlobalSharedData)GlobalSharedData.getInstance().get()).getGlobalStoredResponse());
+                    if (globalResponseJson.has(Text)) {
+                        double existingValue = globalResponseJson.getDouble(Text);
+                        numericValue += existingValue;
+                    }
+
+                    globalResponseJson.put(Text, numericValue);
+                    System.out.println("numericValue" + numericValue);
+                    ((GlobalSharedData)GlobalSharedData.getInstance().get()).setGlobalStoredResponse(globalResponseJson.toString());
+                    return;
+                }
+
+                WebElement element = ((UIManager)mgr.get()).elementBy(elementType, elementValue);
+                String actualText = element.getText();
+                String numericValueString = this.extractNumericValue(actualText);
+                double numericValue = (double)0.0F;
+                if (!numericValueString.isEmpty()) {
+                    numericValue = Double.parseDouble(numericValueString);
+                }
+
+                JSONObject globalResponseJson = new JSONObject(((GlobalSharedData)GlobalSharedData.getInstance().get()).getGlobalStoredResponse());
+                if (globalResponseJson.has(Text)) {
+                    double existingValue = globalResponseJson.getDouble(Text);
+                    numericValue += existingValue;
+                }
+
+                globalResponseJson.put(Text, numericValue);
+                System.out.println("numericValue" + numericValue);
+                ((GlobalSharedData)GlobalSharedData.getInstance().get()).setGlobalStoredResponse(globalResponseJson.toString());
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    private String extractNumericValue(String text) {
+        Pattern pattern = Pattern.compile("[-+]?\\$?€?£?\\d{1,3}(?:,\\d{3})*(\\.\\d+)?|\\d+(\\.\\d+)?");
+        Matcher matcher = pattern.matcher(text);
+
+        StringBuilder numericValues;
+        for(numericValues = new StringBuilder(); matcher.find(); numericValues.append(matcher.group().replaceAll(",", "").replaceAll("[$€£]", ""))) {
+            if (numericValues.length() > 0) {
+                numericValues.append(", ");
+            }
+        }
+
+        return numericValues.toString();
+    }
+
+    @Test
+    @When("User wants to save text of element {string} with key {string}")
+    public void save_Text(String elementKey, String Text) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                WebElement element = ((UIManager)mgr.get()).elementBy(elementType, elementValue);
+
+                try {
+                    checkElementVisibility(elementValue, elementType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    String actualText = element.getText();
+                    JSONObject globalResponseJson = new JSONObject(((GlobalSharedData)GlobalSharedData.getInstance().get()).getGlobalStoredResponse());
+                    globalResponseJson.put(Text, actualText);
+                    ((GlobalSharedData)GlobalSharedData.getInstance().get()).setGlobalStoredResponse(globalResponseJson.toString());
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User enters number <{int}> in input field {string}")
+    public void User_Enter_integer_in_Field(Integer integerValue, String fieldLocatorKey) throws InterruptedException, AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(fieldLocatorKey);
+                String fieldLocatorValue = (String)locatorMap.get("value");
+                LocatorType fieldType = (LocatorType)locatorMap.get("type");
+
+                try {
+                    checkElementVisibility(fieldLocatorValue, fieldType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    String integerValueAsString = String.valueOf(integerValue);
+                    ((UIManager)mgr.get()).fillTextField(fieldLocatorValue, integerValueAsString, fieldType);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User waits for <{int}> milliseconds")
+    public void User_wait_for_milliseconds(Integer milliseconds) throws InterruptedException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            Thread.sleep((long)milliseconds);
+        }
+    }
+
+    @Test
+    @And("User double clicks on element {string}")
+    public void User_double_click_on(String elementKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+
+                try {
+                    checkElementVisibility(elementValue, elementType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((UIManager)mgr.get()).doubleClick(elementValue, elementType);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User presses enter on focused element {string}")
+    public void User_press_Enter(String elementKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+
+                try {
+                    checkElementVisibility(elementValue, elementType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((UIManager)mgr.get()).pressEnter(elementValue, elementType);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User presses tab on element {string}")
+    public void User_press_tab(String elementKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+
+                try {
+                    checkElementVisibility(elementValue, elementType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((UIManager)mgr.get()).pressTab(elementValue, elementType);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User presses space on element {string}")
+    public void User_press_space(String elementKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+
+                try {
+                    checkElementVisibility(elementValue, elementType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((UIManager)mgr.get()).pressSpace(elementValue, elementType);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @When("User clicks on upload button {string} and selects file from file path {string}")
+    public void User_click_on_upload_button_and_select_file_from_source_and_click(String uploadButtonLocator, String fileSourceURI) throws InterruptedException, AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(uploadButtonLocator);
+                String buttonValue = (String)locatorMap.get("value");
+                LocatorType buttonType = (LocatorType)locatorMap.get("type");
+
+                try {
+                    checkElementClickAbility(buttonValue, buttonType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((UIManager)mgr.get()).uploadFileFromSource1(fileSourceURI, buttonValue, buttonType);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @When("User clicks on upload button {string} and selects file from file path {string} with robot class")
+    public void User_click_on_upload_button_and_select_file_from_source_with_robot_class(String uploadButtonLocator, String fileSourceURI) throws InterruptedException, AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(uploadButtonLocator);
+                String buttonValue = (String)locatorMap.get("value");
+                LocatorType buttonType = (LocatorType)locatorMap.get("type");
+
+                try {
+                    checkElementClickAbility(buttonValue, buttonType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((UIManager)mgr.get()).uploadFileFromSource(fileSourceURI, buttonValue, buttonType);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @When("User opens a new tab with URL {string}")
+    public void openNewTabWithURL(String url) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((UIManager)mgr.get()).openTabWithURL(url);
+        }
+    }
+
+    @Test
+    @When("User switches to window with matching URL {string}")
+    public void switchWindowBasedOnURL(String targetURL) throws InterruptedException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((UIManager)mgr.get()).switchToWindowOnURL(targetURL);
+        }
+    }
+
+    @Test
+    @When("User switches to tab with matching URL {string}")
+    public void switchTabWithMatchingURL(String targetURL) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((UIManager)mgr.get()).tabURLMatcher(targetURL);
+        }
+    }
+
+    @Test
+    @When("User opens a new window with URL {string}")
+    public void User_open_new_window_with_URL(String landingURL) throws InterruptedException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((UIManager)mgr.get()).openNewWindow(landingURL);
+        }
+    }
+
+    @Test
+    @When("User opens browser in <{int}> x <{int}> dimension")
+    public void User_open_browser_in_any_dimension(int width, int height) throws InterruptedException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((UIManager)mgr.get()).openInAnyDimension(width, height);
+        }
+    }
+
+    @Test
+    @When("User opens new tab by clicking on element {string} and switches to it")
+    public void switchTabByClicking(String locator) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(locator);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+
+                try {
+                    checkElementClickAbility(elementValue, elementType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((UIManager)mgr.get()).switchToNewTab(elementValue, elementType);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @When("User accepts alert")
+    public void User_accept_alert() throws InterruptedException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((UIManager)mgr.get()).acceptAlert();
+        }
+    }
+
+    @Test
+    @When("User dismisses alert")
+    public void User_dismiss_alert() throws InterruptedException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((UIManager)mgr.get()).rejectAlert();
+        }
+    }
+
+    @Test
+    @When("User switches to alert and sends text {string} in alert")
+    public void User_switch_to_alert_and_send_text_in_alert(String text) throws InterruptedException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((UIManager)mgr.get()).alertTextHandler(text);
+        }
+    }
+
+    @Test
+    @When("User scrolls by <{int}> pixels")
+    public void User_perform_customized_scrolling_using_side_bar_in_px(Integer sidebarLocatorKey) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((UIManager)mgr.get()).sidebarScroller(String.valueOf(sidebarLocatorKey));
+        }
+    }
+
+    @Test
+    @When("User opens new tab by clicking on element {string}")
+    public void User_click_on_and_it_open_in_new_tab(String elementLocator) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementLocator);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+
+                try {
+                    checkElementClickAbility(elementValue, elementType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((UIManager)mgr.get()).openInNewTab(elementValue, elementType);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @When("User waits until element {string} disappears")
+    public void User_wait_until_element_disappears_with_selenium(String elementLocator) throws InterruptedException, AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementLocator);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                ((UIManager)mgr.get()).waitUntilDisAppears(elementType, elementValue);
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @When("User drags element {string} to element {string}")
+    public void Validate_that_is_drop_able(String dragLocator, String dropLocator) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> dragMap = null;
+                Map<String, Object> dropMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                dragMap = JsonUtil.getLocatorForJson(dragLocator);
+                ((UIManager)mgr.get()).getJsonUtil();
+                dropMap = JsonUtil.getLocatorForJson(dropLocator);
+                String dragValue = (String)dragMap.get("value");
+                LocatorType dragType = (LocatorType)dragMap.get("type");
+                String dropValue = (String)dropMap.get("value");
+                LocatorType dropType = (LocatorType)dropMap.get("type");
+
+                try {
+                    checkElementVisibility(dragValue, dragType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((UIManager)mgr.get()).dragAndDropAble(dragValue, dragType, dropValue, dropType);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @And("User right clicks on element {string}")
+    public void Right_click_on(String elementKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+
+                try {
+                    checkElementVisibility(elementValue, elementType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((UIManager)mgr.get()).rightClick(elementValue, elementType);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @When("User switches to another tab with index <{int}>")
+    public void switchTabWithMatchingIndex(int Index) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((UIManager)mgr.get()).tabIndexMatcher(Index);
+        }
+    }
+
+    @Test
+    @When("User switches to another tab with matching page title {string}")
+    public void switchTabWithMatchingPageTitle(String pageTitle) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((UIManager)mgr.get()).tabPageTitleMatcher(pageTitle);
+        }
+    }
+
+    @And("User captures screenshot and it will save in directory {string} with name {string}")
+    public void takeScreenshot(String fileplace, String filename) throws IOException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((UIManager)mgr.get()).takeScreenshotAndSave(fileplace, filename);
+        }
+    }
+
+    @And("User captures screenshot of element {string} and it will save in directory {string} with name {string}")
+    public void takeScreenshot(String elementKey, String fileplace, String filename) throws IOException, InterruptedException, AbortScenario, CommonException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+
+                try {
+                    checkElementVisibility(elementValue, elementType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((UIManager)mgr.get()).takeScreenshotOfElementAndSave(elementValue, elementType, fileplace, filename);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @And("User waits max <{int}> seconds to load page")
+    public void waitForPageToLoad(int seconds) throws IOException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((UIManager)mgr.get()).pageTimeOut(seconds);
+        }
+    }
+
+    @And("User deletes all browser cookies")
+    public void delete_Cookies() throws IOException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((UIManager)mgr.get()).driver.manage().deleteAllCookies();
+        }
+    }
+
+    @And("User deletes browser cookie with name {string}")
+    public void delete_Cookies_with_name(String name) throws IOException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((UIManager)mgr.get()).driver.manage().deleteCookieNamed(name);
+        }
+    }
+
+    @And("User gets a browser cookie with name {string}")
+    public void get_Cookies_with_name(String name) throws IOException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((UIManager)mgr.get()).driver.manage().getCookieNamed(name);
+
+            for(Cookie cookie : ((UIManager)mgr.get()).driver.manage().getCookies()) {
+                if (cookie.getName().equals(name)) {
+                    System.out.println("Cookie Name: " + cookie.getName());
+                    System.out.println("Cookie Value: " + cookie.getValue());
+                    System.out.println("Domain: " + cookie.getDomain());
+                    System.out.println("Path: " + cookie.getPath());
+                    System.out.println("Expiry: " + String.valueOf(cookie.getExpiry()));
+                    System.out.println("Is Secure: " + cookie.isSecure());
+                    break;
+                }
+            }
+
+        }
+    }
+
+    @And("User logs all the browser cookies to the console")
+    public void get_all_Cookies_with_name() throws IOException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((UIManager)mgr.get()).driver.manage().getCookies();
+
+            for(Cookie cookie : ((UIManager)mgr.get()).driver.manage().getCookies()) {
+                System.out.println("Cookie Name: " + cookie.getName());
+                System.out.println("Cookie Value: " + cookie.getValue());
+                System.out.println("Domain: " + cookie.getDomain());
+                System.out.println("Path: " + cookie.getPath());
+                System.out.println("Expiry: " + String.valueOf(cookie.getExpiry()));
+                System.out.println("Is Secure: " + cookie.isSecure());
+                System.out.println("-----------------------------");
+            }
+
+        }
+    }
+
+    @Test
+    @And("User selects option by text {string} from dropdown {string}")
+    public void User_Select_by_text(String text, String dropdownKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> dropdownLocatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                dropdownLocatorMap = JsonUtil.getLocatorForJson(dropdownKey);
+                String dropdownValue = (String)dropdownLocatorMap.get("value");
+                LocatorType dropdownType = (LocatorType)dropdownLocatorMap.get("type");
+
+                try {
+                    checkElementVisibility(dropdownValue, dropdownType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((UIManager)mgr.get()).selectDropdownOptionByText(dropdownValue, dropdownType, text);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User selects option by index <{int}> from dropdown {string}")
+    public void User_Select_by_index(int index, String dropdownKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> dropdownLocatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                dropdownLocatorMap = JsonUtil.getLocatorForJson(dropdownKey);
+                String dropdownValue = (String)dropdownLocatorMap.get("value");
+                LocatorType dropdownType = (LocatorType)dropdownLocatorMap.get("type");
+
+                try {
+                    checkElementVisibility(dropdownValue, dropdownType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((UIManager)mgr.get()).selectDropdownOptionByIndex(dropdownValue, dropdownType, index);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User selects option by value {string} from dropdown {string}")
+    public void User_Select_by_value(String value, String dropdownKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> dropdownLocatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                dropdownLocatorMap = JsonUtil.getLocatorForJson(dropdownKey);
+                String dropdownValue = (String)dropdownLocatorMap.get("value");
+                LocatorType dropdownType = (LocatorType)dropdownLocatorMap.get("type");
+
+                try {
+                    checkElementVisibility(dropdownValue, dropdownType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((UIManager)mgr.get()).selectDropdownOptionByValue(dropdownValue, dropdownType, value);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User selects option by partially displayed text {string} from dropdown {string}")
+    public void User_Select_by_partially(String text, String dropdownKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> dropdownLocatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                dropdownLocatorMap = JsonUtil.getLocatorForJson(dropdownKey);
+                String dropdownValue = (String)dropdownLocatorMap.get("value");
+                LocatorType dropdownType = (LocatorType)dropdownLocatorMap.get("type");
+
+                try {
+                    checkElementVisibility(dropdownValue, dropdownType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((UIManager)mgr.get()).selectDropdownOptionByPartialText(dropdownValue, dropdownType, text);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User focuses on element {string}")
+    public void User_Focus_on(String elementKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+
+                try {
+                    checkElementVisibility(elementValue, elementType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((UIManager)mgr.get()).focus(elementValue, elementType);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User highlights element {string}")
+    public void User_highlight_on(String elementKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+
+                try {
+                    checkElementVisibility(elementValue, elementType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((UIManager)mgr.get()).highlight(elementValue, elementType);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User highlights element {string} for <{int}> seconds")
+    public void User_highlight_for_seconds(String elementKey, int seconds) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+
+                try {
+                    checkElementVisibility(elementValue, elementType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((UIManager)mgr.get()).highlightForSeconds(elementValue, elementType, seconds);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User reloads a page forcefully")
+    public void User_hard_reload_page() throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((UIManager)mgr.get()).hardReload();
+        }
+    }
+
+    @Test
+    @And("User waits until partial text {string} is visible")
+    public void User_waitForPartialText(String text) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((UIManager)mgr.get()).waitUntilPartialText(text);
+        }
+    }
+
+    @Test
+    @And("User waits until text {string} is visible")
+    public void User_waitForFullText(String text) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((UIManager)mgr.get()).waitUntilFullText(text);
+        }
+    }
+
+    @Test
+    @When("User waits until URL {string} appears")
+    public void wait_for_url(String url) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((UIManager)mgr.get()).waitForURL(url);
+        }
+    }
+
+    @Test
+    @When("User waits until element {string} is enabled")
+    public void Verify_that_element_is_not_enabled(String elementKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                ((UIManager)mgr.get()).waitUntilEnabled(elementType, elementValue);
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @When("User waits until <{int}> numbers of {string} appears")
+    public void Verify_certain_number_of_element_appears(int number, String elementKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                ((UIManager)mgr.get()).waitUntilCertainElementIsVisible(elementType, elementValue, number);
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User highlights multiple elements")
+    public void User_highlight_on(List<String> elementKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+
+                for(int i = 0; i < elementKey.size(); ++i) {
+                    ((UIManager)mgr.get()).getJsonUtil();
+                    locatorMap = JsonUtil.getLocatorForJson((String)elementKey.get(i));
+                    String elementValue = (String)locatorMap.get("value");
+                    LocatorType elementType = (LocatorType)locatorMap.get("type");
+                    ((UIManager)mgr.get()).highlight(elementValue, elementType);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @Then("User switches to full screen")
+    public void User_wants_full_screen() throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((UIManager)mgr.get()).driver.manage().window().fullscreen();
+        }
+    }
+
+    @Test
+    @When("User wants to page down")
+    public void page_down() throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((UIManager)mgr.get()).pageDown();
+        }
+    }
+
+    @Test
+    @And("User scrolls horizontally by pixels <{int}>")
+    public void Scroll_to(Integer pixels) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((UIManager)mgr.get()).scrollHorizontally(pixels);
+        }
+    }
+
+    @Test
+    @And("User scrolls by viewportHeights <{int}>")
+    public void Scroll_by_VH(Integer VH) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((UIManager)mgr.get()).scrollVerticallyByVH(VH);
+        }
+    }
+
+    @Test
+    @And("User checks after every <{int}> seconds until element {string} is visible")
+    public void fluentWait(Integer pollingTime, String elementKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                ((UIManager)mgr.get()).waitUntilFluentElementIsVisible(elementType, elementValue, pollingTime);
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @When("User wants to save html file in specified folder {string} with name {string}")
+    public void User_save_in_specified_folder(String fileSourceURI, String name) throws InterruptedException, IOException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((UIManager)mgr.get()).savePage(fileSourceURI, name);
+        }
+    }
+
+    @Test
+    @And("If element {string} is displayed")
+    public void If_displayed(String elementKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                ((UIManager)mgr.get()).IfDisplayed(elementValue, elementType);
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("If element {string} is enabled")
+    public void If_enabled(String elementKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                ((UIManager)mgr.get()).IfEnabled(elementValue, elementType);
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("If element {string} is selected")
+    public void selected(String elementKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                ((UIManager)mgr.get()).IfSelected(elementValue, elementType);
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("If URL is {string}")
+    public void IF_URL(String expectedURL) throws InterruptedException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            Thread.sleep(3000L);
+            String actualURL = ((UIManager)mgr.get()).getURL();
+            if (actualURL.equals(expectedURL)) {
+                ((GlobalSharedData)GlobalSharedData.getInstance().get()).setSkip(false);
+            } else {
+                ((GlobalSharedData)GlobalSharedData.getInstance().get()).setSkip(true);
+            }
+
+        }
+    }
+
+    @Test
+    @And("If page title is {string}")
+    public void IF_Title(String expectedTitle) throws InterruptedException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            Thread.sleep(3000L);
+            String actualTitle = ((UIManager)mgr.get()).getTitle();
+            if (actualTitle.equals(expectedTitle)) {
+                ((GlobalSharedData)GlobalSharedData.getInstance().get()).setSkip(false);
+            } else {
+                ((GlobalSharedData)GlobalSharedData.getInstance().get()).setSkip(true);
+            }
+
+        }
+    }
+
+    @Test
+    @And("User implicitly waits for <{int}> seconds")
+    public void User_wait_for_implicit_milliseconds(Integer milliseconds) throws InterruptedException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            int seconds = milliseconds / 1000;
+            ((UIManager)mgr.get()).waitImplicit(seconds);
+        }
+    }
+
+    @Test
+    @And("User clicks on element {string} forcefully")
+    public void User_Click_on_with_javaScript(String elementKey) throws CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).isSkip()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                ((UIManager)mgr.get()).clickUsingJavaScript(elementValue, elementType);
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User clicks on element {string} with cursor")
+    public void User_Click_on_with_actionClass(String elementKey) throws CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).isSkip()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                ((UIManager)mgr.get()).clickUsingAction(elementValue, elementType);
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @When("User saves attribute {string} of {string} with key {string}")
+    public void save_Attribute(String attributeName, String elementKey, String key) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                WebElement element = ((UIManager)mgr.get()).elementBy(elementType, elementValue);
+                String attributeValue = element.getAttribute(attributeName);
+                JSONObject globalResponseJson = new JSONObject(((GlobalSharedData)GlobalSharedData.getInstance().get()).getGlobalStoredResponse());
+                globalResponseJson.put(key, attributeValue);
+                ((GlobalSharedData)GlobalSharedData.getInstance().get()).setGlobalStoredResponse(globalResponseJson.toString());
+                System.out.println("Attribute '" + attributeName + "' of element '" + elementKey + "' saved with key '" + key + "'.");
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @When("User drags element horizontally from {string} with pixels <{int}>")
+    public void dragByPixelsHorizontally(String dragLocator, Integer pixels) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> dragMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                dragMap = JsonUtil.getLocatorForJson(dragLocator);
+                String dragValue = (String)dragMap.get("value");
+                LocatorType dragType = (LocatorType)dragMap.get("type");
+
+                try {
+                    checkElementVisibility(dragValue, dragType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((UIManager)mgr.get()).dragByPixels(dragValue, dragType, pixels);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @When("User drags element vertically from {string} with pixels <{int}>")
+    public void dragByPixelsVertically(String dragLocator, Integer pixels) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> dragMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                dragMap = JsonUtil.getLocatorForJson(dragLocator);
+                String dragValue = (String)dragMap.get("value");
+                LocatorType dragType = (LocatorType)dragMap.get("type");
+
+                try {
+                    checkElementVisibility(dragValue, dragType);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    ((UIManager)mgr.get()).dragByPixelsVertically(dragValue, dragType, pixels);
+                }
+
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @When("User drags element {string} to target time {string} with total video length {string}")
+    public void dragToVideoTime(String dragLocator, String targetTime, String totalTime) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> dragMap = null;
+                ((UIManager)mgr.get()).getJsonUtil();
+                dragMap = JsonUtil.getLocatorForJson(dragLocator);
+                String dragValue = (String)dragMap.get("value");
+                LocatorType dragType = (LocatorType)dragMap.get("type");
+                ((UIManager)mgr.get()).dragToVideoTime(dragValue, dragType, totalTime, targetTime);
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @And("User performs key action {string}")
+    public void performKeyAction(String key) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            try {
+                Actions actions = new Actions(((UIManager)mgr.get()).driver);
+                switch (key.toLowerCase()) {
+                    case "space" -> actions.sendKeys(new CharSequence[]{Keys.SPACE}).perform();
+                    case "alt" -> actions.keyDown(Keys.ALT).keyUp(Keys.ALT).perform();
+                    case "left arrow" -> actions.sendKeys(new CharSequence[]{Keys.ARROW_LEFT}).perform();
+                    case "right arrow" -> actions.sendKeys(new CharSequence[]{Keys.ARROW_RIGHT}).perform();
+                    default -> throw new RuntimeException("Unsupported key action: " + key);
+                }
+
+                System.out.println("Performed key action: " + key);
+            } catch (Exception e) {
+                throw new RuntimeException("Error performing key action '" + key + "': " + e.getMessage(), e);
+            }
+        }
+    }
+
+    @Test
+    @And("User saves Url of current page with key {string}")
+    public void saveUrlOfCurrentPage(String key) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            try {
+                String currentUrl = ((UIManager)mgr.get()).driver.getCurrentUrl();
+                JSONObject globalResponseJson = new JSONObject(((GlobalSharedData)GlobalSharedData.getInstance().get()).getGlobalStoredResponse());
+                globalResponseJson.put(key, currentUrl);
+                ((GlobalSharedData)GlobalSharedData.getInstance().get()).setGlobalStoredResponse(globalResponseJson.toString());
+                System.out.println("Saved current page URL ('" + currentUrl + "') with key '" + key + "'.");
+            } catch (Exception e) {
+                throw new RuntimeException("Error saving current page URL with key '" + key + "': " + e.getMessage(), e);
+            }
+        }
+    }
+
+    @Test
+    @When("User compares the image placed at {string} with the image placed at {string} and show the difference in the image saved at {string}")
+    public void maximize_the_window(String firstImagePath, String secondImagePath, String pathOfOutputFile) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ImageComparison.compareImagesHighlights(firstImagePath, secondImagePath, true, pathOfOutputFile);
+        }
+    }
+
+    @Test
+    @When("User compares the image placed at {string} with the image placed at {string} and shows the difference in the image saved at {string} with color code {string}")
+    public void compareImagesWithColorCode(String firstImagePath, String secondImagePath, String pathOfOutputFile, String colorCode) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            Scalar highlightColor = this.parseColorCode(colorCode);
+            ImageComparison.compareImagesHighlights(firstImagePath, secondImagePath, true, pathOfOutputFile, highlightColor);
+        }
+    }
+
+    private Scalar parseColorCode(String colorCode) {
+        try {
+            String[] rgb = colorCode.split(",");
+            if (rgb.length != 3) {
+                throw new IllegalArgumentException("Invalid color code format. Expected format: R,G,B");
+            } else {
+                int r = Integer.parseInt(rgb[0].trim());
+                int g = Integer.parseInt(rgb[1].trim());
+                int b = Integer.parseInt(rgb[2].trim());
+                return new Scalar((double)b, (double)g, (double)r, (double)0.0F);
+            }
+        } catch (NumberFormatException var6) {
+            throw new IllegalArgumentException("Invalid color code values. Must be integers in the format: R,G,B");
+        }
+    }
+
+    @Test
+    @When("User navigates to URL {string} for accessibility testing")
+    public void User_navigates_to(String url) throws VAFLicenseException, AbortScenario, CommonException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                mgr = UIManager.getInstance();
+                ((UIManager)mgr.get()).startSession(url, false);
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @When("User navigates to server {string} with endpoint {string} for accessibility testing")
+    public void User_navigates_to_server_for_accessibility_testing(String server, String endpoint) throws VAFLicenseException, AbortScenario, CommonException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                mgr = UIManager.getInstance();
+                String baseUrl = ((UIManager)mgr.get()).getConfigUtil().baseUri(server);
+                String ep = ((UIManager)mgr.get()).getConfigUtil().getEndpoint(endpoint);
+                ((UIManager)mgr.get()).startSession(baseUrl + ep, false);
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+}

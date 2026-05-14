@@ -1,0 +1,131 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "F:\\Learning\\dotnet\\Projects\\NZWalks\\NZWalks\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/NZWalksDb/True/SqlTable/dbo.Walks.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/NZWalksDb/True/SqlTable/dbo.Regions.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E6FC7BF-1D59-4009-BDCE-AE4F9F5DF0CF}|NZWalks.API\\NZWalks.API.csproj|f:\\learning\\dotnet\\projects\\nzwalks\\nzwalks\\nzwalks.api\\controllers\\regionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E6FC7BF-1D59-4009-BDCE-AE4F9F5DF0CF}|NZWalks.API\\NZWalks.API.csproj|solutionrelative:nzwalks.api\\controllers\\regionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E6FC7BF-1D59-4009-BDCE-AE4F9F5DF0CF}|NZWalks.API\\NZWalks.API.csproj|f:\\learning\\dotnet\\projects\\nzwalks\\nzwalks\\nzwalks.api\\controllers\\walkscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E6FC7BF-1D59-4009-BDCE-AE4F9F5DF0CF}|NZWalks.API\\NZWalks.API.csproj|solutionrelative:nzwalks.api\\controllers\\walkscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E6FC7BF-1D59-4009-BDCE-AE4F9F5DF0CF}|NZWalks.API\\NZWalks.API.csproj|f:\\learning\\dotnet\\projects\\nzwalks\\nzwalks\\nzwalks.api\\customactionfilters\\validatemodelattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E6FC7BF-1D59-4009-BDCE-AE4F9F5DF0CF}|NZWalks.API\\NZWalks.API.csproj|solutionrelative:nzwalks.api\\customactionfilters\\validatemodelattribute.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E6FC7BF-1D59-4009-BDCE-AE4F9F5DF0CF}|NZWalks.API\\NZWalks.API.csproj|f:\\learning\\dotnet\\projects\\nzwalks\\nzwalks\\nzwalks.api\\models\\dtos\\updatewalkrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E6FC7BF-1D59-4009-BDCE-AE4F9F5DF0CF}|NZWalks.API\\NZWalks.API.csproj|solutionrelative:nzwalks.api\\models\\dtos\\updatewalkrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7E6FC7BF-1D59-4009-BDCE-AE4F9F5DF0CF}|NZWalks.API\\NZWalks.API.csproj|f:\\learning\\dotnet\\projects\\nzwalks\\nzwalks\\nzwalks.api\\models\\dtos\\createwalkrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{7E6FC7BF-1D59-4009-BDCE-AE4F9F5DF0CF}|NZWalks.API\\NZWalks.API.csproj|solutionrelative:nzwalks.api\\models\\dtos\\createwalkrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "dbo.Walks [Data]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/NZWalksDb/True/SqlTable/dbo.Walks.sql",
+              "ToolTip": "dbo.Walks [Data]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-04-07T17:04:27.633Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "dbo.Regions [Data]",
+              "DocumentMoniker": "ViewDataWindow_MSSQL__/_localdb__MSSQLLocalDB/NZWalksDb/True/SqlTable/dbo.Regions.sql",
+              "ToolTip": "dbo.Regions [Data]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-04-07T17:04:18.054Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RegionsController.cs",
+              "DocumentMoniker": "F:\\Learning\\dotnet\\Projects\\NZWalks\\NZWalks\\NZWalks.API\\Controllers\\RegionsController.cs",
+              "RelativeDocumentMoniker": "NZWalks.API\\Controllers\\RegionsController.cs",
+              "ToolTip": "F:\\Learning\\dotnet\\Projects\\NZWalks\\NZWalks\\NZWalks.API\\Controllers\\RegionsController.cs",
+              "RelativeToolTip": "NZWalks.API\\Controllers\\RegionsController.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAYwEEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T16:55:52.598Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ValidateModelAttribute.cs",
+              "DocumentMoniker": "F:\\Learning\\dotnet\\Projects\\NZWalks\\NZWalks\\NZWalks.API\\CustomActionFilters\\ValidateModelAttribute.cs",
+              "RelativeDocumentMoniker": "NZWalks.API\\CustomActionFilters\\ValidateModelAttribute.cs",
+              "ToolTip": "F:\\Learning\\dotnet\\Projects\\NZWalks\\NZWalks\\NZWalks.API\\CustomActionFilters\\ValidateModelAttribute.cs",
+              "RelativeToolTip": "NZWalks.API\\CustomActionFilters\\ValidateModelAttribute.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T16:51:13.127Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UpdateWalkRequestDto.cs",
+              "DocumentMoniker": "F:\\Learning\\dotnet\\Projects\\NZWalks\\NZWalks\\NZWalks.API\\Models\\DTOs\\UpdateWalkRequestDto.cs",
+              "RelativeDocumentMoniker": "NZWalks.API\\Models\\DTOs\\UpdateWalkRequestDto.cs",
+              "ToolTip": "F:\\Learning\\dotnet\\Projects\\NZWalks\\NZWalks\\NZWalks.API\\Models\\DTOs\\UpdateWalkRequestDto.cs",
+              "RelativeToolTip": "NZWalks.API\\Models\\DTOs\\UpdateWalkRequestDto.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T16:42:28.92Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "CreateWalkRequestDto.cs",
+              "DocumentMoniker": "F:\\Learning\\dotnet\\Projects\\NZWalks\\NZWalks\\NZWalks.API\\Models\\DTOs\\CreateWalkRequestDto.cs",
+              "RelativeDocumentMoniker": "NZWalks.API\\Models\\DTOs\\CreateWalkRequestDto.cs",
+              "ToolTip": "F:\\Learning\\dotnet\\Projects\\NZWalks\\NZWalks\\NZWalks.API\\Models\\DTOs\\CreateWalkRequestDto.cs",
+              "RelativeToolTip": "NZWalks.API\\Models\\DTOs\\CreateWalkRequestDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T16:40:02.497Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "WalksController.cs",
+              "DocumentMoniker": "F:\\Learning\\dotnet\\Projects\\NZWalks\\NZWalks\\NZWalks.API\\Controllers\\WalksController.cs",
+              "RelativeDocumentMoniker": "NZWalks.API\\Controllers\\WalksController.cs",
+              "ToolTip": "F:\\Learning\\dotnet\\Projects\\NZWalks\\NZWalks\\NZWalks.API\\Controllers\\WalksController.cs",
+              "RelativeToolTip": "NZWalks.API\\Controllers\\WalksController.cs",
+              "ViewState": "AgIAABwAAAAAAAAAAAAYwEUAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-07T16:39:55.018Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

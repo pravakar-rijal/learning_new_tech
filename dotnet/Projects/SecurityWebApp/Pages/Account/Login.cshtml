@@ -1,0 +1,25 @@
+﻿@page
+@model SecurityWebApp.Pages.Account.LoginModel
+@{
+}
+
+<h3>User Login</h3>
+<br />
+<form action="" method="post">
+	<div class="text-danger" asp-validation-summary="All"></div>
+	<p>
+		<label asp-for="LoginViewModel.Email"></label>
+		<input type="text" asp-for="LoginViewModel.Email" />
+		<span class="text-danger" asp-validation-for="LoginViewModel.Email"></span>
+	</p>
+	<p>
+		<label asp-for="LoginViewModel.Password"></label>
+		<input asp-for="LoginViewModel.Password" />
+		<span class="text-danger" asp-validation-for="LoginViewModel.Password"></span>
+	</p>
+	<p>
+		<input type="submit" value="Login" />
+		<input type="reset" value="Reset" />
+	</p>
+</form>
+

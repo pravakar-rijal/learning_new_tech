@@ -1,0 +1,247 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
+package com.vaf.steps;
+
+import com.vaf.GlobalData.GlobalSharedData;
+import com.vaf.GlobalData.SharedManager;
+import com.vaf.enumerations.LogLevel;
+import com.vaf.exceptions.AbortScenario;
+import com.vaf.utils.ConfigUtil;
+import com.vaf.utils.LogUtil;
+import cucumber.api.java.en.And;
+import io.cucumber.core.cli.Main;
+import io.cucumber.java.en.Given;
+import java.io.IOException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+import org.bson.Document;
+import org.json.JSONObject;
+import org.testng.AssertJUnit;
+import org.testng.annotations.Test;
+
+public class SharedSteps {
+    SharedManager sharedManager = new SharedManager();
+    public static ThreadLocal<GlobalSharedData> sharedData;
+    private ConfigUtil configUtil = ConfigUtil.getInstance();
+    private Connection sqlConnection;
+
+    public SharedSteps() {
+        sharedData = GlobalSharedData.getInstance();
+    }
+
+    @Test
+    @And("User updates allure json files {string} to extract pdf reports")
+    public void extract_pdf_reports(String path) throws IOException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            this.sharedManager.addEmptyTestCaseId(path);
+        }
+    }
+
+    @Test
+    @And("User wants to run feature file {string}")
+    public void Run_FeatureFile(String featureFilePath) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            List<String> customOptionsList = new ArrayList();
+            customOptionsList.add(featureFilePath);
+            customOptionsList.add("--glue");
+            customOptionsList.add("com.vaf.steps");
+            String[] customOptions = (String[])customOptionsList.toArray(new String[0]);
+            Main.run(customOptions, Thread.currentThread().getContextClassLoader());
+        }
+    }
+
+    @Test
+    @And("User wants to run feature file {string} with tags {string}")
+    public void Run_FeatureFiles(String featureFilePath, String tags) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            List<String> customOptionsList = new ArrayList();
+            customOptionsList.add(featureFilePath);
+            customOptionsList.add("--glue");
+            customOptionsList.add("com.vaf.steps");
+            customOptionsList.add("--tags");
+            customOptionsList.add(tags);
+            String[] customOptions = (String[])customOptionsList.toArray(new String[0]);
+            Main.run(customOptions, Thread.currentThread().getContextClassLoader());
+        }
+    }
+
+    @Test
+    @And("User updates allure json files {string} with type {string} to extract pdf reports")
+    public void extract_pdf_report(String path, String typeOfImage) throws IOException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            this.sharedManager.addTypeToAttachmentsInJsonFiles(path, typeOfImage);
+        }
+    }
+
+    @Given("User connects to the database")
+    public void user_wants_to_connect_with_database() throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            try {
+                switch (this.configUtil.getPlatformUsernamePassword("DataBaseConnectivity.DB").toLowerCase()) {
+                    case "mysql":
+                        Class.forName("com.mysql.cj.jdbc.Driver");
+                        String mysqlUrl = this.configUtil.getPlatformUsernamePassword("DataBaseConnectivity.connectionString");
+                        String mysqlUsername = this.configUtil.getPlatformUsernamePassword("DataBaseConnectivity.Username");
+                        String mysqlPassword = this.configUtil.getPlatformUsernamePassword("DataBaseConnectivity.Password");
+                        this.sqlConnection = DriverManager.getConnection(mysqlUrl, mysqlUsername, mysqlPassword);
+                        break;
+                    case "postgresql":
+                        Class.forName("org.postgresql.Driver");
+                        String postgresUrl = this.configUtil.getPlatformUsernamePassword("DataBaseConnectivity.connectionString");
+                        String postgresUsername = this.configUtil.getPlatformUsernamePassword("DataBaseConnectivity.Username");
+                        String postgresPassword = this.configUtil.getPlatformUsernamePassword("DataBaseConnectivity.Password");
+                        this.sqlConnection = DriverManager.getConnection(postgresUrl, postgresUsername, postgresPassword);
+                        break;
+                    case "oracle":
+                        Class.forName("oracle.jdbc.driver.OracleDriver");
+                        String oracleUrl = this.configUtil.getPlatformUsernamePassword("DataBaseConnectivity.connectionString");
+                        String oracleUsername = this.configUtil.getPlatformUsernamePassword("DataBaseConnectivity.Username");
+                        String oraclePassword = this.configUtil.getPlatformUsernamePassword("DataBaseConnectivity.Password");
+                        this.sqlConnection = DriverManager.getConnection(oracleUrl, oracleUsername, oraclePassword);
+                        break;
+                    case "sqlserver":
+                        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+                        String sqlserverUrl = this.configUtil.getPlatformUsernamePassword("DataBaseConnectivity.connectionString");
+                        String sqlserverUsername = this.configUtil.getPlatformUsernamePassword("DataBaseConnectivity.Username");
+                        String sqlserverPassword = this.configUtil.getPlatformUsernamePassword("DataBaseConnectivity.Password");
+                        this.sqlConnection = DriverManager.getConnection(sqlserverUrl, sqlserverUsername, sqlserverPassword);
+                        break;
+                    case "mongodb":
+                        String mongodbUrl = this.configUtil.getPlatformUsernamePassword("DataBaseConnectivity.connectionString");
+
+                        try {
+                            String dbName = mongodbUrl.substring(mongodbUrl.lastIndexOf("/") + 1);
+                            if (dbName.isEmpty()) {
+                            }
+                        } catch (Exception e) {
+                            LogUtil.log("Failed to connect to the MongoDB database.", LogLevel.INFO);
+                            e.printStackTrace();
+                        }
+                        break;
+                    default:
+                        throw new IllegalArgumentException("Unsupported database: " + this.configUtil.getPlatformUsernamePassword("DataBaseConnectivity.DB"));
+                }
+            } catch (ClassNotFoundException e) {
+                LogUtil.log(this.configUtil.getPlatformUsernamePassword("DataBaseConnectivity.DB") + " JDBC Driver not found.", LogLevel.INFO);
+                e.printStackTrace();
+            } catch (SQLException e) {
+                LogUtil.log("Failed to connect to the " + this.configUtil.getPlatformUsernamePassword("DataBaseConnectivity.DB") + " database.", LogLevel.INFO);
+                e.printStackTrace();
+            } catch (Exception e) {
+                LogUtil.log("Failed to connect to the " + this.configUtil.getPlatformUsernamePassword("DataBaseConnectivity.DB") + " database.", LogLevel.INFO);
+                e.printStackTrace();
+            }
+
+        }
+    }
+
+    @And("User verifies the database connection should be established successfully")
+    public void the_database_connection_should_be_established_successfully() throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            if (!this.configUtil.getPlatformUsernamePassword("DataBaseConnectivity.DB").equalsIgnoreCase("mongodb")) {
+                AssertJUnit.assertNotNull(this.configUtil.getPlatformUsernamePassword("DataBaseConnectivity.DB") + " Connection should be established", this.sqlConnection);
+            }
+
+            LogUtil.log(this.configUtil.getPlatformUsernamePassword("DataBaseConnectivity.DB") + " Connection established successfully.", LogLevel.INFO);
+        }
+    }
+
+    @And("User wants to get data from database with query {string} for column {string}")
+    public void user_wants_to_get_data_from_database_with_query_for_column(String query, String columnName) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            try (Statement statement = this.sqlConnection.createStatement()) {
+                ResultSet resultSet = statement.executeQuery(query);
+                if (resultSet.next()) {
+                    String retrievedValue = resultSet.getString(columnName);
+                    LogUtil.log("Retrieved " + columnName + ": " + retrievedValue, LogLevel.INFO);
+                    JSONObject globalResponseJson = new JSONObject(((GlobalSharedData)sharedData.get()).getGlobalStoredResponse());
+                    globalResponseJson.put(columnName, retrievedValue);
+                    ((GlobalSharedData)sharedData.get()).setGlobalStoredResponse(globalResponseJson.toString());
+                    LogUtil.log("GlobalStoredResponse " + ((GlobalSharedData)sharedData.get()).getGlobalStoredResponse(), LogLevel.INFO);
+                } else {
+                    LogUtil.log("No data found for the specified query.", LogLevel.INFO);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+
+    @And("User wants to get data from database with query {string}")
+    public void user_wants_to_get_data_from_database_with_query(String query) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            try (Statement statement = this.sqlConnection.createStatement()) {
+                ResultSet resultSet = statement.executeQuery(query);
+                if (resultSet.next()) {
+                    String retrievedValue = resultSet.getString(1);
+                    LogUtil.log("Retrieved value: " + retrievedValue, LogLevel.INFO);
+                    String columnName = resultSet.getMetaData().getColumnName(1);
+                    JSONObject globalResponseJson = new JSONObject(((GlobalSharedData)sharedData.get()).getGlobalStoredResponse());
+                    globalResponseJson.put(columnName, retrievedValue);
+                    ((GlobalSharedData)sharedData.get()).setGlobalStoredResponse(globalResponseJson.toString());
+                    LogUtil.log("GlobalStoredResponse: " + ((GlobalSharedData)sharedData.get()).getGlobalStoredResponse(), LogLevel.INFO);
+                } else {
+                    LogUtil.log("No data found for the specified query.", LogLevel.INFO);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+
+    @And("User wants to get data from MongoDB collection {string} with query {string} for column {string}")
+    public void user_wants_to_get_data_from_mongodb_with_query_for_column(String collections, String query, String columnName) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            try {
+                Document var4 = Document.parse(query);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+    }
+
+    @Test
+    @And("User skips to the next scenario")
+    public void skip_scenario() throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            ((GlobalSharedData)GlobalSharedData.getInstance().get()).setSkip(false);
+            throw new AbortScenario();
+        }
+    }
+
+    @Test
+    @And("User aborts the launch")
+    public void skip_launch() throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            LogUtil.log("Launch abort.", LogLevel.TRACE);
+            Runtime.getRuntime().exit(0);
+        }
+    }
+
+    @Test
+    @And("else")
+    public void else_block() {
+        if (((GlobalSharedData)GlobalSharedData.getInstance().get()).isSkip()) {
+            ((GlobalSharedData)GlobalSharedData.getInstance().get()).setSkip(Boolean.FALSE);
+        } else {
+            ((GlobalSharedData)GlobalSharedData.getInstance().get()).setSkip(Boolean.TRUE);
+        }
+    }
+
+    @Test
+    @And("User ends the condition block")
+    public void else_block_end() {
+        ((GlobalSharedData)GlobalSharedData.getInstance().get()).setSkip(false);
+    }
+}

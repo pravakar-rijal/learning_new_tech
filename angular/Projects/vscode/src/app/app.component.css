@@ -1,0 +1,8 @@
+.main{
+display: flex;
+flex-direction: row;
+}
+
+.sidebar{
+  width: 70px;
+}

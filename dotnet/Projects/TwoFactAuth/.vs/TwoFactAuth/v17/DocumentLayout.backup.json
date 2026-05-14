@@ -1,0 +1,316 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "F:\\Learning\\dotnet\\Projects\\TwoFactAuth\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BF07E926-8BAD-4041-A346-F98DD0A2D1F7}|TwoFactAuth.csproj|f:\\learning\\dotnet\\projects\\twofactauth\\repositories\\account\\accountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF07E926-8BAD-4041-A346-F98DD0A2D1F7}|TwoFactAuth.csproj|solutionrelative:repositories\\account\\accountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF07E926-8BAD-4041-A346-F98DD0A2D1F7}|TwoFactAuth.csproj|f:\\learning\\dotnet\\projects\\twofactauth\\utility\\sms\\smssender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF07E926-8BAD-4041-A346-F98DD0A2D1F7}|TwoFactAuth.csproj|solutionrelative:utility\\sms\\smssender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF07E926-8BAD-4041-A346-F98DD0A2D1F7}|TwoFactAuth.csproj|f:\\learning\\dotnet\\projects\\twofactauth\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{BF07E926-8BAD-4041-A346-F98DD0A2D1F7}|TwoFactAuth.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF07E926-8BAD-4041-A346-F98DD0A2D1F7}|TwoFactAuth.csproj|f:\\learning\\dotnet\\projects\\twofactauth\\utility\\sms\\ismssender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF07E926-8BAD-4041-A346-F98DD0A2D1F7}|TwoFactAuth.csproj|solutionrelative:utility\\sms\\ismssender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF07E926-8BAD-4041-A346-F98DD0A2D1F7}|TwoFactAuth.csproj|f:\\learning\\dotnet\\projects\\twofactauth\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF07E926-8BAD-4041-A346-F98DD0A2D1F7}|TwoFactAuth.csproj|solutionrelative:controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF07E926-8BAD-4041-A346-F98DD0A2D1F7}|TwoFactAuth.csproj|f:\\learning\\dotnet\\projects\\twofactauth\\repositories\\account\\iaccountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF07E926-8BAD-4041-A346-F98DD0A2D1F7}|TwoFactAuth.csproj|solutionrelative:repositories\\account\\iaccountrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF07E926-8BAD-4041-A346-F98DD0A2D1F7}|TwoFactAuth.csproj|f:\\learning\\dotnet\\projects\\twofactauth\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF07E926-8BAD-4041-A346-F98DD0A2D1F7}|TwoFactAuth.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF07E926-8BAD-4041-A346-F98DD0A2D1F7}|TwoFactAuth.csproj|f:\\learning\\dotnet\\projects\\twofactauth\\utility\\email\\emailsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF07E926-8BAD-4041-A346-F98DD0A2D1F7}|TwoFactAuth.csproj|solutionrelative:utility\\email\\emailsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF07E926-8BAD-4041-A346-F98DD0A2D1F7}|TwoFactAuth.csproj|f:\\learning\\dotnet\\projects\\twofactauth\\utility\\email\\iemailsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF07E926-8BAD-4041-A346-F98DD0A2D1F7}|TwoFactAuth.csproj|solutionrelative:utility\\email\\iemailsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF07E926-8BAD-4041-A346-F98DD0A2D1F7}|TwoFactAuth.csproj|f:\\learning\\dotnet\\projects\\twofactauth\\twofactauth.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{BF07E926-8BAD-4041-A346-F98DD0A2D1F7}|TwoFactAuth.csproj|solutionrelative:twofactauth.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF07E926-8BAD-4041-A346-F98DD0A2D1F7}|TwoFactAuth.csproj|f:\\learning\\dotnet\\projects\\twofactauth\\repositories\\account\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF07E926-8BAD-4041-A346-F98DD0A2D1F7}|TwoFactAuth.csproj|solutionrelative:repositories\\account\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF07E926-8BAD-4041-A346-F98DD0A2D1F7}|TwoFactAuth.csproj|f:\\learning\\dotnet\\projects\\twofactauth\\repositories\\account\\twofactordto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF07E926-8BAD-4041-A346-F98DD0A2D1F7}|TwoFactAuth.csproj|solutionrelative:repositories\\account\\twofactordto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF07E926-8BAD-4041-A346-F98DD0A2D1F7}|TwoFactAuth.csproj|f:\\learning\\dotnet\\projects\\twofactauth\\data\\twofactauthdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF07E926-8BAD-4041-A346-F98DD0A2D1F7}|TwoFactAuth.csproj|solutionrelative:data\\twofactauthdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF07E926-8BAD-4041-A346-F98DD0A2D1F7}|TwoFactAuth.csproj|f:\\learning\\dotnet\\projects\\twofactauth\\repositories\\account\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF07E926-8BAD-4041-A346-F98DD0A2D1F7}|TwoFactAuth.csproj|solutionrelative:repositories\\account\\registerdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF07E926-8BAD-4041-A346-F98DD0A2D1F7}|TwoFactAuth.csproj|f:\\learning\\dotnet\\projects\\twofactauth\\controllers\\checkauthenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF07E926-8BAD-4041-A346-F98DD0A2D1F7}|TwoFactAuth.csproj|solutionrelative:controllers\\checkauthenticationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF07E926-8BAD-4041-A346-F98DD0A2D1F7}|TwoFactAuth.csproj|f:\\learning\\dotnet\\projects\\twofactauth\\mappingprofile\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF07E926-8BAD-4041-A346-F98DD0A2D1F7}|TwoFactAuth.csproj|solutionrelative:mappingprofile\\mappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF07E926-8BAD-4041-A346-F98DD0A2D1F7}|TwoFactAuth.csproj|f:\\learning\\dotnet\\projects\\twofactauth\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{BF07E926-8BAD-4041-A346-F98DD0A2D1F7}|TwoFactAuth.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF07E926-8BAD-4041-A346-F98DD0A2D1F7}|TwoFactAuth.csproj|f:\\learning\\dotnet\\projects\\twofactauth\\migrations\\20250530120656_add_user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BF07E926-8BAD-4041-A346-F98DD0A2D1F7}|TwoFactAuth.csproj|solutionrelative:migrations\\20250530120656_add_user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 10,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SmsSender.cs",
+              "DocumentMoniker": "F:\\Learning\\dotnet\\Projects\\TwoFactAuth\\Utility\\Sms\\SmsSender.cs",
+              "RelativeDocumentMoniker": "Utility\\Sms\\SmsSender.cs",
+              "ToolTip": "F:\\Learning\\dotnet\\Projects\\TwoFactAuth\\Utility\\Sms\\SmsSender.cs",
+              "RelativeToolTip": "Utility\\Sms\\SmsSender.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwBoAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T13:01:29.161Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ISmsSender.cs",
+              "DocumentMoniker": "F:\\Learning\\dotnet\\Projects\\TwoFactAuth\\Utility\\Sms\\ISmsSender.cs",
+              "RelativeDocumentMoniker": "Utility\\Sms\\ISmsSender.cs",
+              "ToolTip": "F:\\Learning\\dotnet\\Projects\\TwoFactAuth\\Utility\\Sms\\ISmsSender.cs",
+              "RelativeToolTip": "Utility\\Sms\\ISmsSender.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T13:01:58.643Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "TwoFactorDto.cs",
+              "DocumentMoniker": "F:\\Learning\\dotnet\\Projects\\TwoFactAuth\\Repositories\\Account\\TwoFactorDto.cs",
+              "RelativeDocumentMoniker": "Repositories\\Account\\TwoFactorDto.cs",
+              "ToolTip": "F:\\Learning\\dotnet\\Projects\\TwoFactAuth\\Repositories\\Account\\TwoFactorDto.cs",
+              "RelativeToolTip": "Repositories\\Account\\TwoFactorDto.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAADgvyIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-03T10:14:59.102Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "TwoFactAuth.csproj",
+              "DocumentMoniker": "F:\\Learning\\dotnet\\Projects\\TwoFactAuth\\TwoFactAuth.csproj",
+              "RelativeDocumentMoniker": "TwoFactAuth.csproj",
+              "ToolTip": "F:\\Learning\\dotnet\\Projects\\TwoFactAuth\\TwoFactAuth.csproj",
+              "RelativeToolTip": "TwoFactAuth.csproj",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABMAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-06-03T09:19:33.968Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "EmailSender.cs",
+              "DocumentMoniker": "F:\\Learning\\dotnet\\Projects\\TwoFactAuth\\Utility\\Email\\EmailSender.cs",
+              "RelativeDocumentMoniker": "Utility\\Email\\EmailSender.cs",
+              "ToolTip": "F:\\Learning\\dotnet\\Projects\\TwoFactAuth\\Utility\\Email\\EmailSender.cs",
+              "RelativeToolTip": "Utility\\Email\\EmailSender.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwBkAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T15:27:13.397Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IEmailSender.cs",
+              "DocumentMoniker": "F:\\Learning\\dotnet\\Projects\\TwoFactAuth\\Utility\\Email\\IEmailSender.cs",
+              "RelativeDocumentMoniker": "Utility\\Email\\IEmailSender.cs",
+              "ToolTip": "F:\\Learning\\dotnet\\Projects\\TwoFactAuth\\Utility\\Email\\IEmailSender.cs",
+              "RelativeToolTip": "Utility\\Email\\IEmailSender.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T15:26:59.606Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "CheckAuthenticationController.cs",
+              "DocumentMoniker": "F:\\Learning\\dotnet\\Projects\\TwoFactAuth\\Controllers\\CheckAuthenticationController.cs",
+              "RelativeDocumentMoniker": "Controllers\\CheckAuthenticationController.cs",
+              "ToolTip": "F:\\Learning\\dotnet\\Projects\\TwoFactAuth\\Controllers\\CheckAuthenticationController.cs",
+              "RelativeToolTip": "Controllers\\CheckAuthenticationController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T14:32:28.535Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "F:\\Learning\\dotnet\\Projects\\TwoFactAuth\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "Properties\\launchSettings.json",
+              "ToolTip": "F:\\Learning\\dotnet\\Projects\\TwoFactAuth\\Properties\\launchSettings.json",
+              "RelativeToolTip": "Properties\\launchSettings.json",
+              "ViewState": "AgIAAAgAAAAAAAAAAABRwAkAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-30T14:16:51.037Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "20250530120656_add_user.cs",
+              "DocumentMoniker": "F:\\Learning\\dotnet\\Projects\\TwoFactAuth\\Migrations\\20250530120656_add_user.cs",
+              "RelativeDocumentMoniker": "Migrations\\20250530120656_add_user.cs",
+              "ToolTip": "F:\\Learning\\dotnet\\Projects\\TwoFactAuth\\Migrations\\20250530120656_add_user.cs",
+              "RelativeToolTip": "Migrations\\20250530120656_add_user.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T12:06:56.916Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AccountRepository.cs",
+              "DocumentMoniker": "F:\\Learning\\dotnet\\Projects\\TwoFactAuth\\Repositories\\Account\\AccountRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\Account\\AccountRepository.cs",
+              "ToolTip": "F:\\Learning\\dotnet\\Projects\\TwoFactAuth\\Repositories\\Account\\AccountRepository.cs",
+              "RelativeToolTip": "Repositories\\Account\\AccountRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAK0AAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T11:35:18.141Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IAccountRepository.cs",
+              "DocumentMoniker": "F:\\Learning\\dotnet\\Projects\\TwoFactAuth\\Repositories\\Account\\IAccountRepository.cs",
+              "RelativeDocumentMoniker": "Repositories\\Account\\IAccountRepository.cs",
+              "ToolTip": "F:\\Learning\\dotnet\\Projects\\TwoFactAuth\\Repositories\\Account\\IAccountRepository.cs",
+              "RelativeToolTip": "Repositories\\Account\\IAccountRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAoAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T11:34:46.402Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "LoginDto.cs",
+              "DocumentMoniker": "F:\\Learning\\dotnet\\Projects\\TwoFactAuth\\Repositories\\Account\\LoginDto.cs",
+              "RelativeDocumentMoniker": "Repositories\\Account\\LoginDto.cs",
+              "ToolTip": "F:\\Learning\\dotnet\\Projects\\TwoFactAuth\\Repositories\\Account\\LoginDto.cs",
+              "RelativeToolTip": "Repositories\\Account\\LoginDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAQwBIAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T11:19:45.514Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "RegisterDto.cs",
+              "DocumentMoniker": "F:\\Learning\\dotnet\\Projects\\TwoFactAuth\\Repositories\\Account\\RegisterDto.cs",
+              "RelativeDocumentMoniker": "Repositories\\Account\\RegisterDto.cs",
+              "ToolTip": "F:\\Learning\\dotnet\\Projects\\TwoFactAuth\\Repositories\\Account\\RegisterDto.cs",
+              "RelativeToolTip": "Repositories\\Account\\RegisterDto.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwAQAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T10:44:16.348Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "F:\\Learning\\dotnet\\Projects\\TwoFactAuth\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
+              "ToolTip": "F:\\Learning\\dotnet\\Projects\\TwoFactAuth\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "Controllers\\AccountController.cs",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAowDAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T10:20:54.682Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "TwoFactAuthDbContext.cs",
+              "DocumentMoniker": "F:\\Learning\\dotnet\\Projects\\TwoFactAuth\\Data\\TwoFactAuthDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\TwoFactAuthDbContext.cs",
+              "ToolTip": "F:\\Learning\\dotnet\\Projects\\TwoFactAuth\\Data\\TwoFactAuthDbContext.cs",
+              "RelativeToolTip": "Data\\TwoFactAuthDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAsAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T09:48:42.284Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "F:\\Learning\\dotnet\\Projects\\TwoFactAuth\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "F:\\Learning\\dotnet\\Projects\\TwoFactAuth\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-05-30T09:32:14.96Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "F:\\Learning\\dotnet\\Projects\\TwoFactAuth\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "F:\\Learning\\dotnet\\Projects\\TwoFactAuth\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAABkAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T09:32:05.273Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "MappingProfile.cs",
+              "DocumentMoniker": "F:\\Learning\\dotnet\\Projects\\TwoFactAuth\\MappingProfile\\MappingProfile.cs",
+              "RelativeDocumentMoniker": "MappingProfile\\MappingProfile.cs",
+              "ToolTip": "F:\\Learning\\dotnet\\Projects\\TwoFactAuth\\MappingProfile\\MappingProfile.cs",
+              "RelativeToolTip": "MappingProfile\\MappingProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-30T11:54:43.872Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

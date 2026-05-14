@@ -1,0 +1,8 @@
+User verifies the element {string} is visible in mobile
+User verifies the element {string} is selected in mobile
+User verifies the element {string} should be enabled in mobile
+User verifies the URL of page should be {string} for WebView in mobile
+User verifies the URL of page should be baseURI {string} with endpoint {string} in mobile
+User verifies the element {string} should be disabled in mobile
+User verifies the element {string} text should be {string} in mobile
+User verifies the option {string} is selected successfully from dropdown {string} in mobile

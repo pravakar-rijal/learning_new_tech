@@ -1,0 +1,424 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
+package com.vaf.steps;
+
+import com.google.common.reflect.TypeToken;
+import com.google.gson.Gson;
+import com.vaf.GlobalData.GlobalSharedData;
+import com.vaf.api.rest.APIUtils;
+import com.vaf.enumerations.LogLevel;
+import com.vaf.exceptions.CommonException;
+import com.vaf.exceptions.MissingPropertiesException;
+import com.vaf.performance.StellarPerformanceReports;
+import com.vaf.performance.listener.CustomPerformanceListener;
+import com.vaf.performance.requests.PerformanceRequest;
+import com.vaf.performance.requests.ScenarioRequests;
+import com.vaf.performance.utilities.ChainedResultCollector;
+import com.vaf.performance.utilities.UtilityMethods;
+import com.vaf.utils.ConfigUtil;
+import com.vaf.utils.CsvUtil;
+import com.vaf.utils.ExcelUtil;
+import com.vaf.utils.JsonUtil;
+import com.vaf.utils.LogUtil;
+import cucumber.api.java.en.When;
+import io.cucumber.java.en.And;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileDescriptor;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintStream;
+import java.io.PrintWriter;
+import java.io.StringWriter;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.OpenOption;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import kg.apc.jmeter.threads.UltimateThreadGroup;
+import kg.apc.jmeter.threads.UltimateThreadGroupGui;
+import org.apache.jmeter.control.LoopController;
+import org.apache.jmeter.control.gui.LoopControlPanel;
+import org.apache.jmeter.control.gui.TestPlanGui;
+import org.apache.jmeter.engine.StandardJMeterEngine;
+import org.apache.jmeter.protocol.http.control.HeaderManager;
+import org.apache.jmeter.protocol.http.control.gui.HttpTestSampleGui;
+import org.apache.jmeter.protocol.http.gui.HeaderPanel;
+import org.apache.jmeter.protocol.http.sampler.HTTPSamplerProxy;
+import org.apache.jmeter.report.dashboard.ReportGenerator;
+import org.apache.jmeter.reporters.ResultCollector;
+import org.apache.jmeter.reporters.Summariser;
+import org.apache.jmeter.samplers.SampleSaveConfiguration;
+import org.apache.jmeter.testelement.TestPlan;
+import org.apache.jmeter.testelement.property.CollectionProperty;
+import org.apache.jmeter.threads.AbstractThreadGroup;
+import org.apache.jmeter.threads.ThreadGroup;
+import org.apache.jmeter.threads.gui.ThreadGroupGui;
+import org.apache.jmeter.timers.ConstantThroughputTimer;
+import org.apache.jmeter.util.JMeterUtils;
+import org.apache.jorphan.collections.HashTree;
+import org.apache.jorphan.collections.ListedHashTree;
+
+public class PerformanceSteps {
+    public static ThreadLocal<GlobalSharedData> sharedData;
+    PerformanceRequest partialRequest;
+    ScenarioRequests performanceRequests;
+    private ConfigUtil configUtil = ConfigUtil.getInstance();
+    private ExcelUtil excelUtil = new ExcelUtil();
+    private CsvUtil csvUtil = new CsvUtil();
+    private JsonUtil jsonUtil = new JsonUtil();
+
+    public PerformanceSteps() {
+        sharedData = GlobalSharedData.getInstance();
+        this.initializeJMeter();
+    }
+
+    private void initializeJMeter() {
+        String jmeterHome = "src/main/resources";
+        JMeterUtils.setJMeterHome(jmeterHome);
+        JMeterUtils.loadJMeterProperties(jmeterHome + "/jmeter.properties");
+        JMeterUtils.initLocale();
+    }
+
+    @When("User sets performance testing response time to <{int}>")
+    public void set_performance_testing_response_time_to_int(Integer responseTime) {
+        StellarPerformanceReports.MAX_RESPONSE_TIME = responseTime;
+    }
+
+    @When("User sends {string} request for key {string} at endpoint {string} with <{int}> {string} during <{int}> seconds for <{int}> time in {string} body with name {string}")
+    public void WithOutServer(String request, String compoundKey, String endpoint, int users, String constantusers, int rampUP, int loop, String body, String requestName) throws IOException, MissingPropertiesException, CommonException {
+        ArrayList<String> data = null;
+        List<Map<String, Object>> feederData = null;
+        JsonUtil var10000 = this.jsonUtil;
+        data = JsonUtil.getPerformanceData(compoundKey);
+        this.partialRequest = new PerformanceRequest(data);
+        Pattern pattern = Pattern.compile("rampUsers per second to (\\d+)");
+        Matcher matcher = pattern.matcher(constantusers);
+        if (matcher.find()) {
+            String numericValueString = matcher.group(1);
+            this.partialRequest.setNumericValue(Integer.parseInt(numericValueString));
+            System.out.println("Extracted numeric value: " + this.partialRequest.getNumericValue());
+        } else {
+            System.out.println("No numeric value found in the string.");
+        }
+
+        this.partialRequest.setData(data);
+        this.partialRequest.setBaseUri(this.configUtil.baseUri("default"));
+        this.partialRequest.setRequest(request);
+        this.partialRequest.setUsers(users);
+        this.partialRequest.setRampUp(rampUP);
+        this.partialRequest.setRequestbody(APIUtils.autoFillResponseValues(((GlobalSharedData)sharedData.get()).getGlobalStoredResponse(), (String)data.get(1)));
+        this.partialRequest.setHeader2(APIUtils.autoFillResponseValues(((GlobalSharedData)sharedData.get()).getGlobalStoredResponse(), (String)data.get(2)));
+        this.partialRequest.setQuery2(APIUtils.autoFillResponseValues(((GlobalSharedData)sharedData.get()).getGlobalStoredResponse(), (String)data.get(3)));
+        PerformanceRequest var16 = this.partialRequest;
+        String var10001 = this.configUtil.baseUri("default");
+        var16.setEndpoint(var10001 + this.configUtil.getEndpoint(endpoint));
+        this.partialRequest.setKeys(compoundKey);
+        this.partialRequest.setLoops(loop);
+        this.partialRequest.setJsonBody(body);
+        this.partialRequest.setRequestName(requestName);
+        this.partialRequest.setConcurrentUsers(constantusers);
+        this.partialRequest.setFeeder(feederData);
+        this.performanceRequests = ScenarioRequests.getInstance();
+        this.performanceRequests.insertRequestAtLast(this.partialRequest);
+    }
+
+    @When("User sends {string} request for key {string} at endpoint {string} with <{int}> {string} during <{int}> seconds for <{int}> time in {string} body with name {string} on server {string}")
+    public void WithServer(String request, String compoundKey, String endpoint, int users, String constantusers, int rampUP, int loop, String body, String requestName, String server) throws IOException, CommonException {
+        ArrayList<String> data = null;
+        List<Map<String, Object>> feederData = null;
+        JsonUtil var10000 = this.jsonUtil;
+        data = JsonUtil.getPerformanceData(compoundKey);
+        this.partialRequest = new PerformanceRequest(data);
+        UtilityMethods.checkForAuth(data, this.partialRequest);
+        Pattern pattern = Pattern.compile("rampUsers per second to (\\d+)");
+        Matcher matcher = pattern.matcher(constantusers);
+        if (matcher.find()) {
+            String numericValueString = matcher.group(1);
+            this.partialRequest.setNumericValue(Integer.parseInt(numericValueString));
+            System.out.println("Extracted numeric value: " + this.partialRequest.getNumericValue());
+        } else {
+            System.out.println("No numeric value found in the string.");
+        }
+
+        this.partialRequest.setFeeder(feederData);
+        this.partialRequest.setData(data);
+        this.partialRequest.setBaseUri(server);
+        this.partialRequest.setRequest(request);
+        this.partialRequest.setUsers(users);
+        this.partialRequest.setRampUp(rampUP);
+        this.partialRequest.setRequestbody(APIUtils.autoFillResponseValues(((GlobalSharedData)sharedData.get()).getGlobalStoredResponse(), (String)data.get(1)));
+        this.partialRequest.setHeader2(APIUtils.autoFillResponseValues(((GlobalSharedData)sharedData.get()).getGlobalStoredResponse(), (String)data.get(2)));
+        this.partialRequest.setQuery2(APIUtils.autoFillResponseValues(((GlobalSharedData)sharedData.get()).getGlobalStoredResponse(), (String)data.get(3)));
+        PerformanceRequest var17 = this.partialRequest;
+        String var10001 = this.configUtil.baseUri(server);
+        var17.setEndpoint(var10001 + this.configUtil.getEndpoint(endpoint));
+        this.partialRequest.setKeys(compoundKey);
+        this.partialRequest.setLoops(loop);
+        this.partialRequest.setJsonBody(body);
+        this.partialRequest.setRequestName(requestName);
+        this.partialRequest.setConcurrentUsers(constantusers);
+        this.performanceRequests = ScenarioRequests.getInstance();
+        this.performanceRequests.insertRequestAtLast(this.partialRequest);
+    }
+
+    @And("User executes the requests with launch name {string}")
+    public void execute(String launchName) throws IOException {
+        this.performanceRequests.setLaunchName(launchName);
+        this.executeJMeterTests(launchName);
+        ScenarioRequests.getInstance().clearRequests();
+    }
+
+    @And("User executes the request")
+    public void execute() throws IOException {
+        String defaultLaunchName = this.configUtil.configGetString("defaultPerformanceReportName");
+        this.performanceRequests.setLaunchName(defaultLaunchName);
+        this.executeJMeterTests((String)null);
+        System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
+        ScenarioRequests.getInstance().clearRequests();
+    }
+
+    private static void extractAndWriteLogs(String inputFilename, String keyword, String outputFilename) {
+        try (
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(inputFilename));
+            PrintWriter printWriter = new PrintWriter(new FileWriter(outputFilename));
+        ) {
+            int lineCount = 17;
+
+            String line;
+            while((line = bufferedReader.readLine()) != null && lineCount > 0) {
+                if (line.contains(keyword) || lineCount != 17) {
+                    printWriter.println(line);
+                    --lineCount;
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void executeJMeterTests(String launchName) {
+        if (launchName == null || launchName.isEmpty()) {
+            launchName = "defaultLaunchName";
+        }
+
+        try {
+            StandardJMeterEngine jMeterEngine = new StandardJMeterEngine();
+            TestPlan testPlan = new TestPlan(launchName);
+            testPlan.setProperty("TestElement.test_class", TestPlan.class.getName());
+            testPlan.setProperty("TestElement.gui_class", TestPlanGui.class.getName());
+            ListedHashTree testPlanTree = new ListedHashTree();
+            HashTree testPlanHashTree = testPlanTree.add(testPlan);
+
+            for(PerformanceRequest request : ScenarioRequests.getInstance().getRequestsList()) {
+                try {
+                    AbstractThreadGroup threadGroup = this.applyLoadingStrategy(request);
+                    HashTree threadGroupTree = testPlanHashTree.add(threadGroup);
+                    URL url = new URL(request.getEndpoint());
+                    HTTPSamplerProxy sampler = new HTTPSamplerProxy();
+                    sampler.setName(request.getRequestName());
+                    sampler.setMethod(request.getRequest().toUpperCase());
+                    sampler.setDomain(url.getHost());
+                    sampler.setProtocol(url.getProtocol());
+                    int port = url.getPort() == -1 ? url.getDefaultPort() : url.getPort();
+                    if (port > 0) {
+                        sampler.setPort(port);
+                    }
+
+                    String path = url.getPath().isEmpty() ? "/" : url.getPath();
+                    if (url.getQuery() != null) {
+                        path = path + "?" + url.getQuery();
+                    }
+
+                    sampler.setPath(path);
+                    sampler.setProperty("TestElement.test_class", HTTPSamplerProxy.class.getName());
+                    sampler.setProperty("TestElement.gui_class", HttpTestSampleGui.class.getName());
+                    if ("POST".equalsIgnoreCase(request.getRequest()) || "PUT".equalsIgnoreCase(request.getRequest())) {
+                        String body = request.getJsonBody() != null ? request.getJsonBody() : request.getRequestbody();
+                        if (body != null && !body.trim().isEmpty()) {
+                            sampler.addNonEncodedArgument("", body, "");
+                            sampler.setPostBodyRaw(true);
+                        }
+                    }
+
+                    HashTree samplerHashTree = threadGroupTree.add(sampler);
+                    if (request.getHeader2() != null && !request.getHeader2().trim().isEmpty()) {
+                        HeaderManager headerManager = this.createHeaderManagerFromRequest(request);
+                        if (headerManager != null) {
+                            samplerHashTree.add(headerManager);
+                        }
+                    }
+                } catch (Exception e) {
+                    System.err.println("Error creating JMeter components for request: " + request.getRequestName());
+                    e.printStackTrace();
+                }
+            }
+
+            String baseName = launchName.replaceAll("\\s+", "_");
+            String resultFile = "Reports/Jmeter/" + baseName + ".jtl";
+            File file = new File(resultFile);
+            if (file.exists()) {
+                String timestamp = (new SimpleDateFormat("yyyyMMdd_HHmmss")).format(new Date());
+                resultFile = "Reports/Jmeter/" + baseName + "_" + timestamp + ".jtl";
+            }
+
+            Summariser summariser = new Summariser("summary");
+            SampleSaveConfiguration saveConfig = new SampleSaveConfiguration();
+            saveConfig.setLatency(true);
+            saveConfig.setRequestHeaders(true);
+            saveConfig.setSuccess(false);
+            saveConfig.setFieldNames(true);
+            saveConfig.setLabel(true);
+            saveConfig.setCode(true);
+            saveConfig.setMessage(true);
+            saveConfig.setThreadName(true);
+            saveConfig.setDataType(true);
+            saveConfig.setEncoding(true);
+            saveConfig.setAssertions(true);
+            saveConfig.setSubresults(true);
+            saveConfig.setResponseData(false);
+            saveConfig.setAsXml(false);
+            saveConfig.setResponseHeaders(true);
+            saveConfig.setConnectTime(true);
+            saveConfig.setSamplerData(true);
+            CustomPerformanceListener perfListener = new CustomPerformanceListener();
+            ChainedResultCollector chainedCollector = new ChainedResultCollector(summariser, perfListener);
+            chainedCollector.setSaveConfig(saveConfig);
+            chainedCollector.setFilename(resultFile);
+            chainedCollector.setProperty("append", "false");
+            testPlanTree.add(testPlan, chainedCollector);
+            jMeterEngine.configure(testPlanTree);
+            jMeterEngine.run();
+            ChainedResultCollector.setDelegate(perfListener);
+            perfListener.writeJsonToFile(launchName);
+            LogUtil.log("All JMeter tests completed successfully.", LogLevel.INFO);
+        } catch (Exception e) {
+            LogUtil.log("Error during JMeter test execution: ", LogLevel.ERROR);
+            LogUtil.log(e.getStackTrace().toString(), LogLevel.ERROR);
+        }
+
+    }
+
+    private AbstractThreadGroup applyLoadingStrategy(PerformanceRequest request) {
+        String strategy = request.getConcurrentUsers();
+        if (strategy.equalsIgnoreCase("rampUsers")) {
+            return this.applyRampUsersStrategy(request);
+        } else if (strategy.contains("constant user per second")) {
+            return this.applyConstantUsersPerSecondStrategy(request);
+        } else if (strategy.contains("At once users")) {
+            return this.applyAtOnceUsersStrategy(request);
+        } else {
+            return strategy.contains("rampUsers per second to") ? this.applyRampUsersPerSecondStrategy(request) : this.applyRampUsersStrategy(request);
+        }
+    }
+
+    private AbstractThreadGroup applyRampUsersStrategy(PerformanceRequest request) {
+        ThreadGroup threadGroup = new ThreadGroup();
+        threadGroup.setName(request.getRequestName() + "_RampUsers");
+        threadGroup.setNumThreads(request.getUsers());
+        threadGroup.setRampUp(request.getRampUp());
+        threadGroup.setProperty("TestElement.test_class", ThreadGroup.class.getName());
+        threadGroup.setProperty("TestElement.gui_class", ThreadGroupGui.class.getName());
+        LoopController loopController = new LoopController();
+        loopController.setLoops(request.getLoops());
+        loopController.setFirst(true);
+        loopController.setProperty("TestElement.test_class", LoopController.class.getName());
+        loopController.setProperty("TestElement.gui_class", LoopControlPanel.class.getName());
+        loopController.initialize();
+        threadGroup.setSamplerController(loopController);
+        LogUtil.log("Applied Ramp Users: " + request.getUsers() + " users over " + request.getRampUp() + " seconds", LogLevel.INFO);
+        return threadGroup;
+    }
+
+    private AbstractThreadGroup applyConstantUsersPerSecondStrategy(PerformanceRequest request) {
+        ThreadGroup threadGroup = new ThreadGroup();
+        threadGroup.setName(request.getRequestName() + "_ConstantUsersPerSec");
+        threadGroup.setNumThreads(request.getUsers() * request.getRampUp());
+        threadGroup.setRampUp(0);
+        threadGroup.setDuration((long)request.getRampUp());
+        threadGroup.setScheduler(true);
+        threadGroup.setProperty("TestElement.test_class", ThreadGroup.class.getName());
+        threadGroup.setProperty("TestElement.gui_class", ThreadGroupGui.class.getName());
+        LoopController loopController = new LoopController();
+        loopController.setLoops(1);
+        loopController.setFirst(true);
+        loopController.setProperty("TestElement.test_class", LoopController.class.getName());
+        loopController.setProperty("TestElement.gui_class", LoopControlPanel.class.getName());
+        loopController.initialize();
+        threadGroup.setSamplerController(loopController);
+        ConstantThroughputTimer timer = new ConstantThroughputTimer();
+        timer.setName("Constant Throughput Timer");
+        timer.setThroughput((double)request.getUsers() * (double)60.0F);
+        timer.setProperty("TestElement.test_class", ConstantThroughputTimer.class.getName());
+        timer.setProperty("TestElement.gui_class", ConstantThroughputTimer.class.getName());
+        threadGroup.addTestElement(timer);
+        LogUtil.log("Applied Constant Users Per Second: " + request.getUsers() + " users/sec for " + request.getRampUp() + " seconds", LogLevel.INFO);
+        return threadGroup;
+    }
+
+    private AbstractThreadGroup applyAtOnceUsersStrategy(PerformanceRequest request) {
+        ThreadGroup threadGroup = new ThreadGroup();
+        threadGroup.setName(request.getRequestName() + "_AtOnceUsers");
+        threadGroup.setNumThreads(request.getUsers());
+        threadGroup.setRampUp(0);
+        threadGroup.setProperty("TestElement.test_class", ThreadGroup.class.getName());
+        threadGroup.setProperty("TestElement.gui_class", ThreadGroupGui.class.getName());
+        LoopController loopController = new LoopController();
+        loopController.setLoops(request.getLoops());
+        loopController.setFirst(true);
+        loopController.setProperty("TestElement.test_class", LoopController.class.getName());
+        loopController.setProperty("TestElement.gui_class", LoopControlPanel.class.getName());
+        loopController.initialize();
+        threadGroup.setSamplerController(loopController);
+        LogUtil.log("Applied At Once Users: " + request.getUsers() + " users starting simultaneously", LogLevel.INFO);
+        return threadGroup;
+    }
+
+    private AbstractThreadGroup applyRampUsersPerSecondStrategy(PerformanceRequest request) {
+        // $FF: Couldn't be decompiled
+    }
+
+    private HeaderManager createHeaderManagerFromRequest(PerformanceRequest request) {
+        // $FF: Couldn't be decompiled
+    }
+
+    private long calculateTestDuration(String resultFile) throws IOException {
+        // $FF: Couldn't be decompiled
+    }
+
+    private void handleReportError(String resultFile, String reportDir, Exception e) {
+        // $FF: Couldn't be decompiled
+    }
+
+    private void createErrorReport(String resultFile, String reportDir, Exception e) {
+        // $FF: Couldn't be decompiled
+    }
+
+    private String getStackTrace(Exception e) {
+        StringWriter sw = new StringWriter();
+        e.printStackTrace(new PrintWriter(sw));
+        return sw.toString();
+    }
+
+    private void validateJtlFile(String resultFile) throws IOException {
+        // $FF: Couldn't be decompiled
+    }
+
+    private void handleReportGenerationError(String resultFile, String reportDir, Exception originalError) {
+        // $FF: Couldn't be decompiled
+    }
+}

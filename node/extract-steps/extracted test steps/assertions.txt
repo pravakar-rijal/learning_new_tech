@@ -1,0 +1,78 @@
+User verifies the element {string} is selected
+User verifies the element {string} is visible
+User verifies the element {string} should be enabled
+User verifies the URL of page should be {string}
+User applies all the assertions
+User verifies the URL of page should be baseURI {string} with endpoint {string}
+User verifies the title of page should be {string}
+User verifies the element {string} have numeric text equal to value of {string}
+User verifies the element {string} should be disabled
+User verifies the element {string} text should be {string}
+User verifies the element {string} has attribute {string} with value {string}
+User verifies the option {string} is selected successfully from dropdown {string}
+User verifies the element {string} should not contain text {string}
+User verifies the element {string} should have attribute {string}
+User verifies the element {string} should not have attribute {string}
+User verifies the element {string} should have css class {string}
+User verifies the element {string} should not have css class {string}
+User verifies the status code should be <{int}>
+User verifies the response had key {string} with value {string} for all above
+User verifies the xml response had key {string} with value {string} for all above
+User verifies the status code should be <{int}> for all above
+User verifies the response time should be less than <{int}>
+User verifies the Content-Type of response should be {string}
+User verifies the response had key {string}
+User verifies the response had key {string} for all above
+User verifies the xml response had key {string} for all above
+User verifies the response had key {string} with null value
+User verifies the xml response had key {string} with null value
+User verifies the response had key {string} with value of data type {string}
+User verifies the xml response had key {string} with value of data type {string}
+User verifies the response had key {string} with value of data type {string} for all above
+User verifies the xml response had key {string} with value of data type {string} for all above
+User verifies the response had key {string} with value {string}
+User verifies the xml response had key {string} with value {string}
+User verifies the xml response data type on child level will be same as stored in {string}
+User verifies the response data type on parent level will be same as stored in file {string}
+User verifies the response data type on child level will be same as stored in {string}
+User verifies the response will be same as stored in file {string}
+User verifies the xml response will be same as stored in {string}
+User verifies the xml response had key {string}
+User verifies the response header had key {string} with value {string}
+User verifies the response header had key {string}
+User verifies the response had key {string} with value <{int}>
+User verifies the response had key {string} with value <{double}>
+User verifies the xml response had key {string} with value <{int}>
+User verifies the xml response had key {string} with value <{double}>
+User verifies the element {string} has same css key {string} and css value {string}
+User verifies the alert has text {string}
+User verifies the radio button {string} is checked
+User verifies the radio button {string} is not checked
+User verifies the checkbox {string} is checked
+User verifies the checkbox {string} is not checked
+User verifies the input field {string} has text {string}
+User verifies the field {string} is required
+User verifies the input field {string} is validated with pattern {string}
+User verifies the element {string} is not present
+User verifies the position of element {string} is x-axis {string} and y-axis {string}
+User verifies all links are working fine
+User verifies the file {string} is downloaded
+User verifies the value in the specified column
+User checks for accessibility issues of {string} by excluding following rules {string}
+User checks for accessibility issues of {string} by excluding following rules {string} with iframe disabled
+User checks for any accessibility issue of {string}
+User checks for any accessibility issue of {string} with iframe disabled
+User checks for accessibility issues of {string} by excluding following elements {string}
+User checks for accessibility issues of {string} by excluding following elements {string} with iframe disabled
+User checks for accessibility issues of {string} by excluding this element {string}
+User checks for accessibility issues of {string} by excluding this element {string} with iframe disabled
+User checks for accessibility issues of {string} with only element {string}
+User checks for accessibility issues of {string} with only element {string} with iframe disabled
+User checks for accessibility issues of {string} with only rules {string}
+User checks for accessibility issues of {string} with only rules {string} with iframe disabled
+User verifies the numeric value of key {string} is less than numeric value of key {string}
+User verifies the numeric value of key {string} is greater than numeric value of key {string}
+User verifies the time value of key {string} is less than time value of key {string}
+User verifies the time value of key {string} is greater than time value of key {string}
+User verifies the value of key {string} is not same as value of key {string}
+User verifies the value of key {string} is same as value of key {string}

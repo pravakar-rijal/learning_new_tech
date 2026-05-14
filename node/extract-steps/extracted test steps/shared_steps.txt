@@ -1,0 +1,12 @@
+User updates allure json files {string} to extract pdf reports
+User wants to run feature file {string}
+User wants to run feature file {string} with tags {string}
+User updates allure json files {string} with type {string} to extract pdf reports
+User verifies the database connection should be established successfully
+User wants to get data from database with query {string} for column {string}
+User wants to get data from database with query {string}
+User wants to get data from MongoDB collection {string} with query {string} for column {string}
+User skips to the next scenario
+User aborts the launch
+else
+User ends the condition block

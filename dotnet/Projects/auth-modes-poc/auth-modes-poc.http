@@ -1,0 +1,6 @@
+@auth_modes_poc_HostAddress = http://localhost:5084
+
+GET {{auth_modes_poc_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

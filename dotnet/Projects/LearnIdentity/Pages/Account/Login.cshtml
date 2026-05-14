@@ -1,0 +1,32 @@
+﻿@page
+@model IdentityWebApp.Pages.Account.LoginModel
+@{
+}
+
+<section>
+	<form method="post">
+		<div class="text-danger" asp-validation-summary="All"></div>
+		<p>
+			<label asp-for="Credential.Username"></label>
+		</p>
+		<p>
+			<input asp-for="Credential.Username" />
+			<span class="text-danger" asp-validation-for="Credential.Username"></span>
+		</p>
+		<p>
+			<label asp-for="Credential.Password"></label>
+		</p>
+		<p>
+			<input asp-for="Credential.Password" />
+			<span class="text-danger" asp-validation-for="Credential.Password"></span>
+		</p>
+		<p>
+			<input type="checkbox" asp-for="Credential.RememberMe" />
+			<label asp-for="Credential.RememberMe"></label>
+		</p>
+		<p>
+			<input type="submit" />
+			<input type="reset" />
+		</p>
+	</form>
+</section>

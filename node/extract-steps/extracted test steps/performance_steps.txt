@@ -1,0 +1,5 @@
+User sets performance testing response time to <{int}>
+User sends {string} request for key {string} at endpoint {string} with <{int}> {string} during <{int}> seconds for <{int}> time in {string} body with name {string}
+User sends {string} request for key {string} at endpoint {string} with <{int}> {string} during <{int}> seconds for <{int}> time in {string} body with name {string} on server {string}
+User executes the requests with launch name {string}
+User executes the request

@@ -1,0 +1,6 @@
+@ExportCsvExcel_HostAddress = http://localhost:5038
+
+GET {{ExportCsvExcel_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

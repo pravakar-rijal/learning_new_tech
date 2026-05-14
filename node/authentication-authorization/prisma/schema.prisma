@@ -1,0 +1,53 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String   @id @default(uuid()) @db.Uuid
+  name          String   @db.VarChar(255)
+  email         String   @unique @db.VarChar(255)
+  password_hash String   @db.VarChar(255)
+  isActive      Boolean  @default(true) @map("is_active") @db.Boolean
+  enable2Fa     Boolean? @map("enable_2fa") @db.Boolean
+  secret2Fa     String?  @map("secret_2fa") @db.VarChar(255)
+  role_Id       String   @map("role_id") @db.Uuid
+  role          Role     @relation(fields: [role_Id], references: [id])
+
+  userRefreshToken UserRefreshToken[]
+  UserInvalidToken UserInvalidToken[]
+
+  @@map("users")
+}
+
+model Role {
+  id   String @id @default(uuid()) @db.Uuid
+  name String @db.VarChar(255)
+  User User[]
+
+  @@map("roles")
+}
+
+model UserRefreshToken {
+  id     String @id @default(uuid()) @db.Uuid
+  userId String @map("user_id") @db.Uuid
+  user   User   @relation(fields: [userId], references: [id])
+  token  String @db.VarChar(255)
+
+  @@map("user_refresh_tokens")
+}
+
+model UserInvalidToken {
+  id             String @id @default(uuid()) @db.Uuid
+  accessToken    String @map("access_token") @db.VarChar(255)
+  userId         String @map("user_id") @db.Uuid
+  user           User   @relation(fields: [userId], references: [id])
+  expirationTime BigInt @map("expiration_time") @db.BigInt
+
+  @@map("user_invalid_tokens")
+}

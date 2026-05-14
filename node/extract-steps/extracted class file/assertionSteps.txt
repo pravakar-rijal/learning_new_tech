@@ -1,0 +1,1952 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
+package com.vaf.steps;
+
+import com.deque.html.axecore.results.CheckedNode;
+import com.deque.html.axecore.results.Results;
+import com.deque.html.axecore.results.Rule;
+import com.deque.html.axecore.selenium.AxeBuilder;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jayway.jsonpath.Predicate;
+import com.vaf.GlobalData.GlobalSharedData;
+import com.vaf.api.APIManager;
+import com.vaf.api.rest.APIUtils;
+import com.vaf.api.rest.ApiRequest;
+import com.vaf.config.ConstantKeys;
+import com.vaf.enumerations.LocatorType;
+import com.vaf.enumerations.LogLevel;
+import com.vaf.exceptions.AbortScenario;
+import com.vaf.exceptions.CommonException;
+import com.vaf.exceptions.VAFLicenseException;
+import com.vaf.iterative.IterativeExecutor;
+import com.vaf.utils.Assertions;
+import com.vaf.utils.ConfigUtil;
+import com.vaf.utils.ExcelUtil;
+import com.vaf.utils.JsonUtil;
+import com.vaf.utils.LogUtil;
+import com.vaf.web.Browser;
+import com.vaf.web.UIManager;
+import cucumber.api.java.en.Then;
+import io.cucumber.datatable.DataTable;
+import io.cucumber.java.en.And;
+import io.cucumber.java.en.When;
+import io.restassured.http.Header;
+import io.restassured.http.Headers;
+import io.restassured.path.json.JsonPath;
+import io.restassured.path.xml.XmlPath;
+import io.restassured.path.xml.config.XmlPathConfig;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.StringReader;
+import java.net.HttpURLConnection;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
+import javax.xml.xpath.XPathExpressionException;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.json.JSONTokener;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Point;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.Test;
+import org.w3c.dom.Document;
+import org.xml.sax.InputSource;
+import org.xml.sax.SAXException;
+
+public class AssertionsSteps {
+    ThreadLocal<UIManager> mgr;
+    public static ThreadLocal<GlobalSharedData> sharedData;
+    private ConfigUtil configUtil;
+    Assertions assertions;
+
+    public AssertionsSteps() throws VAFLicenseException {
+        this.mgr = UISteps.mgr;
+        this.assertions = new Assertions();
+        sharedData = GlobalSharedData.getInstance();
+        this.configUtil = ConfigUtil.getInstance();
+    }
+
+    @Test
+    @Then("User verifies the element {string} is selected")
+    public void Verify_that_is_selected_already(String elementKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)this.mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                WebElement webElement = ((UIManager)this.mgr.get()).elementBy(elementType, elementValue);
+                this.assertions.assertTrue(webElement.isSelected(), "", (UIManager)this.mgr.get());
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @Then("User verifies the element {string} is visible")
+    public void Verify_that_user_will_see(String elementKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)this.mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                WebElement webElement = ((UIManager)this.mgr.get()).elementBy(elementType, elementValue);
+                this.assertions.assertTrue(webElement.isDisplayed(), "", (UIManager)this.mgr.get());
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @Then("User verifies the element {string} should be enabled")
+    public void Verify_that_the_button_should_be_enabled(String buttonKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)this.mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(buttonKey);
+                String buttonValue = (String)locatorMap.get("value");
+                LocatorType buttonType = (LocatorType)locatorMap.get("type");
+                WebElement buttonElement = ((UIManager)this.mgr.get()).elementBy(buttonType, buttonValue);
+                this.assertions.assertTrue(buttonElement.isEnabled(), "", (UIManager)this.mgr.get());
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @Then("User verifies the URL of page should be {string}")
+    public void Verify_that_the_URL_of_page_should_be(String expectedURL) throws InterruptedException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            Thread.sleep(3000L);
+            String actual_URL = ((UIManager)this.mgr.get()).getURL();
+            this.assertions.assertEquals(actual_URL, expectedURL, "", (UIManager)this.mgr.get());
+        }
+    }
+
+    @Test
+    @Then("User applies all the assertions")
+    public void User_captures_all_the_assertions() throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            String activePlatform = this.configUtil.getOptionalConfigKey("ActivePlatform", "");
+            String activeAssertionType = this.configUtil.configGetString("AssertionType");
+            if (activeAssertionType.equalsIgnoreCase("Soft")) {
+                if (activePlatform.equalsIgnoreCase("SauceLabs")) {
+                    if (((UIManager)this.mgr.get()).driver != null) {
+                        this.endSauceLabsSession();
+                    }
+                } else if (activePlatform.equalsIgnoreCase("BrowserStack")) {
+                    if (((UIManager)this.mgr.get()).driver != null) {
+                        this.endBrowserStackSession();
+                    }
+                } else if (activePlatform.isEmpty() || activePlatform.isBlank()) {
+                    try {
+                        this.assertions.assertALL();
+                    } catch (AssertionError e) {
+                        e.printStackTrace();
+                        this.assertions.assertALL();
+                    }
+                }
+            }
+
+        }
+    }
+
+    public void endSauceLabsSession() {
+        Browser browser1 = new Browser();
+        boolean allAssertionsPassed = true;
+
+        try {
+            this.assertions.assertALL();
+        } catch (AssertionError var48) {
+            allAssertionsPassed = false;
+        }
+
+        try {
+            if (((UIManager)this.mgr.get()).driver instanceof RemoteWebDriver) {
+                String sessionId = ((RemoteWebDriver)((UIManager)this.mgr.get()).driver).getSessionId().toString();
+                browser1.updateSauceLabsTestStatus(sessionId, allAssertionsPassed);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (((UIManager)this.mgr.get()).driver != null) {
+                try {
+                    this.assertions.assertALL();
+                } catch (AssertionError e) {
+                    e.printStackTrace();
+                } finally {
+                    ((UIManager)this.mgr.get()).driver.close();
+                }
+            }
+
+        }
+
+    }
+
+    public void endBrowserStackSession() {
+        Browser browser1 = new Browser();
+        boolean allAssertionsPassed = true;
+
+        try {
+            this.assertions.assertALL();
+        } catch (AssertionError var48) {
+            allAssertionsPassed = false;
+        }
+
+        try {
+            if (((UIManager)this.mgr.get()).driver instanceof RemoteWebDriver) {
+                String sessionId = ((RemoteWebDriver)((UIManager)this.mgr.get()).driver).getSessionId().toString();
+                browser1.updateBrowserStackTestStatus(sessionId, allAssertionsPassed);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (((UIManager)this.mgr.get()).driver != null) {
+                try {
+                    this.assertions.assertALL();
+                } catch (AssertionError e) {
+                    e.printStackTrace();
+                } finally {
+                    ((UIManager)this.mgr.get()).driver.close();
+                }
+            }
+
+        }
+
+    }
+
+    @Test
+    @When("User verifies the URL of page should be baseURI {string} with endpoint {string}")
+    public void User_validate_Url(String server, String endpoint) throws VAFLicenseException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            String baseUrl = ((UIManager)this.mgr.get()).getConfigUtil().baseUri(server);
+            String expectedURL = baseUrl + endpoint;
+            String actual_URL = ((UIManager)this.mgr.get()).getURL();
+            this.assertions.assertEquals(actual_URL, expectedURL, "", (UIManager)this.mgr.get());
+        }
+    }
+
+    @Test
+    @Then("User verifies the title of page should be {string}")
+    public void Verify_that_the_title_of_page_should_be(String expectedTitle) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            String actualTitle = ((UIManager)this.mgr.get()).getTitle();
+            this.assertions.assertEquals(actualTitle, expectedTitle, "", (UIManager)this.mgr.get());
+        }
+    }
+
+    @Test
+    @Then("User verifies the element {string} have numeric text equal to value of {string}")
+    public void Verify_that_numeric_text_should_be(String elementKey, String expectedKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)this.mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                WebElement element = ((UIManager)this.mgr.get()).elementBy(elementType, elementValue);
+                String actualText = element.getText();
+                LogUtil.log("actualText: " + actualText, LogLevel.INFO);
+                String actualNumericValue = this.extractNumericValue(actualText);
+                LogUtil.log("actualNumericValue: " + actualNumericValue, LogLevel.INFO);
+                JSONObject globalResponseJson = new JSONObject(((GlobalSharedData)GlobalSharedData.getInstance().get()).getGlobalStoredResponse());
+                String expectedNumericValue = globalResponseJson.optString(expectedKey);
+                LogUtil.log("expectedNumericValue: " + expectedNumericValue, LogLevel.INFO);
+                double actualValue = Double.parseDouble(actualNumericValue);
+                LogUtil.log("actualNumericValueInDouble: " + actualValue, LogLevel.INFO);
+                double expectedValue = Double.parseDouble(expectedNumericValue);
+                LogUtil.log("expectedNumericValueInDouble: " + expectedValue, LogLevel.INFO);
+                this.assertions.assertEquals(Math.round(actualValue), Math.round(expectedValue), "Numeric value mismatch.", (UIManager)this.mgr.get());
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    private String extractNumericValue(String text) {
+        Pattern pattern = Pattern.compile("[-+]?\\$?€?£?\\d{1,3}(?:,\\d{3})*(\\.\\d+)?|\\d+(\\.\\d+)?");
+        Matcher matcher = pattern.matcher(text);
+
+        StringBuilder numericValues;
+        for(numericValues = new StringBuilder(); matcher.find(); numericValues.append(matcher.group().replaceAll(",", "").replaceAll("[$€£]", ""))) {
+            if (numericValues.length() > 0) {
+                numericValues.append(", ");
+            }
+        }
+
+        return numericValues.toString();
+    }
+
+    @Test
+    @Then("User verifies the element {string} should be disabled")
+    public void Verify_that_should_be_disabled(String elementKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)this.mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                WebElement element = ((UIManager)this.mgr.get()).elementBy(elementType, elementValue);
+                this.assertions.assertFalse(element.isEnabled(), "", (UIManager)this.mgr.get());
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @Then("User verifies the element {string} text should be {string}")
+    public void Verify_that_text_should_be(String elementKey, String expectedText) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)this.mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                WebElement element = ((UIManager)this.mgr.get()).elementBy(elementType, elementValue);
+                String actualText = element.getText();
+                this.assertions.assertEquals(actualText, expectedText, "", (UIManager)this.mgr.get());
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @Then("User verifies the element {string} has attribute {string} with value {string}")
+    public void verifyThatAttributeMustHaveKeyAndValue(String elementKey, String attributeName, String expectedAttributeValue) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)this.mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                WebElement element = ((UIManager)this.mgr.get()).elementBy(elementType, elementValue);
+                String actualAttributeValue = element.getAttribute(attributeName);
+                this.assertions.assertEquals(actualAttributeValue, expectedAttributeValue, "", (UIManager)this.mgr.get());
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @Then("User verifies the option {string} is selected successfully from dropdown {string}")
+    public void Verify_that_should_contain(String expectedText, String elementLocatorKey) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)this.mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementLocatorKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                WebElement dropDownOption = ((UIManager)this.mgr.get()).elementBy(elementType, elementValue);
+                Select select = new Select(dropDownOption);
+                String selectedOptionText = select.getFirstSelectedOption().getText();
+                this.assertions.assertEquals(selectedOptionText, expectedText, "", (UIManager)this.mgr.get());
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @Then("User verifies the element {string} should not contain text {string}")
+    public void Verify_that_should_not_contain(String elementIdentifier, String unexpectedText) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)this.mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementIdentifier);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                WebElement element = ((UIManager)this.mgr.get()).elementBy(elementType, elementValue);
+                String actualText = element.getText();
+                this.assertions.assertFalse(actualText.contains(unexpectedText), "", (UIManager)this.mgr.get());
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @Then("User verifies the element {string} should have attribute {string}")
+    public void Verify__that_should_have_attribute(String elementIdentifier, String attributeName) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)this.mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementIdentifier);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                WebElement element = ((UIManager)this.mgr.get()).elementBy(elementType, elementValue);
+                this.assertions.assertTrue(element.getAttribute(attributeName) != null, "", (UIManager)this.mgr.get());
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @Then("User verifies the element {string} should not have attribute {string}")
+    public void Verify_that_should_not_have_attribute(String elementIdentifier, String attributeName) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)this.mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementIdentifier);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                WebElement element = ((UIManager)this.mgr.get()).elementBy(elementType, elementValue);
+                this.assertions.assertTrue(element.getAttribute(attributeName) == null, "", (UIManager)this.mgr.get());
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @Then("User verifies the element {string} should have css class {string}")
+    public void Verify_that_should_have_CSS_class(String elementIdentifier, String cssClass) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)this.mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementIdentifier);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                WebElement element = ((UIManager)this.mgr.get()).elementBy(elementType, elementValue);
+                String actualCssClasses = element.getAttribute("class");
+                this.assertions.assertTrue(actualCssClasses.equals(cssClass), "", (UIManager)this.mgr.get());
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @Then("User verifies the element {string} should not have css class {string}")
+    public void Verify_that_should_not_have_CSS_class(String elementIdentifier, String cssClass) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)this.mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementIdentifier);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                WebElement element = ((UIManager)this.mgr.get()).elementBy(elementType, elementValue);
+                String actualCssClasses = element.getAttribute("class");
+                this.assertions.assertFalse(actualCssClasses.equals(cssClass), "", (UIManager)this.mgr.get());
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Then("User verifies the status code should be <{int}>")
+    public void verify_that_status_code_should_be(Integer expectedStatusCode) throws IOException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            Integer actualStatusCode = ((GlobalSharedData)ApiSteps.sharedData.get()).getLatestStoredResponse().getStatusCode();
+            this.assertions.assertEquals(actualStatusCode, expectedStatusCode, "");
+        }
+    }
+
+    @Then("User verifies the response had key {string} with value {string} for all above")
+    public void verify_that_response_had_key_with_value_for_all(String responseKey, String expectedValue) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            if (IterativeExecutor.getInstance().getRequestsList().size() > 0) {
+                for(int i = 0; i < IterativeExecutor.getInstance().getRequestsList().size(); ++i) {
+                    ApiRequest currentRequest = (ApiRequest)IterativeExecutor.getInstance().getRequestsList().get(i);
+                    String actualValue = APIUtils.extractValueFromJson(currentRequest.getResponse().asString(), responseKey);
+                    this.assertions.assertEquals(actualValue, expectedValue, "Verify the response key matches expected value");
+                }
+            }
+
+        }
+    }
+
+    @Then("User verifies the xml response had key {string} with value {string} for all above")
+    public void verify_that_xml_response_had_key_with_value_for_all(String responseKey, String expectedValue) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            if (IterativeExecutor.getInstance().getRequestsList().size() > 0) {
+                for(int i = 0; i < IterativeExecutor.getInstance().getRequestsList().size(); ++i) {
+                    ApiRequest currentRequest = (ApiRequest)IterativeExecutor.getInstance().getRequestsList().get(i);
+                    String actualValue = APIUtils.extractValueFromXml(currentRequest.getResponse().asString(), responseKey);
+                    this.assertions.assertEquals(actualValue, expectedValue, "Verify the response key matches expected value");
+                }
+            }
+
+        }
+    }
+
+    @Then("User verifies the status code should be <{int}> for all above")
+    public void verify_that_status_code_should_be_for_all(int expectedStatusCode) throws IOException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            if (IterativeExecutor.getInstance().getRequestsList().size() <= 0) {
+                throw new IllegalArgumentException("No requests have been found in Iterative Executor.");
+            } else {
+                for(int i = 0; i < IterativeExecutor.getInstance().getRequestsList().size(); ++i) {
+                    ApiRequest currentRequest = (ApiRequest)IterativeExecutor.getInstance().getRequestsList().get(i);
+                    int actualStatusCode = currentRequest.getResponse().statusCode();
+                    this.assertions.assertEquals(actualStatusCode, expectedStatusCode, "verify that status code is ok");
+                }
+
+            }
+        }
+    }
+
+    @And("User verifies the response time should be less than <{int}>")
+    public void userVerifyResponseTimeLessThan(int expectedResponseTime) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            this.assertions.assertTrue(((GlobalSharedData)ApiSteps.sharedData.get()).getLatestStoredResponse().getTime() < (long)expectedResponseTime, "Response time is greater than " + expectedResponseTime + " milliseconds");
+        }
+    }
+
+    @Then("User verifies the Content-Type of response should be {string}")
+    public void userVerifyContentTypeOfResponse(String expectedContentType) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            String actualContentType = ((GlobalSharedData)ApiSteps.sharedData.get()).getLatestStoredResponse().getContentType();
+            this.assertions.assertEquals(actualContentType, expectedContentType, "");
+        }
+    }
+
+    @Then("User verifies the response had key {string}")
+    public void verify_that_response__had_key(String expectedKey) throws IOException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            String response = ((GlobalSharedData)ApiSteps.sharedData.get()).getLatestStoredResponse().asString();
+            JsonNode jsonResponse = (new ObjectMapper()).readTree(response);
+            boolean keyPresent = this.isKeyPresent(jsonResponse, expectedKey);
+            this.assertions.assertTrue(keyPresent, "");
+        }
+    }
+
+    @Then("User verifies the response had key {string} for all above")
+    public void verify_that_response__had_key_for_all(String expectedKey) throws IOException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            if (IterativeExecutor.getInstance().getRequestsList().size() > 0) {
+                for(int i = 0; i < IterativeExecutor.getInstance().getRequestsList().size(); ++i) {
+                    ApiRequest currentRequest = (ApiRequest)IterativeExecutor.getInstance().getRequestsList().get(i);
+                    String response = currentRequest.getResponse().asString();
+                    JsonNode jsonResponse = (new ObjectMapper()).readTree(response);
+                    boolean keyPresent = this.isKeyPresent(jsonResponse, expectedKey);
+                    this.assertions.assertTrue(keyPresent, "verify that response has the key: " + expectedKey);
+                }
+            }
+
+        }
+    }
+
+    @Then("User verifies the xml response had key {string} for all above")
+    public void verify_that_response__had_key_for_all_Xml(String expectedKey) throws IOException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            if (IterativeExecutor.getInstance().getRequestsList().size() > 0) {
+                for(int i = 0; i < IterativeExecutor.getInstance().getRequestsList().size(); ++i) {
+                    ApiRequest currentRequest = (ApiRequest)IterativeExecutor.getInstance().getRequestsList().get(i);
+                    String response = currentRequest.getResponse().asString();
+                    boolean keyPresent = isKeyPresentInXml(response, expectedKey);
+                    this.assertions.assertTrue(keyPresent, "verify that response has the key: " + expectedKey);
+                }
+            }
+
+        }
+    }
+
+    public boolean isKeyPresent(JsonNode jsonNode, String targetKey) {
+        if (jsonNode.isArray()) {
+            for(JsonNode node : jsonNode) {
+                if (this.isKeyPresent(node, targetKey)) {
+                    return true;
+                }
+            }
+        } else if (jsonNode.isObject()) {
+            Iterator<Map.Entry<String, JsonNode>> fields = jsonNode.fields();
+
+            while(fields.hasNext()) {
+                Map.Entry<String, JsonNode> entry = (Map.Entry)fields.next();
+                if (((String)entry.getKey()).equals(targetKey)) {
+                    return true;
+                }
+
+                if (this.isKeyPresent((JsonNode)entry.getValue(), targetKey)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
+    @Then("User verifies the response had key {string} with null value")
+    public void verify_that_response_had_key_with_null_value(String responseKey) throws IOException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            Object actualValue = APIManager.extractValueFromJson1(((GlobalSharedData)ApiSteps.sharedData.get()).getLatestStoredResponse().asString(), responseKey);
+            if (actualValue == null) {
+                this.assertions.assertNull(actualValue, "Expected null value for key: " + responseKey);
+            } else if (!actualValue.toString().isEmpty() && !"null".equals(actualValue.toString())) {
+                System.out.println("Actual value: " + String.valueOf(actualValue));
+                this.assertions.fail("Expected null or empty value, but found: " + String.valueOf(actualValue));
+            } else {
+                this.assertions.assertTrue(true, "Expected null or empty value for key: " + responseKey);
+            }
+
+        }
+    }
+
+    @Then("User verifies the xml response had key {string} with null value")
+    public void verify_that_xml_response_had_key_with_null_value(String responseKey) throws IOException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            Object actualValue = APIUtils.extractValueFromXml1(((GlobalSharedData)ApiSteps.sharedData.get()).getLatestStoredResponse().asString(), responseKey);
+            if (actualValue == null) {
+                this.assertions.assertNull(actualValue, "Expected null value for key: " + responseKey);
+            } else if (!actualValue.toString().isEmpty() && !"null".equals(actualValue.toString())) {
+                System.out.println("Actual value: " + String.valueOf(actualValue));
+                this.assertions.fail("Expected null or empty value, but found: " + String.valueOf(actualValue));
+            } else {
+                this.assertions.assertTrue(true, "Expected null or empty value for key: " + responseKey);
+            }
+
+        }
+    }
+
+    @Then("User verifies the response had key {string} with value of data type {string}")
+    public void verify_that_response_had_key_with_value_of_type(String responseKey, String expectedType) throws IOException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            String jsonResponse = ((GlobalSharedData)ApiSteps.sharedData.get()).getLatestStoredResponse().asString();
+            Object actualValue = APIManager.extractValueFromJson1(jsonResponse, responseKey);
+            Object actualAcquiredType = actualValue.getClass().getSimpleName();
+            this.assertions.assertEquals(actualAcquiredType, expectedType, "");
+        }
+    }
+
+    @Then("User verifies the xml response had key {string} with value of data type {string}")
+    public void verify_that_xml_response_had_key_with_value_of_type(String responseKey, String expectedType) throws IOException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            this.foundKey(responseKey);
+            String xmlResponse = ((GlobalSharedData)ApiSteps.sharedData.get()).getLatestStoredResponse().asString();
+            Object actualValue = APIUtils.extractValueFromXml1(xmlResponse, responseKey);
+            Object actualAcquiredType = APIUtils.inferType((String)actualValue);
+            this.assertions.assertEquals(actualAcquiredType, expectedType, "Expected type: " + expectedType + " but found: " + String.valueOf(actualAcquiredType));
+        }
+    }
+
+    @Then("User verifies the response had key {string} with value of data type {string} for all above")
+    public void verify_that_response_had_key__with_value_of_type_for_all(String key, String expectedType) throws IOException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            if (IterativeExecutor.getInstance().getRequestsList().size() > 0) {
+                for(int i = 0; i < IterativeExecutor.getInstance().getRequestsList().size(); ++i) {
+                    ApiRequest currentRequest = (ApiRequest)IterativeExecutor.getInstance().getRequestsList().get(i);
+                    JsonPath jsonPath = new JsonPath(currentRequest.getResponse().asString());
+                    Object actualValue = jsonPath.get(key);
+                    Object actualType = actualValue.getClass().getSimpleName();
+                    this.assertions.assertEquals(actualType, expectedType, "verify that response has the key:" + key + "with a value of type: " + expectedType);
+                }
+            }
+
+        }
+    }
+
+    @Then("User verifies the xml response had key {string} with value of data type {string} for all above")
+    public void verify_that_xml_response_had_key_with_value_of_type_for_all(String key, String expectedType) throws IOException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            if (IterativeExecutor.getInstance().getRequestsList().size() > 0) {
+                for(int i = 0; i < IterativeExecutor.getInstance().getRequestsList().size(); ++i) {
+                    ApiRequest currentRequest = (ApiRequest)IterativeExecutor.getInstance().getRequestsList().get(i);
+                    String response = currentRequest.getResponse().asString();
+                    Object actualValue = APIUtils.extractValueFromXml1(response, key);
+                    Object actualAcquiredType = APIUtils.inferType((String)actualValue);
+                    this.assertions.assertEquals(actualAcquiredType, expectedType, "verify that response has the key: " + key + " with a value of type: " + expectedType);
+                }
+            }
+
+        }
+    }
+
+    @Then("User verifies the response had key {string} with value {string}")
+    public void verify_that_response_had_key_with_value(String responseKey, String expectedValue) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            Object actualValue = APIManager.extractValueFromJson1(((GlobalSharedData)ApiSteps.sharedData.get()).getLatestStoredResponse().asString(), responseKey);
+            String actualValue1 = APIUtils.extractValueFromJson(((GlobalSharedData)ApiSteps.sharedData.get()).getLatestStoredResponse().asString(), responseKey);
+            if (expectedValue.equals("null")) {
+                this.assertions.assertNull(actualValue, "Expected null but found " + String.valueOf(actualValue));
+            } else {
+                this.assertions.assertEquals(expectedValue, actualValue1, "Expected " + expectedValue + " but found " + actualValue1);
+            }
+
+        }
+    }
+
+    @Then("User verifies the xml response had key {string} with value {string}")
+    public void verify_that_response_had_key_with_value_for_xmlnew(String responseKey, String expectedValue) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            this.foundKey(responseKey);
+            Object actualValue = APIUtils.extractValueFromXml(((GlobalSharedData)ApiSteps.sharedData.get()).getLatestStoredResponse().asString(), responseKey);
+            String actualValue1 = APIUtils.extractValueFromXml(((GlobalSharedData)ApiSteps.sharedData.get()).getLatestStoredResponse().asString(), responseKey);
+            if (expectedValue.equals("null")) {
+                this.assertions.assertNull(actualValue, "Expected null but found " + String.valueOf(actualValue));
+            } else {
+                this.assertions.assertEquals(expectedValue, actualValue1, "Expected " + expectedValue + " but found " + actualValue1);
+            }
+
+        }
+    }
+
+    public void foundKey(String expectedKey) {
+        String response = ((GlobalSharedData)ApiSteps.sharedData.get()).getLatestStoredResponse().asString();
+        boolean keyPresent = isKeyPresentInXml(response, expectedKey);
+        this.assertions.assertTrue(keyPresent, "The key " + expectedKey + " was not found in the XML response");
+    }
+
+    @Then("User verifies the xml response data type on child level will be same as stored in {string}")
+    public void validateXmlResponseDataTypes(String xmlString) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            Map<String, String> expectedValues = this.parseExpectedValues(xmlString);
+            String actualResponse = ((GlobalSharedData)sharedData.get()).getLatestStoredResponse().body().asString();
+            XmlPath xmlPath = new XmlPath(actualResponse);
+
+            for(Map.Entry<String, String> entry : expectedValues.entrySet()) {
+                String xmlPathExpression = (String)entry.getKey();
+                String expectedPattern = (String)entry.getValue();
+                this.foundKey(xmlPathExpression);
+                String actualValue = null;
+
+                try {
+                    actualValue = xmlPath.getString(xmlPathExpression);
+                } catch (Exception var11) {
+                    this.assertions.fail("Invalid XML path expression: " + xmlPathExpression);
+                }
+
+                boolean isTypeValid = this.validateDataType(expectedPattern, actualValue);
+                this.assertions.assertTrue(isTypeValid, "Data type of '" + xmlPathExpression + "' is not " + expectedPattern + ". Found: " + String.valueOf(actualValue != null ? APIUtils.inferType(actualValue) : "null"));
+                if (isTypeValid) {
+                    System.out.println(xmlPathExpression + " matches the expected pattern: " + expectedPattern);
+                } else {
+                    System.out.println(xmlPathExpression + " does not match the expected pattern. Expected: " + expectedPattern + ", Found: " + String.valueOf(actualValue != null ? APIUtils.inferType(actualValue) : "null"));
+                }
+            }
+
+        }
+    }
+
+    private Map<String, String> parseExpectedValues(String expectedValuesString) {
+        Map<String, String> expectedValues = new HashMap();
+        String cleanedString = expectedValuesString.substring(1, expectedValuesString.length() - 1);
+        String[] pairs = cleanedString.split(",");
+
+        for(String pair : pairs) {
+            String[] keyValue = pair.split(":");
+            String key = keyValue[0].trim();
+            String value = keyValue[1].trim();
+            expectedValues.put(key, value);
+        }
+
+        return expectedValues;
+    }
+
+    private boolean validateDataType(String expectedPattern, String actualValue) {
+        switch (expectedPattern) {
+            case "#string":
+                return APIUtils.inferType(actualValue).equals("String");
+            case "#integer":
+                return APIUtils.inferType(actualValue).equals("Integer");
+            case "#double":
+                return APIUtils.inferType(actualValue).equals("Double");
+            case "#boolean":
+                return APIUtils.inferType(actualValue).equals("Boolean");
+            case "null":
+                return APIUtils.inferType(actualValue).equals("null");
+            case "#date":
+                return actualValue.matches("\\d{4}-\\d{2}-\\d{2}");
+            default:
+                if (!expectedPattern.matches("#\\[\\d+-\\d+\\]")) {
+                    this.assertions.fail("Unsupported pattern type: " + expectedPattern);
+                    return false;
+                } else {
+                    String range = expectedPattern.substring(2, expectedPattern.length() - 1);
+                    int lowerBound = Integer.parseInt(range.split("-")[0]);
+                    int upperBound = Integer.parseInt(range.split("-")[1]);
+                    int intValue = Integer.parseInt(actualValue);
+                    return intValue >= lowerBound && intValue <= upperBound;
+                }
+        }
+    }
+
+    @Then("User verifies the response data type on parent level will be same as stored in file {string}")
+    public void validateResponseDataTypes(String filePath) throws IOException, VAFLicenseException, AbortScenario, URISyntaxException {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            Object expectedData;
+            try (FileReader reader = new FileReader(ExcelUtil.getFileFromResourceFolder(filePath))) {
+                expectedData = (new JSONTokener(reader)).nextValue();
+            } catch (Exception e) {
+                e.printStackTrace();
+                throw e;
+            }
+
+            Object actualData = (new JSONTokener(((GlobalSharedData)sharedData.get()).getLatestStoredResponse().body().asString())).nextValue();
+            if (expectedData instanceof JSONObject && actualData instanceof JSONObject) {
+                this.validateJSONObject((JSONObject)expectedData, (JSONObject)actualData);
+            } else if (expectedData instanceof JSONArray && actualData instanceof JSONArray) {
+                this.validateJSONArray((JSONArray)expectedData, (JSONArray)actualData);
+            } else {
+                this.assertions.fail("Expected and actual data types do not match");
+            }
+
+        }
+    }
+
+    private void validateJSONObject(JSONObject expected, JSONObject actual) throws VAFLicenseException {
+        for(String key : expected.keySet()) {
+            Object rawExpectedType = expected.get(key);
+            Object expectedTypeNull = this.convertStringToObject(rawExpectedType);
+            String expectedType = rawExpectedType instanceof String ? ((String)rawExpectedType).substring(1) : "null";
+            Object value = actual.opt(key);
+            this.validateValue(key, expectedType, value, expectedTypeNull);
+        }
+
+    }
+
+    private Object convertStringToObject(Object rawExpectedType) {
+        if (rawExpectedType != null && !rawExpectedType.equals(JSONObject.NULL)) {
+            return rawExpectedType instanceof String && rawExpectedType.equals("null") ? null : rawExpectedType;
+        } else {
+            return null;
+        }
+    }
+
+    private void validateJSONArray(JSONArray expected, JSONArray actual) throws VAFLicenseException {
+        for(int i = 0; i < expected.length(); ++i) {
+            JSONObject expectedObject = expected.getJSONObject(i);
+            JSONObject actualObject = actual.getJSONObject(i);
+            this.validateJSONObject(expectedObject, actualObject);
+        }
+
+    }
+
+    private void validateValue(String key, String expectedType, Object value, Object expected) throws VAFLicenseException {
+        boolean isTypeValid = false;
+        if (expectedType.equals("null")) {
+            this.assertions.assertNull(expected, "");
+            isTypeValid = true;
+        } else if (value != null) {
+            if (expectedType.matches("\\[\\d+-\\d+\\]")) {
+                String[] range = expectedType.substring(1, expectedType.length() - 1).split("-");
+                int lowerBound = Integer.parseInt(range[0]);
+                int upperBound = Integer.parseInt(range[1]);
+                if (value instanceof Integer) {
+                    int intValue = (Integer)value;
+                    isTypeValid = intValue >= lowerBound && intValue <= upperBound;
+                    if (!isTypeValid) {
+                        this.assertions.fail("The value of '" + key + "' is " + intValue + ", which is out of the expected range [" + lowerBound + "-" + upperBound + "]");
+                    }
+                }
+            } else {
+                switch (expectedType) {
+                    case "string" -> isTypeValid = value instanceof String;
+                    case "integer" -> isTypeValid = value instanceof Integer;
+                    case "double" -> isTypeValid = value instanceof Double;
+                    case "boolean" -> isTypeValid = value instanceof Boolean;
+                    case "array" -> isTypeValid = value instanceof JSONArray;
+                    case "object" -> isTypeValid = value instanceof JSONObject;
+                    case "date/time" -> isTypeValid = this.isValidDateTime(value);
+                    default -> this.assertions.fail("Unsupported pattern type: " + expectedType);
+                }
+            }
+        }
+
+        this.assertions.assertTrue(isTypeValid, "Data type of '" + key + "' is not " + expectedType + ". Found: " + (value != null ? value.getClass().getSimpleName() : "null"));
+        if (isTypeValid) {
+            System.out.println(key + " matches the expected data type: " + expectedType);
+        } else {
+            System.out.println(key + " does not match the expected data type. Expected: " + expectedType + ", Found: " + (value != null ? value.getClass().getSimpleName() : "null"));
+        }
+
+    }
+
+    private boolean isValidDateTime(Object value) {
+        if (value instanceof String) {
+            try {
+                LocalDateTime.parse((String)value, DateTimeFormatter.ISO_DATE_TIME);
+                return true;
+            } catch (DateTimeParseException var3) {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+
+    @Then("User verifies the response data type on child level will be same as stored in {string}")
+    public void validateResponseDataTypes_Featurefile(String jsonString) throws IOException, VAFLicenseException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            String jsonWithQuotes = jsonString.replaceAll("([a-zA-Z0-9_\\[\\]\\.]+):", "\"$1\":").replaceAll(":#(\\w+)", ":\"#$1\"").replaceAll(":null", ":\"null\"");
+            System.out.println("jsonWithQuotes: " + jsonWithQuotes);
+
+            JSONObject expectedValues;
+            try {
+                expectedValues = new JSONObject(new JSONTokener(jsonWithQuotes));
+            } catch (JSONException e) {
+                throw new IOException("Invalid JSON format in the expected values string", e);
+            }
+
+            JSONObject actualResponse = new JSONObject(((GlobalSharedData)sharedData.get()).getLatestStoredResponse().body().asString());
+
+            for(String jsonPath : expectedValues.keySet()) {
+                String expectedPattern = expectedValues.getString(jsonPath);
+                Object actualValue = com.jayway.jsonpath.JsonPath.read(actualResponse.toString(), "$." + jsonPath, new Predicate[0]);
+                boolean isTypeValid = false;
+                if (expectedPattern.equals("null")) {
+                    isTypeValid = actualValue == null;
+                } else if (actualValue != null) {
+                    if (expectedPattern.matches("#\\[\\d+-\\d+\\]")) {
+                        String range = expectedPattern.substring(2, expectedPattern.length() - 1);
+                        int lowerBound = Integer.parseInt(range.split("-")[0]);
+                        int upperBound = Integer.parseInt(range.split("-")[1]);
+                        if (actualValue instanceof Integer) {
+                            int intValue = (Integer)actualValue;
+                            isTypeValid = intValue >= lowerBound && intValue <= upperBound;
+                            if (!isTypeValid) {
+                                this.assertions.fail("The value of '" + jsonPath + "' is " + intValue + ", which is out of the expected range [" + lowerBound + "-" + upperBound + "]");
+                            }
+                        }
+                    } else {
+                        switch (expectedPattern) {
+                            case "#string" -> isTypeValid = actualValue instanceof String;
+                            case "#integer" -> isTypeValid = actualValue instanceof Integer;
+                            case "#double" -> isTypeValid = actualValue instanceof Double;
+                            case "#boolean" -> isTypeValid = actualValue instanceof Boolean;
+                            case "#array" -> isTypeValid = actualValue instanceof JSONArray || actualValue instanceof Collection;
+                            case "#object" -> isTypeValid = actualValue instanceof JSONObject || actualValue instanceof LinkedHashMap;
+                            case "#date/time" -> isTypeValid = this.isValidDateTime(actualValue);
+                            default -> this.assertions.fail("Unsupported pattern type: " + expectedPattern);
+                        }
+                    }
+                }
+
+                this.assertions.assertTrue(isTypeValid, "Data type of '" + jsonPath + "' is not " + expectedPattern + ". Found: " + (actualValue != null ? actualValue.getClass().getSimpleName() : "null"));
+                if (isTypeValid) {
+                    System.out.println(jsonPath + " matches the expected pattern: " + expectedPattern);
+                } else {
+                    System.out.println(jsonPath + " does not match the expected pattern. Expected: " + expectedPattern + ", Found: " + (actualValue != null ? actualValue.getClass().getSimpleName() : "null"));
+                }
+            }
+
+        }
+    }
+
+    @Then("User verifies the response will be same as stored in file {string}")
+    public void validate_that_response_will_be_same_as_stored_in(String filePath) throws IOException, VAFLicenseException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            JSONParser jsonParser = new JSONParser();
+            Object storedResponse = null;
+
+            try (FileReader reader = new FileReader(ExcelUtil.getFileFromResourceFolder(filePath))) {
+                storedResponse = jsonParser.parse(reader);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            JSONParser responseParser = new JSONParser();
+
+            Object responseObject;
+            try {
+                responseObject = responseParser.parse(((GlobalSharedData)sharedData.get()).getLatestStoredResponse().body().asString());
+            } catch (ParseException e) {
+                e.printStackTrace();
+                responseObject = null;
+            }
+
+            this.assertions.assertTrue(responseObject != null && responseObject.equals(storedResponse), "Response Matched or Not", (UIManager)null);
+            if (responseObject != null && responseObject.equals(storedResponse)) {
+                LogUtil.log("Response matches the stored response ====================", LogLevel.valueOf(ConstantKeys.logType));
+            } else {
+                LogUtil.log("Response does not match the stored response ====================", LogLevel.valueOf(ConstantKeys.logType));
+            }
+
+        }
+    }
+
+    @Then("User verifies the xml response will be same as stored in {string}")
+    public void validate_that_xml_response_will_be_same_as_stored_in(String filePath) throws IOException, VAFLicenseException, URISyntaxException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+            Document storedResponse = null;
+
+            try (FileReader reader = new FileReader(ExcelUtil.getFileFromResourceFolderForXml(filePath))) {
+                DocumentBuilder builder = factory.newDocumentBuilder();
+                storedResponse = builder.parse(new InputSource(reader));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            Document responseObject = null;
+
+            try {
+                DocumentBuilder builder = factory.newDocumentBuilder();
+                responseObject = builder.parse(new InputSource(new StringReader(((GlobalSharedData)sharedData.get()).getLatestStoredResponse().body().asString())));
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            boolean isEqual = storedResponse != null && responseObject != null && storedResponse.isEqualNode(responseObject);
+            if (isEqual) {
+                LogUtil.log("XML Response matches the stored response ====================", LogLevel.valueOf(ConstantKeys.logType));
+            } else {
+                LogUtil.log("XML Response does not match the stored response. ====================", LogLevel.valueOf(ConstantKeys.logType));
+            }
+
+            this.assertions.assertTrue(isEqual, "", (UIManager)null);
+        }
+    }
+
+    @Then("User verifies the xml response had key {string}")
+    public void verify_that_response__had_key_For_Xml(String expectedKey) throws IOException, ParserConfigurationException, XPathExpressionException, SAXException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            String response = ((GlobalSharedData)ApiSteps.sharedData.get()).getLatestStoredResponse().asString();
+            boolean keyPresent = isKeyPresentInXml(response, expectedKey);
+            this.assertions.assertTrue(keyPresent, "The key " + expectedKey + " was not found in the XML response");
+        }
+    }
+
+    public static boolean isKeyPresentInXml(String xmlResponse, String targetKey) {
+        try {
+            XmlPath xmlPath = (new XmlPath(xmlResponse)).using((new XmlPathConfig()).namespaceAware(true));
+            String value = xmlPath.getString(targetKey);
+            return value != null && !value.isEmpty();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    @Then("User verifies the response header had key {string} with value {string}")
+    public void userVerifyResponseHeader(String key, String expectedValue) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            Headers responseHeaders = ((GlobalSharedData)ApiSteps.sharedData.get()).getLatestStoredResponse().getHeaders();
+            boolean keyFound = false;
+
+            for(Header header : responseHeaders) {
+                if (header.getName().equalsIgnoreCase(key)) {
+                    keyFound = true;
+                    String actualValue = header.getValue();
+                    this.assertions.assertEquals(actualValue, expectedValue, "");
+                    break;
+                }
+            }
+
+            this.assertions.assertTrue(keyFound, "");
+        }
+    }
+
+    @Then("User verifies the response header had key {string}")
+    public void userVerifyResponseHeaderHasKey(String key) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            Headers responseHeaders = ((GlobalSharedData)ApiSteps.sharedData.get()).getLatestStoredResponse().getHeaders();
+            boolean keyFound = false;
+
+            for(Header header : responseHeaders) {
+                if (header.getName().equalsIgnoreCase(key)) {
+                    keyFound = true;
+                    break;
+                }
+            }
+
+            this.assertions.assertTrue(keyFound, "");
+        }
+    }
+
+    @Then("User verifies the response had key {string} with value <{int}>")
+    public void verify_that_response_had_key_with_value(String responseKey, int expectedValue) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            String actualValueAsString = APIManager.extractValueFromJson(((GlobalSharedData)ApiSteps.sharedData.get()).getLatestStoredResponse().asString(), responseKey);
+            int actualValue = Integer.parseInt(actualValueAsString);
+            this.assertions.assertEquals(actualValue, expectedValue, "");
+        }
+    }
+
+    @Then("User verifies the response had key {string} with value <{double}>")
+    public void verify_that_response_had_key_with_double_value(String responseKey, double expectedValue) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            String actualValueAsString = APIManager.extractValueFromJson(((GlobalSharedData)ApiSteps.sharedData.get()).getLatestStoredResponse().asString(), responseKey);
+            double actualValue = Double.parseDouble(actualValueAsString);
+            this.assertions.assertEquals(actualValue, expectedValue, "");
+        }
+    }
+
+    @Then("User verifies the xml response had key {string} with value <{int}>")
+    public void verify_that_xml_response_had_key_with_integer_value(String responseKey, int expectedValue) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            this.foundKey(responseKey);
+            String actualValueAsString = APIUtils.extractValueFromXml(((GlobalSharedData)ApiSteps.sharedData.get()).getLatestStoredResponse().asString(), responseKey);
+            int actualValue = Integer.parseInt(actualValueAsString);
+            this.assertions.assertEquals(actualValue, expectedValue, "");
+        }
+    }
+
+    @Then("User verifies the xml response had key {string} with value <{double}>")
+    public void verify_that_xml_response_had_key_with_double_value(String responseKey, double expectedValue) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            this.foundKey(responseKey);
+            String actualValueAsString = APIUtils.extractValueFromXml(((GlobalSharedData)ApiSteps.sharedData.get()).getLatestStoredResponse().asString(), responseKey);
+            double actualValue = Double.parseDouble(actualValueAsString);
+            this.assertions.assertEquals(actualValue, expectedValue, "");
+        }
+    }
+
+    @Test
+    @When("User verifies the element {string} has same css key {string} and css value {string}")
+    public void Validate_that_element_has_same_CSS_key_and_CSS_value(String locator, String expectedCssKey, String expectedCssValue) throws InterruptedException, AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)this.mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(locator);
+                String value = (String)locatorMap.get("value");
+                LocatorType type = (LocatorType)locatorMap.get("type");
+                WebElement element = ((UIManager)this.mgr.get()).elementBy(type, value);
+                String actualKey = element.getCssValue(expectedCssKey);
+                this.assertions.assertEquals(actualKey, expectedCssValue, "", (UIManager)this.mgr.get());
+                System.out.println("Provided: one " + expectedCssValue);
+                System.out.println("Actual Found " + actualKey);
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @When("User verifies the alert has text {string}")
+    public void Validate_that_alert_has_text(String expectedText) throws InterruptedException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            this.alertGetTextHandler(expectedText);
+        }
+    }
+
+    public void alertGetTextHandler(String text) {
+        Alert modalDialog = ((UIManager)this.mgr.get()).driver.switchTo().alert();
+        String store = modalDialog.getText();
+        modalDialog.accept();
+        this.assertions.assertEquals(store, text, "", (UIManager)this.mgr.get());
+    }
+
+    @Test
+    @When("User verifies the radio button {string} is checked")
+    public void Validate_that_radio_button_is_checked(String radioButtonLocator) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)this.mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(radioButtonLocator);
+                String locatorValue = (String)locatorMap.get("value");
+                LocatorType locatorType = (LocatorType)locatorMap.get("type");
+                this.positiveCheck(locatorValue, locatorType);
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    public void positiveCheck(String alertLocator, LocatorType locatorType) {
+        WebElement Button = ((UIManager)this.mgr.get()).elementBy(locatorType, alertLocator);
+        this.assertions.assertTrue(Button.isSelected(), "", (UIManager)this.mgr.get());
+    }
+
+    @Test
+    @When("User verifies the radio button {string} is not checked")
+    public void Validate_that_radio_button_is_not_checked(String radioButtonLocator) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)this.mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(radioButtonLocator);
+                String locatorValue = (String)locatorMap.get("value");
+                LocatorType locatorType = (LocatorType)locatorMap.get("type");
+                this.negativeCheck(locatorValue, locatorType);
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    public void negativeCheck(String alertLocator, LocatorType locatorType) {
+        WebElement Button = ((UIManager)this.mgr.get()).elementBy(locatorType, alertLocator);
+        this.assertions.assertTrue(!Button.isSelected(), "", (UIManager)this.mgr.get());
+    }
+
+    @Test
+    @When("User verifies the checkbox {string} is checked")
+    public void Validate_that_checkbox_is_checked(String checkboxLocator) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)this.mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(checkboxLocator);
+                String locatorValue = (String)locatorMap.get("value");
+                LocatorType locatorType = (LocatorType)locatorMap.get("type");
+                this.positiveCheck(locatorValue, locatorType);
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @When("User verifies the checkbox {string} is not checked")
+    public void Validate_that_checkbox_is_not_checked(String checkboxLocator) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)this.mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(checkboxLocator);
+                String locatorValue = (String)locatorMap.get("value");
+                LocatorType locatorType = (LocatorType)locatorMap.get("type");
+                this.negativeCheck(locatorValue, locatorType);
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    @Test
+    @When("User verifies the input field {string} has text {string}")
+    public void Get_Field_Value(String locator, String expectedText) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)this.mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(locator);
+                String value = (String)locatorMap.get("value");
+                LocatorType type = (LocatorType)locatorMap.get("type");
+                this.getFieldValue(value, type, expectedText);
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    public void getFieldValue(String locator, LocatorType type, String expectedText) {
+        WebElement inputField = ((UIManager)this.mgr.get()).elementBy(type, locator);
+        String actualValue = inputField.getAttribute("value");
+        System.out.println("Input Field has:" + actualValue);
+        this.assertions.assertEquals(actualValue, expectedText, "", (UIManager)this.mgr.get());
+    }
+
+    @Test
+    @When("User verifies the field {string} is required")
+    public void validateRequiredField(String locator) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)this.mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(locator);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                this.isRequiredFieldValidator(elementValue, elementType);
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    public void isRequiredFieldValidator(String locator, LocatorType type) {
+        WebElement field = ((UIManager)this.mgr.get()).elementBy(type, locator);
+        String str_value = field.getAttribute("required");
+        System.out.println("We accessed : " + str_value);
+        if (str_value == "true") {
+            this.assertions.assertTrue(true, "", (UIManager)this.mgr.get());
+        }
+
+    }
+
+    @Test
+    @When("User verifies the input field {string} is validated with pattern {string}")
+    public void validateFieldWithPattern(String locator, String pattern) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)this.mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(locator);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                this.validateFieldWithPattern(elementValue, elementType, pattern);
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    public void validateFieldWithPattern(String locator, LocatorType type, String pattern) {
+        WebElement input_field = ((UIManager)this.mgr.get()).elementBy(type, locator);
+        String pattern_Attribute = input_field.getAttribute("pattern");
+        System.out.println("value of pattern: " + pattern_Attribute);
+        System.out.println("Provided one: " + pattern);
+        Pattern patternValidate = Pattern.compile(pattern);
+        this.assertions.assertEquals(pattern_Attribute, pattern, "", (UIManager)this.mgr.get());
+    }
+
+    @Test
+    @When("User verifies the element {string} is not present")
+    public void Element_Not_Present(String locator) throws IOException, AbortScenario, CommonException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)this.mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(locator);
+                String value = (String)locatorMap.get("value");
+                LocatorType type = (LocatorType)locatorMap.get("type");
+                String valueType1 = type.toString();
+                System.out.println("value type is " + valueType1);
+                this.elementNotFound(value, valueType1);
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    public void elementNotFound(String waitLocator, String locatorValue) {
+        if (locatorValue.equals("xpath")) {
+            this.assertions.assertEquals(0, ((UIManager)this.mgr.get()).driver.findElements(By.xpath(waitLocator)).size(), "When element has locator with xpath", (UIManager)this.mgr.get());
+        } else if (locatorValue.equals("className")) {
+            this.assertions.assertEquals(0, ((UIManager)this.mgr.get()).driver.findElements(By.className(waitLocator)).size(), "When element has locator with class name", (UIManager)this.mgr.get());
+        } else if (locatorValue.equals("Id")) {
+            this.assertions.assertEquals(0, ((UIManager)this.mgr.get()).driver.findElements(By.id(waitLocator)).size(), "When element has locator with ID", (UIManager)this.mgr.get());
+        } else if (locatorValue.equals("cssSelector")) {
+            this.assertions.assertEquals(0, ((UIManager)this.mgr.get()).driver.findElements(By.cssSelector(waitLocator)).size(), "When element has locator with css selector", (UIManager)this.mgr.get());
+        } else if (locatorValue.equals("linkText")) {
+            this.assertions.assertEquals(0, ((UIManager)this.mgr.get()).driver.findElements(By.linkText(waitLocator)).size(), "When element has locator with link text", (UIManager)this.mgr.get());
+        } else if (locatorValue.equals("partialLinkText")) {
+            this.assertions.assertEquals(0, ((UIManager)this.mgr.get()).driver.findElements(By.partialLinkText(waitLocator)).size(), "When element has locator with partial link text", (UIManager)this.mgr.get());
+        } else if (locatorValue.equals("tagName")) {
+            this.assertions.assertEquals(0, ((UIManager)this.mgr.get()).driver.findElements(By.tagName(waitLocator)).size(), "When element has locator with tag name", (UIManager)this.mgr.get());
+        } else if (locatorValue.equals("name")) {
+            this.assertions.assertEquals(0, ((UIManager)this.mgr.get()).driver.findElements(By.name(waitLocator)).size(), "When element has locator with only name attribute", (UIManager)this.mgr.get());
+        } else {
+            this.assertions.assertTrue(false, "", (UIManager)this.mgr.get());
+        }
+
+    }
+
+    @Test
+    @Then("User verifies the position of element {string} is x-axis {string} and y-axis {string}")
+    public void Position(String elementKey, String xaxis, String yaxis) throws AbortScenario, CommonException, IOException {
+        try {
+            if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+                Map<String, Object> locatorMap = null;
+                ((UIManager)this.mgr.get()).getJsonUtil();
+                locatorMap = JsonUtil.getLocatorForJson(elementKey);
+                String elementValue = (String)locatorMap.get("value");
+                LocatorType elementType = (LocatorType)locatorMap.get("type");
+                this.Position(elementValue, elementType, xaxis, yaxis);
+            }
+        } catch (CommonException e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+
+    public void Position(String hoverLocator, LocatorType locatorType, String xaxis, String yaxis) {
+        WebElement element = ((UIManager)this.mgr.get()).elementBy(locatorType, hoverLocator);
+        Point position = element.getLocation();
+        String xPosition = String.valueOf(position.getX());
+        String yPosition = String.valueOf(position.getY());
+        System.out.println("X Position: " + xPosition);
+        System.out.println("Y Position: " + yPosition);
+        this.assertions.assertEquals(xPosition, xaxis, "X position is not as expected.", (UIManager)this.mgr.get());
+        this.assertions.assertEquals(yPosition, yaxis, "Y position is not as expected.", (UIManager)this.mgr.get());
+    }
+
+    @Test
+    @Then("User verifies all links are working fine")
+    public void BrokenLinks() throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            this.checkAllLinks();
+        }
+    }
+
+    public void checkAllLinks() {
+        List<WebElement> links = ((UIManager)this.mgr.get()).driver.findElements(By.tagName("a"));
+        int checkedLinksCount = 0;
+
+        for(WebElement link : links) {
+            String url = link.getAttribute("href");
+            if (url != null && !url.isEmpty()) {
+                try {
+                    HttpURLConnection connection = (HttpURLConnection)(new URL(url)).openConnection();
+                    connection.setRequestMethod("HEAD");
+                    connection.connect();
+                    int respCode = connection.getResponseCode();
+                    if (respCode >= 400) {
+                        System.out.println(url + " is a broken link");
+                        this.assertions.assertTrue(false, "Broken link found: " + url, (UIManager)this.mgr.get());
+                    } else {
+                        System.out.println(url + " is a valid link");
+                    }
+
+                    ++checkedLinksCount;
+                } catch (Exception var8) {
+                    System.out.println("Error checking link: " + url);
+                    this.assertions.assertTrue(false, "Error in connection: " + url, (UIManager)this.mgr.get());
+                }
+            }
+        }
+
+        System.out.println("Total links checked: " + checkedLinksCount);
+    }
+
+    @Test
+    @Then("User verifies the file {string} is downloaded")
+    public void VerifyDownload(String path) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            this.verifyDownload(path);
+        }
+    }
+
+    public void verifyDownload(String fullPath) {
+        File file = new File(fullPath);
+        String fileName = file.getName();
+        this.assertions.assertTrue(file.exists(), "File not found: " + fileName);
+    }
+
+    @When("User verifies the value in the specified column")
+    public void iValidateTheValueInTheSpecifiedColumn(DataTable dataTable) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            for(Map<String, String> row : dataTable.asMaps(String.class, String.class)) {
+                String locator = (String)row.get("locator");
+                String locatorType = (String)row.get("locatorType");
+                int columnIndex = Integer.parseInt((String)row.get("columnIndex"));
+                String expectedValue = (String)row.get("expectedValue");
+                this.validateColumnValue(locator, LocatorType.valueOf(locatorType), columnIndex, expectedValue);
+            }
+
+        }
+    }
+
+    public void validateColumnValue(String locator, LocatorType locatorType, int columnIndex, String expectedValue) {
+        WebElement cell = ((UIManager)this.mgr.get()).elementBy(locatorType, locator);
+        WebElement row = cell.findElement(By.xpath("./ancestor::tr"));
+        WebElement targetCell = row.findElement(By.xpath("./td[" + columnIndex + "]"));
+        String actualValue = targetCell.getText().trim();
+        this.assertions.assertEquals(actualValue, expectedValue, "Value mismatch in column " + columnIndex + " for element with XPath: " + locator);
+    }
+
+    public void checkDroppedSuccessfully(String Locator, LocatorType Type, String text) {
+        WebElement dropElement = ((UIManager)this.mgr.get()).elementBy(Type, Locator);
+        String droppedText = dropElement.getText();
+        this.assertions.assertEquals(droppedText, text, "", (UIManager)this.mgr.get());
+    }
+
+    public void dropAble(String locator, LocatorType locatorType) {
+        WebElement Drop_Handler = ((UIManager)this.mgr.get()).elementBy(locatorType, locator);
+        JavascriptExecutor jsExecutor = (JavascriptExecutor)((UIManager)this.mgr.get()).driver;
+        String is_Drop_Able = (String)jsExecutor.executeScript("return arguments[0].getAttribute('dropable');", new Object[]{Drop_Handler});
+        this.assertions.assertTrue(is_Drop_Able != null && is_Drop_Able.equals("true"), "", (UIManager)this.mgr.get());
+    }
+
+    public void dragAble(String locator, LocatorType locatorType) {
+        WebElement Drag_Handler = ((UIManager)this.mgr.get()).elementBy(locatorType, locator);
+        JavascriptExecutor jsExecutor = (JavascriptExecutor)((UIManager)this.mgr.get()).driver;
+        String is_Dragg_Able = (String)jsExecutor.executeScript("return arguments[0].getAttribute('draggable');", new Object[]{Drag_Handler});
+        this.assertions.assertTrue(is_Dragg_Able != null && is_Dragg_Able.equals("true"), "", (UIManager)this.mgr.get());
+    }
+
+    @Test
+    @When("User checks for accessibility issues of {string} by excluding following rules {string}")
+    public void excluding_rules(String pageName, String rules) throws IOException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            List<String> excludedRules = Arrays.asList(rules.split(","));
+            this.excludeRulesAccessibilityWithCustomReport(excludedRules, pageName);
+        }
+    }
+
+    @Test
+    @When("User checks for accessibility issues of {string} by excluding following rules {string} with iframe disabled")
+    public void excluding_rules_disable_Iframe(String pageName, String rules) throws IOException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            List<String> excludedRules = Arrays.asList(rules.split(","));
+            this.excludeRulesAccessibilityWithCustomReportDisableIframe(excludedRules, pageName);
+        }
+    }
+
+    public void excludeRulesAccessibilityWithCustomReportDisableIframe(List<String> excludedRules, String pageName) throws IOException {
+        Results axeResult = (new AxeBuilder()).disableRules(excludedRules).disableIframeTesting().analyze(((UIManager)this.mgr.get()).driver, true);
+        if (!axeResult.violationFree()) {
+            String filePath = "Reports/Accessibility/" + pageName + ".html";
+            this.createDirectoryIfNotExists(filePath);
+            String customReport = buildCustomReport(axeResult);
+            this.writeReportToFile(customReport, filePath);
+            this.assertions.assertTrue(axeResult.violationFree(), buildCustomReport(axeResult));
+            LogUtil.log("Accessibility report has been written to " + filePath, LogLevel.INFO);
+        }
+
+    }
+
+    public void excludeRulesAccessibilityWithCustomReport(List<String> excludedRules, String pageName) throws IOException {
+        Results axeResult = (new AxeBuilder()).disableRules(excludedRules).analyze(((UIManager)this.mgr.get()).driver, true);
+        if (!axeResult.violationFree()) {
+            String filePath = "Reports/Accessibility/" + pageName + ".html";
+            this.createDirectoryIfNotExists(filePath);
+            String customReport = buildCustomReport(axeResult);
+            this.writeReportToFile(customReport, filePath);
+            this.assertions.assertTrue(axeResult.violationFree(), buildCustomReport(axeResult));
+            LogUtil.log("Accessibility report has been written to " + filePath, LogLevel.INFO);
+        }
+
+    }
+
+    @Test
+    @When("User checks for any accessibility issue of {string}")
+    public void any_accessibility_issue(String pageName) throws InterruptedException, IOException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            this.anyAccessibilityWithCustomReport(pageName);
+        }
+    }
+
+    public void anyAccessibilityWithCustomReport(String pageName) throws InterruptedException, IOException {
+        Results axeResult = (new AxeBuilder()).analyze(((UIManager)this.mgr.get()).driver, true);
+        if (!axeResult.violationFree()) {
+            String filePath = "Reports/Accessibility/" + pageName + ".html";
+            this.createDirectoryIfNotExists(filePath);
+            String customReport = buildCustomReport(axeResult);
+            this.writeReportToFile(customReport, filePath);
+            this.assertions.assertTrue(axeResult.violationFree(), buildCustomReport(axeResult));
+            LogUtil.log("Accessibility report has been written to " + filePath, LogLevel.INFO);
+        }
+
+    }
+
+    @Test
+    @When("User checks for any accessibility issue of {string} with iframe disabled")
+    public void any_accessibility_issue_Disable_Iframe(String pageName) throws InterruptedException, IOException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            this.anyAccessibilityWithCustomReportDisableIframes(pageName);
+        }
+    }
+
+    public void anyAccessibilityWithCustomReportDisableIframes(String pageName) throws InterruptedException, IOException {
+        Results axeResult = (new AxeBuilder()).disableIframeTesting().analyze(((UIManager)this.mgr.get()).driver, true);
+        if (!axeResult.violationFree()) {
+            String filePath = "Reports/Accessibility/" + pageName + ".html";
+            this.createDirectoryIfNotExists(filePath);
+            String customReport = buildCustomReport(axeResult);
+            this.writeReportToFile(customReport, filePath);
+            this.assertions.assertTrue(axeResult.violationFree(), buildCustomReport(axeResult));
+            LogUtil.log("Accessibility report has been written to " + filePath, LogLevel.INFO);
+        }
+
+    }
+
+    @Test
+    @When("User checks for accessibility issues of {string} by excluding following elements {string}")
+    public void excluding_elements(String pageName, String elements) throws IOException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            this.excludingSpecificElement(elements, pageName);
+        }
+    }
+
+    public void excludingElementsAccessibilityWithCustomReport(List<String> excludedElements, String pageName) throws IOException {
+        Results axeResult = (new AxeBuilder()).exclude(excludedElements).analyze(((UIManager)this.mgr.get()).driver, true);
+        if (!axeResult.violationFree()) {
+            String filePath = "Reports/Accessibility/" + pageName + ".html";
+            this.createDirectoryIfNotExists(filePath);
+            String customReport = buildCustomReport(axeResult);
+            this.writeReportToFile(customReport, filePath);
+            this.assertions.assertTrue(axeResult.violationFree(), buildCustomReport(axeResult));
+            LogUtil.log("Accessibility report has been written to " + filePath, LogLevel.INFO);
+        }
+
+    }
+
+    @Test
+    @When("User checks for accessibility issues of {string} by excluding following elements {string} with iframe disabled")
+    public void excluding_elements_disable_Iframe(String pageName, String elements) throws IOException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            List<String> excludedElements = Arrays.asList(elements.split(","));
+            this.excludingElementsAccessibilityWithCustomReportDisableIframe(excludedElements, pageName);
+        }
+    }
+
+    public void excludingElementsAccessibilityWithCustomReportDisableIframe(List<String> excludedElements, String pageName) throws IOException {
+        Results axeResult = (new AxeBuilder()).exclude(excludedElements).disableIframeTesting().analyze(((UIManager)this.mgr.get()).driver, true);
+        if (!axeResult.violationFree()) {
+            String filePath = "Reports/Accessibility/" + pageName + ".html";
+            this.createDirectoryIfNotExists(filePath);
+            String customReport = buildCustomReport(axeResult);
+            this.writeReportToFile(customReport, filePath);
+            this.assertions.assertTrue(axeResult.violationFree(), buildCustomReport(axeResult));
+            LogUtil.log("Accessibility report has been written to " + filePath, LogLevel.INFO);
+        }
+
+    }
+
+    @Test
+    @When("User checks for accessibility issues of {string} by excluding this element {string}")
+    public void excluding_element(String pageName, String element) throws IOException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            LogUtil.log("Excluded Element" + element, LogLevel.INFO);
+            this.excludingSpecificElement(element, pageName);
+        }
+    }
+
+    public void excludingSpecificElement(String excludedElement, String pageName) throws IOException {
+        Results axeResult = (new AxeBuilder()).exclude(excludedElement).analyze(((UIManager)this.mgr.get()).driver, true);
+        if (!axeResult.violationFree()) {
+            String filePath = "Reports/Accessibility/" + pageName + ".html";
+            this.createDirectoryIfNotExists(filePath);
+            String customReport = buildCustomReport(axeResult);
+            this.writeReportToFile(customReport, filePath);
+            this.assertions.assertTrue(axeResult.violationFree(), buildCustomReport(axeResult));
+            LogUtil.log("Accessibility report has been written to " + filePath, LogLevel.INFO);
+        }
+
+    }
+
+    @Test
+    @When("User checks for accessibility issues of {string} by excluding this element {string} with iframe disabled")
+    public void excluding_element_disableIframe(String pageName, String element) throws IOException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            this.excludingSpecificElementDisableIframe(element, pageName);
+        }
+    }
+
+    public void excludingSpecificElementDisableIframe(String excludedElement, String pageName) throws IOException {
+        Results axeResult = (new AxeBuilder()).exclude(excludedElement).disableIframeTesting().analyze(((UIManager)this.mgr.get()).driver, true);
+        if (!axeResult.violationFree()) {
+            String filePath = "Reports/Accessibility/" + pageName + ".html";
+            this.createDirectoryIfNotExists(filePath);
+            String customReport = buildCustomReport(axeResult);
+            this.writeReportToFile(customReport, filePath);
+            this.assertions.assertTrue(axeResult.violationFree(), buildCustomReport(axeResult));
+            LogUtil.log("Accessibility report has been written to " + filePath, LogLevel.INFO);
+        }
+
+    }
+
+    @Test
+    @When("User checks for accessibility issues of {string} with only element {string}")
+    public void include_element(String pageName, String element) throws IOException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            this.includeSpecificElement(element, pageName);
+        }
+    }
+
+    public void includeSpecificElement(String includeElement, String pageName) throws IOException {
+        Results axeResult = (new AxeBuilder()).include(includeElement).analyze(((UIManager)this.mgr.get()).driver, true);
+        if (!axeResult.violationFree()) {
+            String filePath = "Reports/Accessibility/" + pageName + ".html";
+            this.createDirectoryIfNotExists(filePath);
+            String customReport = buildCustomReport(axeResult);
+            this.writeReportToFile(customReport, filePath);
+            this.assertions.assertTrue(axeResult.violationFree(), buildCustomReport(axeResult));
+            LogUtil.log("Accessibility report has been written to " + filePath, LogLevel.INFO);
+        }
+
+    }
+
+    @Test
+    @When("User checks for accessibility issues of {string} with only element {string} with iframe disabled")
+    public void include_element_disableIframe(String pageName, String element) throws IOException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            this.includeSpecificElementDisableIframe(element, pageName);
+        }
+    }
+
+    public void includeSpecificElementDisableIframe(String includeElement, String pageName) throws IOException {
+        Results axeResult = (new AxeBuilder()).include(includeElement).disableIframeTesting().analyze(((UIManager)this.mgr.get()).driver, true);
+        if (!axeResult.violationFree()) {
+            String filePath = "Reports/Accessibility/" + pageName + ".html";
+            this.createDirectoryIfNotExists(filePath);
+            String customReport = buildCustomReport(axeResult);
+            this.writeReportToFile(customReport, filePath);
+            this.assertions.assertTrue(axeResult.violationFree(), buildCustomReport(axeResult));
+            LogUtil.log("Accessibility report has been written to " + filePath, LogLevel.INFO);
+        }
+
+    }
+
+    @Test
+    @When("User checks for accessibility issues of {string} with only rules {string}")
+    public void withOnly_Rules(String pageName, String rules) throws IOException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            List<String> includedRules = Arrays.asList(rules.split(","));
+            this.includeSpecificRules(includedRules, pageName);
+        }
+    }
+
+    public void includeSpecificRules(List<String> includeElement, String pageName) throws IOException {
+        Results axeResult = (new AxeBuilder()).withOnlyRules(includeElement).analyze(((UIManager)this.mgr.get()).driver, true);
+        if (!axeResult.violationFree()) {
+            String filePath = "Reports/Accessibility/" + pageName + ".html";
+            this.createDirectoryIfNotExists(filePath);
+            String customReport = buildCustomReport(axeResult);
+            this.writeReportToFile(customReport, filePath);
+            this.assertions.assertTrue(axeResult.violationFree(), buildCustomReport(axeResult));
+            LogUtil.log("Accessibility report has been written to " + filePath, LogLevel.INFO);
+        }
+
+    }
+
+    @Test
+    @When("User checks for accessibility issues of {string} with only rules {string} with iframe disabled")
+    public void withOnly_Rules_DisableIframe(String pageName, String rules) throws IOException, AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            List<String> includedRules = Arrays.asList(rules.split(","));
+            this.includeSpecificRulesDisableIframe(includedRules, pageName);
+        }
+    }
+
+    public void includeSpecificRulesDisableIframe(List<String> includeElement, String pageName) throws IOException {
+        Results axeResult = (new AxeBuilder()).withOnlyRules(includeElement).disableIframeTesting().analyze(((UIManager)this.mgr.get()).driver, true);
+        if (!axeResult.violationFree()) {
+            String filePath = "Reports/Accessibility/" + pageName + ".html";
+            this.createDirectoryIfNotExists(filePath);
+            String customReport = buildCustomReport(axeResult);
+            this.writeReportToFile(customReport, filePath);
+            this.assertions.assertTrue(axeResult.violationFree(), buildCustomReport(axeResult));
+            LogUtil.log("Accessibility report has been written to " + filePath, LogLevel.INFO);
+        }
+
+    }
+
+    private void createDirectoryIfNotExists(String filePath) {
+        File directory = (new File(filePath)).getParentFile();
+        if (!directory.exists()) {
+            directory.mkdirs();
+        }
+
+    }
+
+    private void writeReportToFile(String report, String filePath) throws IOException {
+        try (FileWriter writer = new FileWriter(filePath)) {
+            writer.write("----------------------Accessibility Report Starts");
+            writer.write(report);
+            writer.write("----------------------Accessibility Report Ends");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    public static String buildCustomReport(Results axeResult) {
+        int ruleCounter = 1;
+        int nodeCounter = 1;
+        StringBuilder reportBuilder = new StringBuilder();
+
+        for(Rule rule : axeResult.getViolations()) {
+            reportBuilder.append("_________________________________________________________________________________\n").append(ruleCounter).append(") ").append(rule.getDescription()).append(".").append("\n").append(rule.getHelpUrl()).append("\n");
+
+            for(CheckedNode checkedNode : rule.getNodes()) {
+                reportBuilder.append(ruleCounter).append(".").append(nodeCounter).append(") ").append(checkedNode.getTarget()).append("\n").append(checkedNode.getFailureSummary()).append("\n\n");
+                ++nodeCounter;
+            }
+
+            ++ruleCounter;
+            nodeCounter = 1;
+        }
+
+        return reportBuilder.toString();
+    }
+
+    @Test
+    @Then("User verifies the numeric value of key {string} is less than numeric value of key {string}")
+    public void verifyNumericValueOfKeys(String firstKey, String secondKey) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            try {
+                JSONObject globalResponseJson = new JSONObject(((GlobalSharedData)GlobalSharedData.getInstance().get()).getGlobalStoredResponse());
+                String firstValue = globalResponseJson.optString(firstKey, (String)null);
+                String secondValue = globalResponseJson.optString(secondKey, (String)null);
+                if (firstValue != null && secondValue != null) {
+                    double firstNumericValue = Double.parseDouble(this.extractNumericValue(firstValue));
+                    double secondNumericValue = Double.parseDouble(this.extractNumericValue(secondValue));
+                    this.assertions.assertTrue(firstNumericValue < secondNumericValue, "Expected numeric value of key '" + firstKey + "' (" + firstNumericValue + ") to be less than key '" + secondKey + "' (" + secondNumericValue + ")");
+                    System.out.println("Verified: Numeric value of key '" + firstKey + "' (" + firstNumericValue + ") is less than numeric value of key '" + secondKey + "' (" + secondNumericValue + ").");
+                } else {
+                    throw new RuntimeException("One or both keys not found in global storage: " + firstKey + ", " + secondKey);
+                }
+            } catch (Exception e) {
+                throw new RuntimeException("Error verifying numeric values of keys '" + firstKey + "' and '" + secondKey + "': " + e.getMessage(), e);
+            }
+        }
+    }
+
+    @Test
+    @Then("User verifies the numeric value of key {string} is greater than numeric value of key {string}")
+    public void verifyNumericValueOfKeysGreaterThan(String firstKey, String secondKey) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            try {
+                JSONObject globalResponseJson = new JSONObject(((GlobalSharedData)GlobalSharedData.getInstance().get()).getGlobalStoredResponse());
+                String firstValue = globalResponseJson.optString(firstKey, (String)null);
+                String secondValue = globalResponseJson.optString(secondKey, (String)null);
+                if (firstValue != null && secondValue != null) {
+                    double firstNumericValue = Double.parseDouble(this.extractNumericValue(firstValue));
+                    double secondNumericValue = Double.parseDouble(this.extractNumericValue(secondValue));
+                    this.assertions.assertTrue(firstNumericValue > secondNumericValue, "Expected numeric value of key '" + firstKey + "' (" + firstNumericValue + ") to be greater than key '" + secondKey + "' (" + secondNumericValue + ")");
+                    System.out.println("Verified: Numeric value of key '" + firstKey + "' (" + firstNumericValue + ") is greater than numeric value of key '" + secondKey + "' (" + secondNumericValue + ").");
+                } else {
+                    throw new RuntimeException("One or both keys not found in global storage: " + firstKey + ", " + secondKey);
+                }
+            } catch (Exception e) {
+                throw new RuntimeException("Error verifying numeric values of keys '" + firstKey + "' and '" + secondKey + "': " + e.getMessage(), e);
+            }
+        }
+    }
+
+    @Test
+    @Then("User verifies the time value of key {string} is less than time value of key {string}")
+    public void verifyTimeValueOfKeys(String secondKey, String firstKey) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            try {
+                JSONObject globalResponseJson = new JSONObject(((GlobalSharedData)GlobalSharedData.getInstance().get()).getGlobalStoredResponse());
+                String firstTimeValue = globalResponseJson.optString(firstKey, (String)null);
+                String secondTimeValue = globalResponseJson.optString(secondKey, (String)null);
+                if (firstTimeValue != null && secondTimeValue != null) {
+                    int firstTimeInSeconds = this.convertTimeToSeconds(firstTimeValue);
+                    int secondTimeInSeconds = this.convertTimeToSeconds(secondTimeValue);
+                    this.assertions.assertTrue(secondTimeInSeconds < firstTimeInSeconds, "Expected time value of '" + secondKey + "' (" + secondTimeValue + ") to be less than '" + firstKey + "' (" + firstTimeValue + ").");
+                    System.out.println("Verified: Time value of '" + secondKey + "' (" + secondTimeValue + ") is less than '" + firstKey + "' (" + firstTimeValue + ").");
+                } else {
+                    throw new RuntimeException("One or both time values are missing. First key: " + firstKey + ", Second key: " + secondKey);
+                }
+            } catch (Exception e) {
+                throw new RuntimeException("An error occurred while verifying time values: " + e.getMessage(), e);
+            }
+        }
+    }
+
+    private int convertTimeToSeconds(String time) {
+        try {
+            String[] timeParts = time.split(":");
+            int seconds = 0;
+            int multiplier = 1;
+
+            for(int i = timeParts.length - 1; i >= 0; --i) {
+                seconds += Integer.parseInt(timeParts[i]) * multiplier;
+                multiplier *= 60;
+            }
+
+            return seconds;
+        } catch (NumberFormatException e) {
+            throw new RuntimeException("Invalid time format: " + time, e);
+        }
+    }
+
+    @Test
+    @Then("User verifies the time value of key {string} is greater than time value of key {string}")
+    public void verifyTimeValueOfKeysGreaterThan(String secondKey, String firstKey) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            try {
+                JSONObject globalResponseJson = new JSONObject(((GlobalSharedData)GlobalSharedData.getInstance().get()).getGlobalStoredResponse());
+                String firstTimeValue = globalResponseJson.optString(firstKey, (String)null);
+                String secondTimeValue = globalResponseJson.optString(secondKey, (String)null);
+                if (firstTimeValue != null && secondTimeValue != null) {
+                    int firstTimeInSeconds = this.convertTimeToSeconds(firstTimeValue);
+                    int secondTimeInSeconds = this.convertTimeToSeconds(secondTimeValue);
+                    this.assertions.assertTrue(secondTimeInSeconds > firstTimeInSeconds, "Expected time value of '" + secondKey + "' (" + secondTimeValue + ") to be greater than '" + firstKey + "' (" + firstTimeValue + ").");
+                    System.out.println("Verified: Time value of '" + secondKey + "' (" + secondTimeValue + ") is greater than '" + firstKey + "' (" + firstTimeValue + ").");
+                } else {
+                    throw new RuntimeException("One or both time values are missing. First key: " + firstKey + ", Second key: " + secondKey);
+                }
+            } catch (Exception e) {
+                throw new RuntimeException("An error occurred while verifying time values: " + e.getMessage(), e);
+            }
+        }
+    }
+
+    @Test
+    @Then("User verifies the value of key {string} is not same as value of key {string}")
+    public void verifyValuesAreNotSame(String firstKey, String secondKey) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            try {
+                JSONObject globalResponseJson = new JSONObject(((GlobalSharedData)GlobalSharedData.getInstance().get()).getGlobalStoredResponse());
+                String firstValue = globalResponseJson.optString(firstKey, (String)null);
+                String secondValue = globalResponseJson.optString(secondKey, (String)null);
+                if (firstValue != null && secondValue != null) {
+                    this.assertions.assertNotEquals(firstValue, secondValue, "Expected value of key '" + firstKey + "' (" + firstValue + ") to be different from key '" + secondKey + "' (" + secondValue + ").", (UIManager)this.mgr.get());
+                    System.out.println("Verified: Value of key '" + firstKey + "' (" + firstValue + ") is different from value of key '" + secondKey + "' (" + secondValue + ").");
+                } else {
+                    throw new RuntimeException("One or both keys not found in global storage: " + firstKey + ", " + secondKey);
+                }
+            } catch (Exception e) {
+                throw new RuntimeException("Error verifying values of keys '" + firstKey + "' and '" + secondKey + "': " + e.getMessage(), e);
+            }
+        }
+    }
+
+    @Test
+    @Then("User verifies the value of key {string} is same as value of key {string}")
+    public void verifyValuesAreSame(String firstKey, String secondKey) throws AbortScenario {
+        if (!((GlobalSharedData)GlobalSharedData.getInstance().get()).shouldSkipScenario()) {
+            try {
+                JSONObject globalResponseJson = new JSONObject(((GlobalSharedData)GlobalSharedData.getInstance().get()).getGlobalStoredResponse());
+                String firstValue = globalResponseJson.optString(firstKey, (String)null);
+                String secondValue = globalResponseJson.optString(secondKey, (String)null);
+                if (firstValue != null && secondValue != null) {
+                    this.assertions.assertEquals(firstValue, secondValue, "Expected value of key '" + firstKey + "' (" + firstValue + ") to be the same as key '" + secondKey + "' (" + secondValue + ").", (UIManager)this.mgr.get());
+                    System.out.println("Verified: Value of key '" + firstKey + "' (" + firstValue + ") is the same as value of key '" + secondKey + "' (" + secondValue + ").");
+                } else {
+                    throw new RuntimeException("One or both keys not found in global storage: " + firstKey + ", " + secondKey);
+                }
+            } catch (Exception e) {
+                throw new RuntimeException("Error verifying values of keys '" + firstKey + "' and '" + secondKey + "': " + e.getMessage(), e);
+            }
+        }
+    }
+}
