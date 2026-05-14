@@ -1,0 +1,19 @@
+{
+  "name": "electron-vscode",
+  "version": "1.0.0",
+  "description": "A Visual Studio Clone for making different projects.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electronmon ."
+  },
+  "author": "Pravakar Rijal",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^35.1.1",
+    "electronmon": "^2.0.3"
+  },
+  "dependencies": {
+    "monaco-editor": "^0.52.2"
+  }
+}

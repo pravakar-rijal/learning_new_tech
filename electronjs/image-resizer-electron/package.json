@@ -1,0 +1,21 @@
+{
+  "name": "image-resizer-electron",
+  "productName": "Image Resizer",
+  "version": "1.0.0",
+  "description": "An Application that resizes the images.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electronmon ."
+  },
+  "author": "Pravakar Rijal",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^35.0.3",
+    "electronmon": "^2.0.3"
+  },
+  "dependencies": {
+    "resize-img": "^2.0.0",
+    "toastify-js": "^1.12.0"
+  }
+}

@@ -1,0 +1,29 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+
+input{
+    width: 250px;
+    font: inherit;
+    margin: 20px;
+}
+
+form{
+    margin: 10px;
+    width: 100vw;
+    height: 30vh;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+}
+
+.get-length{
+    margin: 10px;
+}

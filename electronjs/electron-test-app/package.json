@@ -1,0 +1,14 @@
+{
+  "name": "electron-test-app",
+  "version": "1.0.0",
+  "description": "This app helps in learning electron in depth.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Pravakar Rijal",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^35.0.3"
+  }
+}

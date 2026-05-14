@@ -1,0 +1,15 @@
+{
+  "name": "electron-ipc",
+  "version": "1.0.0",
+  "description": "A application to learn the ipc between main and renderer process",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electronmon ."
+  },
+  "author": "Pravakar Rijal",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^35.1.0"
+  }
+}

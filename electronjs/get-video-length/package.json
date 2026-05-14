@@ -1,0 +1,19 @@
+{
+  "name": "get-video-length",
+  "version": "1.0.0",
+  "description": "A application that tells the length of the video file.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electronmon ."
+  },
+  "author": "Pravakar Rijal",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^35.1.2",
+    "electronmon": "^2.0.3"
+  },
+  "dependencies": {
+    "get-video-duration": "^4.1.0"
+  }
+}

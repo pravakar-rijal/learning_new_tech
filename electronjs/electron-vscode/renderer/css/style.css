@@ -1,0 +1,64 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: black;
+}
+
+ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+li{
+    list-style-type: none;
+}
+
+main{
+    display: flex;
+    flex-direction: row;
+}
+
+#file{
+    font-size: large;
+}
+
+.bi{
+    padding: 10px;
+    font-size: 30px;
+    cursor: pointer;
+    color: rgb(144, 139, 139);
+    background-color: black;
+}
+
+.icons{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.icon-upper
+{
+    display: flex;
+    flex-direction: column;
+}
+
+#icon-lower{
+    display: flex;
+    flex-direction: column;
+}
+
+#editor{
+    width: 97vw;
+    height: 97vh;
+}
+
+footer{
+    color: white;
+    font-size: small;
+    text-align: center;
+}

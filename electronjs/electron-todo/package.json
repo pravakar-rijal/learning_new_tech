@@ -1,0 +1,16 @@
+{
+  "name": "electron-todo",
+  "version": "1.0.0",
+  "description": "This is a simple todo application built using electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electronmon ."
+  },
+  "author": "Pravakar Rijal",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^35.1.0",
+    "electronmon": "^2.0.3"
+  }
+}
